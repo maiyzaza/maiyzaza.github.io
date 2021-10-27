@@ -1,5 +1,5 @@
 import '../../App.css';
-import cardImg from '/Users/design/Downloads/au-room-reservation/src/assets/cardImg.png';
+import cardImg from '../../assets/cardImg.png';
 
 function MoreInfo() {
 
