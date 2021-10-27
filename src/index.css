@@ -1,0 +1,418 @@
+body {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: #EAEAEA !important;
+  /* background-image: url('./assets/light-background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%; */
+}
+
+.card {
+  box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;
+  border-bottom: 0.08rem solid #D7D5DB !important;
+}
+
+.myCard {
+  margin-top: 1.5rem !important;
+  border-bottom-width: 0px !important;
+  margin-left: 22.5rem !important;
+  margin-right: 32rem !important;
+  padding-top: 0.8rem !important;
+  padding-bottom: 0.8rem !important;
+  padding-left: 1.7rem !important;
+  padding-right: 1.7rem !important;
+}
+
+.myCard1 {
+  margin-top: 1.5rem !important;
+  border-bottom-width: 0px !important;
+  margin-left: 61rem !important;
+  margin-right: 3.5rem !important;
+  padding-top: 0.8rem !important;
+  padding-bottom: 0.8rem !important;
+  padding-left: 1.7rem !important;
+  padding-right: 1.7rem !important;
+}
+
+/* Sidebar section */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 19rem;
+  background: #FFFFFF;
+  /* padding-top: 2rem; */
+  padding-right: 2rem;
+  padding-left: 1.5rem;
+  transition: all 0.5 ease;
+}
+
+.sidebar.active{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4rem;
+  background: #FFFFFF;
+  /* padding-top: 2rem; */
+  padding-right: 4rem;
+  padding-left: 1rem;
+  transition: all 0.5 ease;
+}
+
+.sidebar .logo_content .logo{
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.sidebar.active .logo_content .logo {
+  display: flex;
+  align-items: center;
+  padding-top: 1 rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
+.sidebar .menu{
+  position: absolute;
+  color: #383738;
+  left: 85%;
+  top: 2rem;
+  font-size: 2.5rem;
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  line-height: 50px;
+  transform: translate(-50%);
+}
+
+.sidebar .links_name{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar.active .links_name{
+  opacity: 0;
+  pointer-events: none;
+} 
+
+.sidebar .menu.active {
+  left: 50%;
+} 
+
+.sidebar ul{
+  margin-top: 2rem;
+  padding-left: 0px;
+}
+
+
+.sidebar ul li{
+  position: relative;
+  height: 3.7rem;
+  width: 100%;
+  list-style: none;
+  line-height: 3.7rem;
+  border-radius: 0.6rem;
+
+}
+
+
+.sidebar ul li a{
+  color: #383738;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all .4s ease;
+  /* Font Size of Menu */
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.sidebar ul li a:hover{
+  color: #383738 ;
+  background: #EAEAEA ;
+  border-radius: 0.6rem;
+}
+
+.sidebar ul li a i{
+  min-width: 3rem;
+  border-radius: 0.6rem;
+  line-height: 3rem;
+  text-align: center;
+  font-size:  1.5rem;
+}
+
+/* .sidebar ul li a i:hover{
+  min-width: 3rem;
+  border-radius: 0.6rem;
+  line-height: 3rem;
+  text-align: center;
+  font-size:  1.5rem;
+  background: #EAEAEA ;
+  border-radius: 0.6rem;
+} */
+
+.sidebar.active ul li a i:hover{
+  min-width: 3rem;
+  border-radius: 0.6rem;
+  line-height: 3rem;
+  text-align: center;
+  font-size:  1.5rem;
+  background: #EAEAEA ;
+  border-radius: 0.6rem;
+}
+
+.sidebar.active .firstName_lastName {
+  display:none;
+} 
+
+.sidebar.active .profile_content img {
+  width: 3rem;
+  height: 3rem;
+} 
+
+.sidebar .profile_content{
+  opacity: 1;
+  pointer-events: auto;
+  color: #383738;
+}
+
+.firstName{
+  font-size: 1.2rem;
+}
+
+.lastName{
+  font-size: 1.1rem;
+}
+
+.sidebar .profile_content img {
+  border-radius: 2rem;
+}
+
+.profile {
+  margin-top: 1rem;
+}
+
+/* .content {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 22rem);
+  left: 22rem;
+  color: #383738;
+  opacity: 1;
+  pointer-events: auto;
+  font-family: 'Bariol Regular';
+} */
+
+.headContent {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 22.5rem);
+  left: 22.5rem;
+  margin-top: 1.5rem;
+  color: #383738;
+  opacity: 1;
+  pointer-events: auto;
+  font-family: 'Bariol Serif Bold';
+  font-size: 1.3rem;
+}
+
+.content {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 22.5rem);
+  left: 22.5rem;
+  margin-top: 4rem;
+  font-size: 1.1rem;
+  color: #383738;
+  opacity: 1;
+  pointer-events: auto;
+  font-family: 'Bariol Serif Bold';
+}
+
+
+/* Table Section */
+
+/* .sidebar-active {
+  min-Width: 650px;
+  width: 1000px;
+  inset: 0px;
+  margin-top: 10rem;
+} */
+
+th {
+  font-family: 'Bariol Bold';
+  color: #212529;
+  /* font-size: 10rem !important;  */
+}
+
+td {
+  font-family: 'Bariol Regular';
+  color: #212529;
+  /* font-size: 15px; */
+}
+
+.table-responsive .table {
+  width: 71%;
+  margin-bottom: 1rem;
+  color: #212529;
+  /* margin-left: 6rem; */
+}
+
+.myTable {
+  margin-left: 22.5rem !important;
+  inset: 0px;
+  margin-top: 6.5rem;
+}
+
+table td {
+  font-size: 0.78rem !important;
+  background-color: #FFFFFF !important;
+}
+
+table th {
+  font-size: 0.78rem !important;
+  background-color: #F6F6F6 !important;
+}
+
+table.table th, table.table td {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.4rem !important;
+}
+
+table td i {
+  font-size: 1.2rem !important;
+}
+
+.table thead th {
+  border-bottom: 2px solid #DEE2E6 !important;
+}
+
+.table thead td {
+  border-bottom: 1px solid #DEE2E6 !important;
+}
+
+.historyFooterContent {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 22.5rem);
+  left: 22.5rem;
+  color: #383738;
+  opacity: 1;
+  pointer-events: auto;
+  font-family: 'Bariol Regular';
+  top: 48.3rem !important;
+  font-size: 0.9rem !important;
+}
+
+/* .historyFooterButton {
+
+} */
+
+/* Font */
+.regularB {
+  font-family: 'Bariol Regular';
+  color: #383738 !important;
+}
+
+.boldB {
+  font-family: 'Bariol Bold';
+  color: #383738 !important;
+}
+
+
+
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
+
+@font-face {
+  font-family: 'Bariol Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Bariol Regular'), url(./fonts/bariol_regular-webfont.woff) format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'Bariol Regular Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Bariol Regular Italic'), url(./fonts/bariol_regular_italic-webfont.woff) format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'Bariol Thin Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Bariol Thin Italic'), url(./fonts/bariol_thin_italic-webfont.woff) format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'Bariol Thin';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Bariol Thin'), url(./fonts/bariol_thin-webfont.woff) format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'Bariol Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Bariol Light'), url(./fonts/bariol_light-webfont.woff) format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'Bariol Light Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Bariol Light Italic'), url(./fonts/bariol_light_italic-webfont.woff) format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'Bariol Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Bariol Bold'), url(./fonts/bariol_bold-webfont.woff) format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'Bariol Bold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Bariol Bold Italic'), url(./fonts/bariol_bold_italic-webfont.woff) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Bariol Serif Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bariol Serif Regular'), url(./fonts/Bariol_Serif_Regular.otf) format('otf');
+    }
+
+  @font-face {
+    font-family: 'Bariol Serif Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bariol Serif Bold'), url(./fonts/BariolSerifBold.woff) format('woff');
+    }
+
+
+  
