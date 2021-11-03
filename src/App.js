@@ -12,6 +12,7 @@ import {
 import { useState } from 'react';
 import ChangePassword from './pages/change password/changePassword';
 import MoreInfo from './pages/history/moreInfo';
+import Login from './pages/login/login';
  
 function App() {
 
@@ -22,11 +23,10 @@ function App() {
   //  };
 
   return (
-
-   
     <Router>
         <Switch >
           <Route path ="/history" exact={true} component={History}>
+            <Sidebar />
             <History />
           </Route>
           <Route path="/roomManagement">
@@ -44,8 +44,13 @@ function App() {
           <Route path="/moreInfo">
             <MoreInfo />
           </Route>
+          <Route path="/">
+            <div className="login_container">
+              <Login />
+            </div>
+          </Route>
         </Switch>
-        <Sidebar />
+        
     </Router>
   );
 }
