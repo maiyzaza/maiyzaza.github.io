@@ -12,7 +12,6 @@ function Login() {
         <form class="login_form">
             <img class="login_logo" src={logoImg}></img>
             <input
-                // style="rgb(158, 158, 165, 0.1)"
                 name="Username"
                 placeholder="Username"
             />
