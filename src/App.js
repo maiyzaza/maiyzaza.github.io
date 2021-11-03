@@ -30,18 +30,23 @@ function App() {
             <History />
           </Route>
           <Route path="/roomManagement">
+            <Sidebar />
             <RoomManagement />
           </Route>
           <Route path="/reservationManagement">
+            <Sidebar />
             <ReservationManagement />
           </Route>
           <Route path="/reservationManagement">
+            <Sidebar />
             <ReservationManagement />
           </Route>
           <Route path="/changePassword">
+            <Sidebar />
             <ChangePassword />
           </Route>
           <Route path="/moreInfo">
+            <Sidebar />
             <MoreInfo />
           </Route>
           <Route path="/">
@@ -49,8 +54,8 @@ function App() {
               <Login />
             </div>
           </Route>
+          
         </Switch>
-        
     </Router>
   );
 }
