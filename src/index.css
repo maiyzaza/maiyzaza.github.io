@@ -331,6 +331,13 @@ table td i {
 }
 
 /* Login */
+.login_background_img {
+  height: 100%;
+    /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .login_logo {
   width: 280px;
   height: 160px

@@ -50,7 +50,7 @@ function App() {
             <Sidebar />
           </Route>
           <Route path="/">
-            <div className="login_container">
+            <div>
               <Login />
             </div>
           </Route>
