@@ -26,31 +26,31 @@ function App() {
     <Router>
         <Switch >
           <Route path ="/history" exact={true} component={History}>
-            <Sidebar />
             <History />
+            <Sidebar />
           </Route>
           <Route path="/roomManagement">
-            <Sidebar />
             <RoomManagement />
+            <Sidebar />
           </Route>
           <Route path="/reservationManagement">
-            <Sidebar />
             <ReservationManagement />
+            <Sidebar />
           </Route>
           <Route path="/reservationManagement">
-            <Sidebar />
             <ReservationManagement />
+            <Sidebar />
           </Route>
           <Route path="/changePassword">
-            <Sidebar />
             <ChangePassword />
+            <Sidebar />
           </Route>
           <Route path="/moreInfo">
-            <Sidebar />
             <MoreInfo />
+            <Sidebar />
           </Route>
           <Route path="/">
-            <div className="login_container">
+            <div>
               <Login />
             </div>
           </Route>

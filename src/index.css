@@ -330,7 +330,14 @@ table td i {
   color: #383738 !important;
 }
 
-/* Login container */
+/* Login */
+.login_background_img {
+  height: 100%;
+    /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .login_logo {
   width: 280px;
   height: 160px
@@ -382,6 +389,10 @@ table td i {
   background: #cb002b;
   opacity: 1;
 }
+.login_wrong {
+  color: red;
+}
+
 
 
 
