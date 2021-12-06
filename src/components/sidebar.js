@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
 
-
   const [isActive, setActive] = useState("false");
   const ToggleClass = () => {
     setActive(!isActive); 
