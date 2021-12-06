@@ -41,13 +41,13 @@ function Login() {
           <input
             onChange={event => setUsername(event.target.value)}
             value={username}
-            // required
+            required
             id="username"
             name="Username"
             placeholder="Username"
           />
           <input
-            // required
+            required
             onChange={event => setPassword(event.target.value)}
             value={password}
             id="password"
@@ -55,7 +55,9 @@ function Login() {
             placeholder="Password"
           />
           <button>Sign In</button>
-          {alert && <p> Worng Username or Password</p>}
+          <div class="login_wrong">
+          {alert && <p> Wrong Username or Password</p>}
+          </div>
       </form>
     </div>
   );
