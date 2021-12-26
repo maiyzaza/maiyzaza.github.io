@@ -1,228 +1,203 @@
 import React, { useEffect, useState } from "react";
-import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 import axios from 'axios';
-import BootstrapTable from 'react-bootstrap-table-next';
-import paginationFactory from "react-bootstrap-table2-paginator";
-import Button from 'react-bootstrap/Button';
-import * as ReactBootstrap from "react-bootstrap";
+import { MDBDataTable } from 'mdbreact';
+import MoreInfo from "../pages/history/moreInfo";
+import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+// import { useHistory } from 'react-router'
+
+
 
 const TablePage = (props) =>  {
+  // let history = useHistory();
 
-  const [data, setDat] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQwODYwODY3LCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.NPjUTgmVrz3NGiwPmx3vvvGMrN2boOVOARpQqQbJiVE"
+
+  const [dataRow,setDataRow] = useState([])
+  const [itemRow,setItemRow] = useState([])
+  
+  // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQwODYwODY3LCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.NPjUTgmVrz3NGiwPmx3vvvGMrN2boOVOARpQqQbJiVE"
+  const access_token = sessionStorage.getItem("token")
+  // console.log("access_token",access_token)
+  // if(!access_token){
+  //   history.push("/")
+  //   window.location.reload("/");
+  // }
+
 
   const postdata = async () => {
       try {
-       const data1 = await axios({
+       const res = await axios({
           url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories/",
           headers: {
               'Authorization': 'Bearer ' + access_token
               },
           method: "POST",
           data: {
-              Location : null,
-              Room : null,
-              Month : null
+              RoomName : null,
+              Status : null,
+              Date : null,
+              Page : 2
           }
       })
-      .then((data1) => {
-          console.log(data1);
+      .then((res) => {
+          console.log(res.data.data.items);
+          const itemData = res.data.data.items
+          setDataRow(itemData)
        });
       } catch (err) {
           console.log(err);
       }
    };
+
   useEffect(() => {
-       postdata();
+    postdata();
   },[]);
 
-  return (
-    <div>
+  useEffect(() => {
+    let dataArray = JSON.parse(JSON.stringify(dataRow))
+    let reservationData = []
+    dataArray.map((item,index)=>{
+      item.date = (
+         <div>
+          {new Date(item.startTime).toLocaleDateString("en-GB")}
+        </div>
+      );
+
+      item.startTime = (
+        <div>
+          {new Date(item.startTime).toLocaleTimeString(undefined, {
+              hour:   '2-digit',
+              minute: '2-digit',
+          })}
+        </div>
+      );
+
+      item.endTime = (
+        <div>
+          {new Date(item.endTime).toLocaleTimeString(undefined, {
+              hour:   '2-digit',
+              minute: '2-digit',
+          })}
+        </div>
+      );
+
+      item.status = (
+        <div>
+          { 
+           item.status.split(" ")[0]
+          }
+        </div>
+       )
+       const booking_id = item.bookingId;
+       const room_id = item.roomId;
+
+      item.info = (
+        // bookingId={item.bookingId}
+        // <Link to={`/moreinfo/${item.bookingId}`}   >
+        <Link to={{pathname:`/moreinfo/${booking_id}`,  state:{ booking_id,room_id } } } > 
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div
+            className="bx bx-info-circle"
+            style={{
+              cursor: "pointer",
+              color: "black",
+              fontSize: "1.1rem",
+            }}
+              // onClick={() => deletePost(posts[index].id)}
+              // onClick={() => Post(posts[index].id)}
+          > 
+          {/* {item.bookingId} */}
+          {/* <Link to={/singlepost/${_id}} className="link" /> */}
+              {/* Delete */}
+          </div>
+        </div>
+       </Link>
+      );
         
+     reservationData.push(item)
+    })
+
+      setItemRow(reservationData)
+      
+    },[dataRow]);
+
+  const data = {
+  columns: [
+    {
+      label: '#',
+      field: 'bookingId',
+      sort: 'decs',
+      
+    },
+    {
+      label: 'DATE',
+      field: 'date',
+      sort: 'desc',
+      width: '11%'
+    },
+    {
+      label: 'START TIME',
+      field: 'startTime',
+      sort: 'desc',
+      width: '15%'
+    },
+    {
+      label: 'END TIME',
+      field: 'endTime',
+      sort: 'desc',
+      width: '15%'
+    },
+    {
+      label: 'ROOM',
+      field: 'room',
+      sort: 'desc',
+      width: '15%'
+    },
+    {
+      label: 'STATUS',
+      field: 'status',
+      sort: 'desc',
+      width: '11%'
+    },
+    {
+      label: 'RESERVED BY',
+      field: 'reservedBy',
+      sort: 'desc',
+      width: '20%'
+    },
+    {
+      label: 'INFO',
+      field: 'info',
+      sort: 'desc',
+      width: '10%'
+    }
+  ],
+  rows: itemRow
+};
+  
+      if (!sessionStorage.getItem("token")) {
+
+        return <Redirect to="/" />
+      } 
+
+  return (
+    <div className="myTable">
+      <MDBDataTable
+        striped
+        bordered
+        small
+        
+        searching={false}
+        sortable={false}
+        order={['bookingId', 'decs']}
+        displayEntries={false}
+        data={data}
+      />
     </div>
 
   );
 }
 
-// const TablePage = (props) => {
-// const data = {
-//   columns: [
-//     {
-//       label: '#',
-//       field: 'id',
-//       sort: 'asc'
-//     },
-//     {
-//       label: 'DATE',
-//       field: 'heading1',
-//       sort: 'asc'
-//     },
-//     {
-//       label: 'START TIME',
-//       field: 'heading2',
-//       sort: 'asc'
-//     },
-//     {
-//       label: 'END TIME',
-//       field: 'heading3',
-//       sort: 'asc'
-//     },
-//     {
-//       label: 'ROOM',
-//       field: 'heading4',
-//       sort: 'asc'
-//     },
-//     {
-//       label: 'STATUS',
-//       field: 'heading5',
-//       sort: 'asc'
-//     },
-//     {
-//       label: 'RESERVED BY',
-//       field: 'heading6',
-//       sort: 'asc'
-//     },
-//     {
-//       label: 'INFO',
-//       field: 'heading7',
-//       sort: 'asc'
-//     }
-//   ],
-//   rows: [
-//     {
-//       id: 16,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Reserved',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="/moreInfo"><i class='bx bx-info-circle'></i></a>
-//     },
-//     {
-//       id: 15,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Completed',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     },
-//     {
-//       id: 14,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Failed',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     },
-//     {
-//       id: 13,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Reserved',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     },
-//     {
-//       id: 12,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Reserved',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     },
-//     {
-//       id: 11,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Reserved',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     },
-//     {
-//       id: 10,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Reserved',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     },
-//     {
-//       id: 9,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Reserved',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     },
-//     {
-//       id: 8,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Reserved',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     },    {
-//       id: 7,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Reserved',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     },
-//     {
-//       id: 6,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Reserved',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     },
-//     {
-//       id: 5,
-//       heading1: '02/12/2020',
-//       heading2: '09:00',
-//       heading3: '09:30',
-//       heading4: 'Swift Room 1',
-//       heading5: 'Reserved',
-//       heading6: 'Nutnisa Thongrussamee',
-//       heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-//     }
-//   ]
-// };
-
-// return (
-
-// <div className="myTable table-responsive" >
-// <MDBTable responsive >
-//     <MDBTableHead columns={data.columns} />
-//     <MDBTableBody rows={data.rows} />
-// </MDBTable>
-// </div>
-
-// );
-// };
 
 export default TablePage;
 

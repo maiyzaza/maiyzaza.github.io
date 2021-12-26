@@ -10,8 +10,9 @@ import {
   Link
 } from "react-router-dom";
 import { useState } from 'react';
-import ChangePassword from './pages/change password/changePassword';
+import AdminManagement from './pages/admin management/adminManagement'
 import MoreInfo from './pages/history/moreInfo';
+import Login from './pages/login/login';
  
 function App() {
 
@@ -22,30 +23,40 @@ function App() {
   //  };
 
   return (
-
-   
     <Router>
         <Switch >
           <Route path ="/history" exact={true} component={History}>
             <History />
+            <Sidebar />
           </Route>
           <Route path="/roomManagement">
             <RoomManagement />
+            <Sidebar />
           </Route>
           <Route path="/reservationManagement">
             <ReservationManagement />
+            <Sidebar />
           </Route>
           <Route path="/reservationManagement">
             <ReservationManagement />
+            <Sidebar />
           </Route>
-          <Route path="/changePassword">
-            <ChangePassword />
+          <Route path="/adminManagement">
+            <AdminManagement />
+            <Sidebar />
           </Route>
           <Route path="/moreInfo">
+          {/* <Route path="/moreInfo/:bookingId" element={ <MoreInfo /> } > */}
             <MoreInfo />
+            <Sidebar />
           </Route>
+          <Route path="/">
+            <div>
+              <Login />
+            </div>
+          </Route>
+          
         </Switch>
-        <Sidebar />
     </Router>
   );
 }

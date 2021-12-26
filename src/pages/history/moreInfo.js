@@ -1,36 +1,244 @@
 import '../../App.css';
 import cardImg from '../../assets/cardImg.png';
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import { useLocation } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router'
+
+
 
 function MoreInfo() {
+
+
+  
+    let history = useHistory();
+
+  // const [dataRow,setDataRow] = useState([])
+  // const [itemRow,setItemRow] = useState([])
+  const [dataRoom,setDataRoom] = useState({})
+  const [dataStartTime,setDataStartTime] = useState('')
+  const [dataEndTime,setDataEndTime] = useState('')
+
+  const [dataReservation,setDataReservation] = useState({})
+  
+  const [dataStatus,setDataStatus] = useState('')
+  const [dataReason,setDataReason] = useState('')
+
+  const [dataStudents, setDataStudents] = useState([])
+
+
+
+  // const {description, title, images} = (location.state.item);
+
+
+  
+  const access_token = sessionStorage.getItem("token")
+  // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQwODYwODY3LCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.NPjUTgmVrz3NGiwPmx3vvvGMrN2boOVOARpQqQbJiVE"
+  if(!access_token){
+    history.push("/")
+    window.location.reload("/");
+  }
+  const location = useLocation();
+  const BookingId = location.state.booking_id
+  const RoomId = location.state.room_id
+
+  const postdata = async () => {
+      try {
+
+       const res = await axios({
+          // url: `https://arr-dev.azurewebsites.net/api/v1/webs/booking-infos/${yourData}`,
+          url: `https://arr-dev.azurewebsites.net/api/v1/webs/booking-infos/${BookingId}`,
+          headers: {
+              'Authorization': 'Bearer ' + access_token
+              },
+          method: "GET",
+          data: {
+          }
+      })
+      .then((res) => {
+          console.log(res.data.data);
+          setDataReservation(res.data.data)
+          setDataStudents(res.data.data.student)
+
+          setDataStatus(res.data.data.status.split(" ")[0])
+          
+          if (res.data.data.status.split(" ")[0] == "Failed") {
+            setDataReason(res.data.data.status.slice(9,-1))
+          } else {
+            setDataReason("-")
+          }
+
+       });
+      } catch (err) {
+          console.log(err);
+      }
+   };
+
+   const postdata1 = async () => {
+    try {
+     const roomInfo = await axios({
+        url: `https://arr-dev.azurewebsites.net/api/v1/webs/room-infos/${RoomId}`,
+        headers: {
+            'Authorization': 'Bearer ' + access_token
+            },
+        method: "GET",
+        data: {
+        }
+    })
+    .then((res) => {
+        console.log(res.data.data);
+
+        setDataRoom(res.data.data)
+        setDataStartTime(res.data.data.startTime.slice(0,5))
+        setDataEndTime(res.data.data.endTime.slice(0,5))
+        
+     });
+    } catch (err) {
+        console.log(err);
+    }
+ };
+
+  useEffect(() => {
+       postdata();
+  },[]);
+
+  useEffect(() => {
+    postdata1();
+},[]);
+
+
+
+
 
 
   return (
     <div>
       <body> 
         <div class="card">
-          <img class="card-img-top" src={cardImg}></img>
+          <img class="card-img-top" 
+          src={cardImg}
+          ></img>
             <div class="card-img-overlay">
               <h4 class="headContent card-title">MORE INFORMATION</h4>
-              <p class="content card-text">Reference ID: 020820I123456</p>
+              <p class="content card-text">Reference ID: {dataReservation.referenceId}</p>
             </div>
         </div>
         
-        <div class="myCard card">
-          <div class="card-body">
-            <p class="card-text boldB" style={{fontSize: "1rem"}}>Reservation</p>
-            <hr style={{height: "0.03rem", color: "#D7D5DB"}}/>
-            <p class="card-text regularB">Date</p>
-          </div>
-        </div>
-
         <div class="myCard1 card">
           <div class="card-body">
-            <p class="card-text boldB" style={{fontSize: "1rem"}}>Swift Room 1</p>
+            <p class="headForCard card-text boldB">{dataRoom.roomName}</p>
             <hr style={{height: "0.03rem", color: "#D7D5DB"}}/>
-            <p class="card-text regularB">Date</p>
+            
+            <img src={dataRoom.roomPictureUrl}></img>
+            <p class="customPForBuilding card-text regularB">Building</p>
+            <p class="customPForBuilding1 card-text regularB">Floor</p>
+            <div className='customForDisable0'>
+              <textarea disabled value={dataRoom.building} onChange={setDataRoom}></textarea>
+            </div>
+            <div className='customPosition customForDisable0'>
+              <textarea disabled value={dataRoom.floor} onChange={setDataRoom}></textarea>
+            </div>
+
+            <div className='rowW'>
+              <p class="customPForBuilding card-text regularB">Room Capacity</p>
+              <p class="customPForBuilding1 card-text regularB">Require Member</p>
+              <div className='customForDisable0'>
+                <textarea disabled value={dataRoom.capacity} onChange={setDataRoom}></textarea>
+              </div>
+              <div className='customPosition customForDisable0'>
+                <textarea disabled value={dataRoom.minAttendees} onChange={setDataRoom}></textarea>
+              </div>
+            </div>
+            
+            <div className='rowW'>
+              <p class="customPForBuilding card-text regularB">Min Duration</p>
+              <p class="customPForBuilding1 card-text regularB">Max Duration</p>
+              <div className='customForDisable0'>
+                <textarea disabled value={dataRoom.minDuaration + ' min.'} onChange={setDataRoom}></textarea>
+              </div>
+              <div className='customPosition customForDisable0'>
+                <textarea disabled value={dataRoom.maxDuration + ' min.'} onChange={setDataRoom}></textarea>
+              </div>
+            </div>
+
+            <div className='rowW'>
+              <p class="customPForBuilding card-text regularB">Start Time</p>
+              <p class="customPForBuilding1 card-text regularB">End Time</p>
+              <div className='customForDisable0'>
+                <textarea disabled value={dataStartTime} onChange={setDataStartTime}></textarea>
+              </div>
+              <div className='customPosition customForDisable0'>
+                <textarea disabled value={dataEndTime} onChange={setDataEndTime}></textarea>
+              </div>
+            </div>
+
           </div>
         </div>
 
+
+        <div class="myCard card">
+          <div class="card-body">
+            <p class="headForCard card-text boldB">{dataReservation.meetingTitle}</p>
+            <hr style={{height: "0.03rem", color: "#D7D5DB"}}/>
+            
+            <p class="customPForBuilding card-text regularB">Date</p>
+            <p class="customPForBuilding2 card-text regularB">Time</p>
+            <div className='customForDisable1'>
+              <textarea disabled value={new Date(dataReservation.startDateTime).toLocaleDateString("en-GB")} onChange={setDataRoom}></textarea>
+            </div>
+            <div className='customPosition1 customForDisable1'>
+              <textarea disabled value={new Date(dataReservation.startDateTime).toLocaleTimeString(undefined, {
+                hour:   '2-digit',
+                minute: '2-digit',
+              }) + ' - ' + new Date(dataReservation.endDateTime).toLocaleTimeString(undefined, {
+                hour:   '2-digit',
+                minute: '2-digit',
+              })} onChange={setDataRoom}></textarea>
+            </div>
+
+            <div className='rowW'>
+              <p class="customPForBuilding card-text regularB">Reserved At</p>
+              <p class="customPForBuilding2 card-text regularB">Reserved By</p>
+              <div className='customForDisable1'>
+                <textarea disabled value={new Date(dataReservation.reservedAt).toLocaleString("en-GB")} onChange={setDataReservation}></textarea>
+              </div>
+              <div className='customPosition1 customForDisable1'>
+                <textarea disabled value={dataReservation.reservedBy} onChange={setDataReservation}></textarea>
+              </div>
+            </div>
+              
+              
+            <div className='rowW'>
+            <p class="customPForBuilding card-text regularB">List of Require Members</p>
+              <div className='customForDisable2'>
+                {dataStudents.map((key)=> 
+                <p>{key.firstNameEn + " " + key.lastNameEn}</p>
+                )}
+              </div>
+            </div>
+
+
+            <div className='rowW'>
+              <p class="customPForBuilding card-text regularB">Purpose</p>
+              <p class="customPForBuilding2 card-text regularB">Status</p>
+              <div className='customForDisable1'>
+                <textarea disabled value={dataReservation.purpose} onChange={setDataRoom}></textarea>
+              </div>
+              <div className='customPosition1 customForDisable1'>
+                <textarea disabled value={dataStatus} onChange={setDataStatus}></textarea>
+              </div>
+            </div>
+
+            <div className='rowW'>
+              <p class="customPForBuilding card-text regularB">Reason</p>
+              <div className='customForDisable3'>
+                <textarea disabled value={dataReason} onChange={setDataReason}></textarea>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </body>
     </div>
   );

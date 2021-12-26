@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/logo.png';
 import profile from '../assets/profile.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 
 const Sidebar = () => {
 
@@ -68,9 +68,9 @@ const Sidebar = () => {
             </li>
 
             <li>
-              <a href="/changePassword">
-                <i class='bx bx-cog'></i>
-                <span class="links_name">Change Password</span>
+              <a href="/adminManagement">
+                <i class='bx bxs-user-account'></i>
+                <span class="links_name">Admin Management</span>
               </a>
             </li>
 

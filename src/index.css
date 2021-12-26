@@ -1,22 +1,41 @@
 body {
   position: relative;
+  scroll-behavior: smooth;
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
   background-color: #EAEAEA !important;
+  /* background-image: url(/src/assets/light-background.png);
+  background-size: cover; */
+  /* basfkground-position: ; */
+  
   /* background-image: url('./assets/light-background.png');
   background-repeat: no-repeat;
   background-attachment: fixed; 
   background-size: 100% 100%; */
 }
 
+
+
+
+
 .card {
   box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;
   border-bottom: 0.08rem solid #D7D5DB !important;
 }
 
+.card img{
+  height: 9rem;
+}
+
+
+/* MoreInfo */
+.headForCard {
+  font-size: 1.1rem !important; 
+}
+
 .myCard {
-  margin-top: 1.5rem !important;
+  margin-top: -33.5rem !important;
   border-bottom-width: 0px !important;
   margin-left: 22.5rem !important;
   margin-right: 32rem !important;
@@ -24,18 +43,144 @@ body {
   padding-bottom: 0.8rem !important;
   padding-left: 1.7rem !important;
   padding-right: 1.7rem !important;
+  background-color: #F6F6F6 !important;
+  width: 34rem;
 }
 
 .myCard1 {
   margin-top: 1.5rem !important;
   border-bottom-width: 0px !important;
-  margin-left: 61rem !important;
+  margin-left: 60rem !important;
   margin-right: 3.5rem !important;
   padding-top: 0.8rem !important;
   padding-bottom: 0.8rem !important;
   padding-left: 1.7rem !important;
   padding-right: 1.7rem !important;
+  background-color: #F6F6F6 !important;
+  width: 26.7rem;
 }
+
+.myCard1 img {
+  width: 20.9rem;
+  height: 8rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+/* 
+.myCard1 .card-body{
+  padding-bottom: 0rem;
+} */
+
+.customPForBuilding {
+  margin-top: 0.7rem;
+  margin-bottom: 0.2rem;
+}
+
+.customPForBuilding1 {
+  margin-left: 11rem;
+  margin-top: -1.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.customPForBuilding2 {
+  margin-left: 14.7rem;
+  margin-top: -1.4rem;
+  margin-bottom: 0.2rem;
+}
+
+
+.customForDisable0 textarea{
+  width: 9.9rem;
+  font-family: 'Bariol Regular' ;
+  height: 1.9rem;
+  border-radius: 5; 
+  color: rgba(0, 0, 0);
+  padding-left: 0.5rem;
+  background-color: #EAEAEA;
+  border-color: #EAEAEA;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 0.8rem;
+  resize: none;
+}
+
+.customForDisable1 textarea{
+  width: 13.5rem;
+  font-family: 'Bariol Regular' ;
+  height: 1.9rem;
+  border-radius: 5; 
+  color: rgba(0, 0, 0);
+  padding-left: 0.5rem;
+  background-color: #EAEAEA;
+  border-color: #EAEAEA;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 0.8rem;
+  resize: none;
+  
+}
+
+.customForDisable2{
+  width: 28.2rem !important;
+  font-family: 'Bariol Regular' ;
+  height: 4.7rem;
+  border-radius: 5; 
+  color: rgba(0, 0, 0);
+  padding-left: 0.5rem;
+  background-color: #EAEAEA;
+  border-color: #EAEAEA;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  
+  overflow: scroll;
+  /* resize: none; */
+}
+.customForDisable2 p{
+  margin-bottom: 0.1rem !important; 
+  margin-top: 0.2rem !important; 
+  font-size: 0.8rem;
+  color: #545454;
+}
+
+
+.customForDisable3 textarea{
+  width: 28.2rem !important;
+  font-family: 'Bariol Regular' ;
+  height: 4.7rem;
+  border-radius: 5; 
+  color: rgba(0, 0, 0);
+  padding-left: 0.5rem;
+  background-color: #EAEAEA;
+  border-color: #EAEAEA;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 0.8rem;
+  resize: none;
+  overflow: scroll;
+}
+
+.customPosition {
+  margin-left: 11rem;
+  margin-top: -2.3rem;
+}
+
+.customPosition1  {
+  margin-left: 14.7rem;
+  margin-top: -2.3rem;
+}
+
+.rowW {
+  margin-top: -0.5rem;
+}
+
+
+
+
+
 
 /* Sidebar section */
 
@@ -241,6 +386,7 @@ body {
 }
 
 
+
 /* Table Section */
 
 /* .sidebar-active {
@@ -250,59 +396,147 @@ body {
   margin-top: 10rem;
 } */
 
-th {
-  font-family: 'Bariol Bold';
-  color: #212529;
-  /* font-size: 10rem !important;  */
+/* table.table thead th{
+  background-color: red;
 }
 
-td {
+.dataTables_info {
   font-family: 'Bariol Regular';
-  color: #212529;
-  /* font-size: 15px; */
+  font-size: 0.8rem;
 }
 
-.table-responsive .table {
-  width: 71%;
-  margin-bottom: 1rem;
-  color: #212529;
-  /* margin-left: 6rem; */
+.pagination .page-item.active .page-link {
+  background-color: #CB002B !important;
+}
+
+
+.pagination {
+  font-family: 'Bariol Regular';
+  font-size: 0.8rem;
+  
+}
+
+
+.row .col-sm-12 {
+  top: -45px !important;
 }
 
 .myTable {
   margin-left: 22.5rem !important;
   inset: 0px;
-  margin-top: 6.5rem;
+  margin-top: 0rem;
+  width: 71%;
 }
 
-table td {
+tr td {
+  background-color: white;
+}
+
+td {
   font-size: 0.78rem !important;
   background-color: #FFFFFF !important;
+  font-family: 'Bariol Regular';
+  color: #212529;
 }
 
-table th {
+th {
+  font-family: 'Bariol Bold';
+  color: #212529;
   font-size: 0.78rem !important;
   background-color: #F6F6F6 !important;
+  border-color: #F6F6F6;
+} */
+
+/* table.table thead th {
+  width: 4rem !important;
+} */
+
+
+.myTable {
+  margin-left: 22.5rem !important;
+  margin-top: -3rem;
+  width: 71%;
 }
 
-table.table th, table.table td {
+th {
+  font-family: 'Bariol Bold';
+  color: #212529;
+  font-size: 0.78rem !important;
+  /* width: 10%; */
+}
+
+td {
+  font-size: 0.78rem !important;
+  background-color: #FFFFFF !important;
+  font-family: 'Bariol Regular';
+  color: #212529;
+}
+
+
+.pagination .page-item.active .page-link {
+  background-color: #CB002B !important;
+}
+
+.pagination {
+  font-family: 'Bariol Regular';
+  font-size: 0.8rem;
+}
+
+.dataTables_info {
+  font-family: 'Bariol Regular';
+  font-size: 0.8rem;
+}
+
+.table>:not(:last-child)>:last-child>* {
+  border-bottom-color: #EAEAEA !important; 
+  background-color: #F6F6F6;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+  border-bottom-color: #EAEAEA !important; 
+  border-left-width: 0;
+  border-right-width: 0;
+  opacity: 1;
+}
+
+.table-striped>tbody>tr:nth-of-type(even)>* {
+  border-bottom-color: #EAEAEA !important; 
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.table {
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.0) !important;
+}
+
+tbody + thead{
+  display: none;
+}
+
+
+
+/* table.table th, table.table td {
   padding-top: 0.5rem !important;
   padding-bottom: 0.4rem !important;
-}
+} */
 
-table td i {
-  font-size: 1.2rem !important;
-}
+/* table td i {
+  font-size: 1.1rem !important;
+} */
 
-.table thead th {
+
+
+/* .table thead th {
   border-bottom: 2px solid #DEE2E6 !important;
-}
+} */
 
-.table thead td {
+/* .table thead td {
   border-bottom: 1px solid #DEE2E6 !important;
-}
+} */
 
-.historyFooterContent {
+/* .historyFooterContent {
   position: absolute;
   height: 100%;
   width: calc(100% - 22.5rem);
@@ -313,11 +547,8 @@ table td i {
   font-family: 'Bariol Regular';
   top: 48.3rem !important;
   font-size: 0.9rem !important;
-}
-
-/* .historyFooterButton {
-
 } */
+
 
 /* Font */
 .regularB {
@@ -329,6 +560,159 @@ table td i {
   font-family: 'Bariol Bold';
   color: #383738 !important;
 }
+
+/* Login */
+.login_background_img {
+  height: 100%;
+    /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.login_logo {
+  width: 280px;
+  height: 160px
+}
+
+.login_container {
+  background-image: url(./assets/light-background.png);
+  padding: 10%;
+  text-align: center;
+}
+
+.login_form {
+  position: relative;
+  width: 480px;
+  margin: 30px auto 20px auto;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 25px;
+  border-radius: 25px;
+  box-shadow: 0 1px 5px rgb(218, 218, 218);
+}
+::placeholder {
+  color: rgb(158, 158, 165, 0.8);
+}
+.login_form input {
+  border: 1px solid #EBE9F1;
+  width: 350px;
+  border-radius: 10px;
+  font-family: 'Bariol Regular';
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  background-color: rgb(255, 255, 255, 1);
+}
+
+.login_form button {
+  border: 1px solid rgba(252, 252, 252, 0.7);
+  width: 350px;
+  border-radius: 10px;
+  font-family: 'Bariol Regular';
+  padding: 10px 15px;
+  margin: 20px auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  font-weight: 300;
+  background: #cb002b;
+  opacity: 1;
+}
+.login_wrong {
+  color: red;
+}
+
+
+/* Search Room */
+
+
+
+/*
+Date Filter Component 
+*/
+.date-drop-down .react-datepicker__input-container{
+  left: 22.5rem;
+  font-family: Bariol Regular ;
+  font-size: 0.8rem;
+  top: 0rem;
+  box-shadow: 0;
+  cursor: text;
+  
+  /* border-radius: 5; */
+}
+
+.date-drop-down .react-datepicker__input-container input{
+  width: 10rem;
+  top: -4.8rem;
+  /* height: 1.9rem; */
+  height: 2.4rem;
+  border-radius: 5; 
+  color: rgba(0, 0, 0);
+  padding-left: 0.5rem;
+  background-color: hsl(0, 0%, 100%);
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.date-drop-down .react-datepicker {
+  left: 22.5rem;
+}
+
+.date-drop-down .react-datepicker__triangle {
+  left: -13rem !important;
+}
+
+.date-drop-down .react-datepicker__month-container {
+  left: 22.5rem;
+  font-family: Bariol Regular ;
+}
+
+
+/* .react-datepicker-ignore-onclickoutside{
+  width: 10rem;
+} */
+
+/* .react-datepicker{
+
+} */
+
+.search_container_date {
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 22.5rem;
+}
+.search_container_status {
+  font-size: 0.9rem;
+  display: block;
+  inset: 0px;
+  margin-top: -1.5rem;
+  margin-left: 34rem;
+}
+
+::placeholder {
+  color: #808080;
+  margin-left: 2rem;
+}
+
+
+/* .customDropDown{
+  width: 15%;
+} */
+/* 
+
+
+
+.css-1s2u09g-control {
+  top: 5rem;
+  left: 22.5rem;
+  
+} */
 
 
 
@@ -413,6 +797,81 @@ table td i {
     font-weight: normal;
     src: local('Bariol Serif Bold'), url(./fonts/BariolSerifBold.woff) format('woff');
     }
+
+    /* button */
+    .search_button {
+      position: relative;
+      left: 45.5rem;
+      /* top: -4.8rem;
+      height: 1.9rem; */
+
+      top: -4.8rem;
+      height: 2.4rem;
+      font-size: 1rem;
+      background-color: #CB002B;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      padding: 5px 20px;
+
+      font-family: 'Bariol Regular';
+      font-size: 0.9rem;
+      bottom: 0;
+      width: 6rem;
+    }
+
+    /* searchbar */
+
+    /* .has-search .form-control {
+      width: 20rem;
+      font-family: 'Bariol Regular';
+      padding-left: 2.375rem;
+      
+    }
+
+    .has-search {
+      margin-left: 65.1rem;
+      margin-top: 1.5rem;
+    
+    }
+    .has-search .form-control-feedback {
+      position: absolute;
+      z-index: 2;
+      display: block;
+      width: 2.375rem;
+      height: 2.375rem;
+      line-height: 2.375rem;
+      text-align: center;
+      pointer-events: none;
+      color: #aaa;
+  } */
+
+  .customSearchBar {
+    margin-left: 65.1rem;
+    margin-top: 1.5rem;
+    /* display: flex; 
+    align-items: center; 
+    justify-content: flex-end;
+    flex-direction: column; */
+  }
+
+  .customSearchBar input {
+    width: 20rem;
+    font-family: 'Bariol Regular';
+    padding-left: 2.375rem;
+    background-color: hsl(0, 0%, 100%);
+    border-color: hsl(0, 0%, 80%);
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    height: 2.2rem;
+    font-size: 0.8rem;
+  }
+
+ 
+
+
 
 
   
