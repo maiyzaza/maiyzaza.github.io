@@ -24,11 +24,17 @@ function Login() {
     }
     axios.post("https://arr-dev.azurewebsites.net/api/v1/login/login", payload)
     .then((res) => {
+<<<<<<< HEAD
       // console.log("res",res.data.data.token);
       console.log(res.data.data);
       window.sessionStorage.setItem("token", res.data.data.token)
       history.push("/roomManagement")
       // window.location.reload()
+=======
+      console.log("res",res.data.data.token);
+      window.sessionStorage.setItem("token", res.data.data.token)
+      history.push("/roomManagement")
+>>>>>>> 09905bd (finish login page)
       setAlert(false)
     })
     .catch((res) => {
