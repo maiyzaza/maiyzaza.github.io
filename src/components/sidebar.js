@@ -71,9 +71,9 @@ const Sidebar = () => {
             </li>
 
             <li>
-              <a href="/adminManagement">
-                <i class='bx bxs-user-account'></i>
-                <span class="links_name">Admin Management</span>
+              <a href="/changePassword">
+                <i class='bx bx-cog'></i>
+                <span class="links_name">Change Password</span>
               </a>
             </li>
 

@@ -10,7 +10,7 @@ import {
   Link
 } from "react-router-dom";
 import { useState } from 'react';
-import AdminManagement from './pages/admin management/adminManagement'
+import ChangePassword from './pages/change password/changePassword';
 import MoreInfo from './pages/history/moreInfo';
 import Login from './pages/login/login';
 import logOutModal from './components/logOutModal';
@@ -42,9 +42,8 @@ function App() {
             <ReservationManagement />
             <Sidebar />
           </Route>
-          <Route path="/adminManagement">
-            <AdminManagement />
-            <Sidebar />
+          <Route path="/changePassword">
+            <ChangePassword />
           </Route>
           <Route path="/moreInfo">
           {/* <Route path="/moreInfo/:bookingId" element={ <MoreInfo /> } > */}

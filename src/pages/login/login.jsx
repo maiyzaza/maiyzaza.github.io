@@ -27,6 +27,8 @@ function Login() {
       // console.log("res",res.data.data.token);
       console.log(res.data.data);
       window.sessionStorage.setItem("token", res.data.data.token)
+      window.sessionStorage.setItem("username", res.data)
+      // window.sessionStorage.setItem("password", res.data.data.)
       history.push("/roomManagement")
       // window.location.reload()
       setAlert(false)
