@@ -36,7 +36,7 @@ const TablePage = (props) =>  {
               RoomName : null,
               Status : null,
               Date : null,
-              Page : 2
+              Page : 1
           }
       })
       .then((res) => {
@@ -88,8 +88,15 @@ const TablePage = (props) =>  {
           }
         </div>
        )
+
        const booking_id = item.bookingId;
        const room_id = item.roomId;
+
+      // item.reservedBy = (
+      //   <div style={{texttransform: "capitalize"}}>
+      //     console.log({item.reservedBy})
+      //   </div>
+      // )
 
       item.info = (
         // bookingId={item.bookingId}
