@@ -1,243 +1,194 @@
-import React from "react";
-import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
-// import Table from "@material-ui/core/Table";
-// import TableBody from "@material-ui/core/TableBody";
-// import TableCell from "@material-ui/core/TableCell";
-// import TableHead from "@material-ui/core/TableHead";
-// import TableRow from "@material-ui/core/TableRow";
-// import Paper from "@material-ui/core/Paper";
-// import rows from "./rowsData";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import { MDBDataTable } from 'mdbreact';
+import MoreInfo from "../pages/history/moreInfo";
+import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+// import { useHistory } from 'react-router'
 
-// export default () => (
-//     <div>
-//       <Paper class="myTable">
-//         <Table >
-//           <TableHead>
-//             <TableRow>
-//               <TableCell class="myHeadTable" numeric>#</TableCell>
-//               <TableCell class="myHeadTable" >Date</TableCell>
-//               <TableCell class="myHeadTable" >Start Time</TableCell>
-//               <TableCell class="myHeadTable" >End Time</TableCell>
-//               <TableCell class="myHeadTable" >Room</TableCell>
-//               <TableCell class="myHeadTable" >Status</TableCell>
-//               <TableCell class="myHeadTable" >Reserved By</TableCell>
-//               <TableCell class="myHeadTable" >info</TableCell>
-//             </TableRow>
-//           </TableHead>
-//           <TableBody>
-//             {rows.map(({ id, refID, date, startTime, endTime, room, status, reservedBy, info }) => (
-//               <TableRow style={{fontfamily: 'Bariol Regular'}} key={id}>
-//                 <TableCell style={{fontfamily: 'Bariol Regular'}} numeric>{id}</TableCell>
-//                 <TableCell component="th" scope="row">
-//                   {refID}
-//                 </TableCell>
-//                 <TableCell component="th" scope="row">
-//                   {date}
-//                 </TableCell>
-//                 <TableCell component="th" scope="row">
-//                   {startTime}
-//                 </TableCell>
-//                 <TableCell component="th" scope="row">
-//                   {endTime}
-//                 </TableCell>
-//                 <TableCell component="th" scope="row">
-//                   {room}
-//                 </TableCell>
-//                 <TableCell component="th" scope="row">
-//                   {status}
-//                 </TableCell>
-//                 <TableCell component="th" scope="row">
-//                   {reservedBy}
-//                 </TableCell>
-//                 <TableCell component="th" scope="row">
-//                   {info}
-//                 </TableCell>
-//               </TableRow>
-//             ))}
-//           </TableBody>
-//         </Table>
-//       </Paper>
-//     </div>
-// );
 
-const TablePage = (props) => {
-const data = {
-  columns: [
-    {
-      label: '#',
-      field: 'id',
-      sort: 'asc'
-    },
-    {
-      label: 'DATE',
-      field: 'heading1',
-      sort: 'asc'
-    },
-    {
-      label: 'START TIME',
-      field: 'heading2',
-      sort: 'asc'
-    },
-    {
-      label: 'END TIME',
-      field: 'heading3',
-      sort: 'asc'
-    },
-    {
-      label: 'ROOM',
-      field: 'heading4',
-      sort: 'asc'
-    },
-    {
-      label: 'STATUS',
-      field: 'heading5',
-      sort: 'asc'
-    },
-    {
-      label: 'RESERVED BY',
-      field: 'heading6',
-      sort: 'asc'
-    },
-    {
-      label: 'INFO',
-      field: 'heading7',
-      sort: 'asc'
-    }
+
+const TablePage = (props) =>  {
+  // let history = useHistory();
+
+
+  const [dataRow,setDataRow] = useState([])
+  const [itemRow,setItemRow] = useState([])
+  
+  // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQwODYwODY3LCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.NPjUTgmVrz3NGiwPmx3vvvGMrN2boOVOARpQqQbJiVE"
+  const access_token = sessionStorage.getItem("token")
+  // console.log("access_token",access_token)
+  // if(!access_token){
+  //   history.push("/")
+  //   window.location.reload("/");
+  // }
+
+
+  const postdata = async () => {
+      try {
+       const res = await axios({
+          url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories/",
+          headers: {
+              'Authorization': 'Bearer ' + access_token
+              },
+          method: "POST",
+          data: {
+              RoomName : null,
+              Status : null,
+              Date : null,
+              Page : 2
+          }
+      })
+      .then((res) => {
+          console.log(res.data.data.items);
+          const itemData = res.data.data.items
+          setDataRow(itemData)
+       });
+      } catch (err) {
+          console.log(err);
+      }
+   };
+
+  useEffect(() => {
+    postdata();
+  },[]);
+
+  useEffect(() => {
+    let dataArray = JSON.parse(JSON.stringify(dataRow))
+    var reservationData = []
+    dataArray.map((item,index)=>{
+      item.date = (
+         <div>
+          {new Date(item.startTime).toLocaleDateString("en-GB")}
+        </div>
+      );
+
+      item.startTime = (
+        <div>
+          {new Date(item.startTime).toLocaleTimeString(undefined, {
+              hour:   '2-digit',
+              minute: '2-digit',
+          })}
+        </div>
+      );
+
+      item.endTime = (
+        <div>
+          {new Date(item.endTime).toLocaleTimeString(undefined, {
+              hour:   '2-digit',
+              minute: '2-digit',
+          })}
+        </div>
+      );
+
+      item.status = (
+        <div>
+          { 
+           item.status.split(" ")[0]
+          }
+        </div>
+       )
+       const booking_id = item.bookingId;
+       const room_id = item.roomId;
+
+      item.info = (
+        // bookingId={item.bookingId}
+        // <Link to={`/moreinfo/${item.bookingId}`}   >
+        <Link to={{pathname:`/moreinfo/${booking_id}`,  state:{ booking_id,room_id } } } > 
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div
+            className="bx bx-info-circle"
+            style={{
+              cursor: "pointer",
+              color: "black",
+              fontSize: "1.1rem",
+            }}
+              // onClick={() => deletePost(posts[index].id)}
+              // onClick={() => Post(posts[index].id)}
+          > 
+          {/* {item.bookingId} */}
+          {/* <Link to={/singlepost/${_id}} className="link" /> */}
+              {/* Delete */}
+          </div>
+        </div>
+       </Link>
+      );
+        
+     reservationData.push(item)
+    })
+
+      setItemRow(reservationData)
+      
+    },[dataRow]);
+
+  const data = {
+    columns: [
+      {
+        label: 'ID',
+        field: 'bookingId',
+        sort: 'asc',
+        
+      },
+      {
+        label: 'DATE',
+        field: 'date',
+        sort: 'asc'
+      },
+      {
+        label: 'START TIME',
+        field: 'startTime',
+        sort: 'acs'
+      },
+      {
+        label: 'END TIME',
+        field: 'endTime',
+        sort: 'asc'
+      },
+      {
+        label: 'ROOM',
+        field: 'room',
+        sort: 'asc'
+      },
+      {
+        label: 'STATUS',
+        field: 'status',
+        sort: 'asc'
+      },
+      {
+        label: 'RESERVED BY',
+        field: 'reservedBy',
+        sort: 'asc'
+      },
+      {
+        label: 'INFO',
+        field: 'info',
+        sort: 'asc'
+      },
   ],
-  rows: [
-    {
-      id: 16,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Reserved',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="/moreInfo"><i class='bx bx-info-circle'></i></a>
-    },
-    {
-      id: 15,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Completed',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    },
-    {
-      id: 14,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Failed',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    },
-    {
-      id: 13,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Reserved',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    },
-    {
-      id: 12,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Reserved',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    },
-    {
-      id: 11,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Reserved',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    },
-    {
-      id: 10,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Reserved',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    },
-    {
-      id: 9,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Reserved',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    },
-    {
-      id: 8,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Reserved',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    },    {
-      id: 7,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Reserved',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    },
-    {
-      id: 6,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Reserved',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    },
-    {
-      id: 5,
-      heading1: '02/12/2020',
-      heading2: '09:00',
-      heading3: '09:30',
-      heading4: 'Swift Room 1',
-      heading5: 'Reserved',
-      heading6: 'Nutnisa Thongrussamee',
-      heading7: <a href="#"><i class='bx bx-info-circle'></i></a>
-    }
-  ]
-};
+  rows: itemRow
+  } 
+      if (!sessionStorage.getItem("token")) {
 
-return (
+        return <Redirect to="/" />
+      } 
 
-<div className="myTable table-responsive" >
-<MDBTable responsive >
-    <MDBTableHead columns={data.columns} />
-    <MDBTableBody rows={data.rows} />
-</MDBTable>
-</div>
+  return (
+    <div className="myTable">
+      <MDBDataTable
+        striped
+        bordered
+        small
+        
+        searching={false}
+        // sortable={false}
+        order={["bookingId", "decs"]}
+        displayEntries={false}
+        data={data}
+      />
+    </div>
 
-);
-};
+  );
+}
+
 
 export default TablePage;
-

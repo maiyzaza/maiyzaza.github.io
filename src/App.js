@@ -10,9 +10,10 @@ import {
   Link
 } from "react-router-dom";
 import { useState } from 'react';
-import ChangePassword from './pages/change password/changePassword';
+import AdminManagement from './pages/admin management/adminManagement'
 import MoreInfo from './pages/history/moreInfo';
 import Login from './pages/login/login';
+import logOutModal from './components/logOutModal';
  
 function App() {
 
@@ -41,11 +42,12 @@ function App() {
             <ReservationManagement />
             <Sidebar />
           </Route>
-          <Route path="/changePassword">
-            <ChangePassword />
+          <Route path="/adminManagement">
+            <AdminManagement />
             <Sidebar />
           </Route>
           <Route path="/moreInfo">
+          {/* <Route path="/moreInfo/:bookingId" element={ <MoreInfo /> } > */}
             <MoreInfo />
             <Sidebar />
           </Route>

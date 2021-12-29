@@ -24,9 +24,11 @@ function Login() {
     }
     axios.post("https://arr-dev.azurewebsites.net/api/v1/login/login", payload)
     .then((res) => {
-      console.log("res",res.data.data.token);
+      // console.log("res",res.data.data.token);
+      console.log(res.data.data);
       window.sessionStorage.setItem("token", res.data.data.token)
       history.push("/roomManagement")
+      // window.location.reload()
       setAlert(false)
     })
     .catch((res) => {
@@ -50,6 +52,7 @@ function Login() {
             required
             onChange={event => setPassword(event.target.value)}
             value={password}
+            type="password"
             id="password"
             name="Password"
             placeholder="Password"

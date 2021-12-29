@@ -3,15 +3,17 @@ import logo from '../assets/logo.png';
 import profile from '../assets/profile.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import LogOutModal from './logOutModal';
 
 
 const Sidebar = () => {
-
 
   const [isActive, setActive] = useState("false");
   const ToggleClass = () => {
     setActive(!isActive); 
    };
+
+  const [openModal, setOpenModal] = useState(false);
 
   return (
 
@@ -69,17 +71,29 @@ const Sidebar = () => {
             </li>
 
             <li>
-              <a href="/changePassword">
-                <i class='bx bx-cog'></i>
-                <span class="links_name">Change Password</span>
+              <a href="/adminManagement">
+                <i class='bx bxs-user-account'></i>
+                <span class="links_name">Admin Management</span>
               </a>
             </li>
 
             <li>
-              <a href="#">
+              <a
+                className='openLogOutModal' 
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+              >
                 <i class='bx bx-log-out' id="log_out"></i>
                 <span class="links_name">Sign Out</span>
               </a>
+
+              {openModal && <LogOutModal closeModal={setOpenModal} />}
+
+              {/* <button>
+              <i class='bx bx-log-out'></i>
+                <span class="links_name">Sign Out</span>
+              </button> */}
             </li>
           
         </ul>
