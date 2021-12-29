@@ -25,9 +25,8 @@ function Login() {
 
     axios.post("https://arr-dev.azurewebsites.net/api/v1/login/login", payload)
     .then((res) => {
-      // console.log(res.data.data);
-      console.log(res);
 
+      console.log("res",res.data.data.token);
       window.sessionStorage.setItem("token", res.data.data.token)
       history.push("/roomManagement")
       setAlert(false)
