@@ -2,11 +2,21 @@ import '../../App.css';
 import cardImg from '../../assets/cardImg.png';
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router'
+
  
 function AdminManagement() {
+
+  let history = useHistory();
+
   const access_token = sessionStorage.getItem("token")
 
-  const postdata = async () => {
+  if(!access_token){
+    history.push("/")
+    window.location.reload("/");
+  }
+
+  const masterAdmin = async () => {
     try {
      const masterAdminInfo = await axios({
         url: `https://arr-dev.azurewebsites.net/api/v1/webs/master-admin`,
@@ -26,8 +36,32 @@ function AdminManagement() {
  };
 
   useEffect(() => {
-       postdata();
+    masterAdmin();
   },[]);
+
+  const admin = async () => {
+    try {
+     const adminInfo = await axios({
+        url: `https://arr-dev.azurewebsites.net/api/v1/webs/admin`,
+        headers: {
+            'Authorization': 'Bearer ' + access_token
+            },
+        method: "GET",
+        data: {
+        }
+    })
+    .then((res) => {
+        console.log(res.data.data);
+     });
+    } catch (err) {
+        console.log(err);
+    }
+ };
+
+  useEffect(() => {
+       admin();
+  },[]);
+
 
 
   return (
@@ -44,6 +78,7 @@ function AdminManagement() {
               </div> */}
             </div>
         </div>
+        
       </body>
     </div>
   );

@@ -5,9 +5,19 @@ import StatusDropDown from '../../components/statusDropDown';
 import DateDropDown from '../../components/dateDropDown';
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router'
 
  
 function History() {
+
+  let history = useHistory();
+
+  const access_token = sessionStorage.getItem("token")
+  
+  if(!access_token){
+    history.push("/")
+    window.location.reload("/");
+  }
 
   return (
     <div> 

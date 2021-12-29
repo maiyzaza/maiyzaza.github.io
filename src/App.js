@@ -13,6 +13,7 @@ import { useState } from 'react';
 import AdminManagement from './pages/admin management/adminManagement'
 import MoreInfo from './pages/history/moreInfo';
 import Login from './pages/login/login';
+import logOutModal from './components/logOutModal';
  
 function App() {
 

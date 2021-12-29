@@ -161,6 +161,7 @@ body {
   font-size: 0.8rem;
   resize: none;
   overflow: scroll;
+  
 }
 
 .customPosition {
@@ -177,6 +178,108 @@ body {
   margin-top: -0.5rem;
 }
 
+/* Logout Modal */
+
+.logout-modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  background-color: rgba(10,10,10,0.45);
+  
+}
+
+/* .logout-modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  opacity: 0.5;
+  z-index: -1;
+} */
+
+.logout-modalContainer {
+  width: 23rem;
+  /* height: 14rem; */
+  border-radius: 12px;
+  background-color: white;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.logout-modalContainer .title {
+  display: inline-block;
+  /* text-align: center; */
+  font-size: 1.4rem;
+  font-family: 'Bariol Serif Bold';
+  margin-top: -1rem;
+}
+
+.logout-modalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.logout-modalContainer .footer {
+  /* flex: 20%; */
+  /* display: flex; */
+  margin-top: 0.5rem;
+  align-self: right;
+  margin-left: 4.5rem;
+  
+  /* justify-content: right !important; */
+  /* align-items: center; */
+}
+
+.logout-modalContainer .footer button {
+
+  border: none;
+  border-radius: 5px;
+  background-color: #CB002B !important;
+  /* margin: 10px;
+  cursor: pointer;
+  position: relative;
+  font-size: 0.7rem;
+  background-color: #CB002B !important;
+  color: #FFFFFF !important;
+  border: none;
+  border-radius: 5px;
+
+  margin-top: 1rem;
+  font-family: 'Bariol Regular';
+  font-size: 0.9rem;
+ 
+  padding: -11px 16px; */
+}
+
+#cancelLogOut {
+  background-color: #F2F2F2 !important;
+  color: #383738 !important;
+}
+.btn{
+  box-shadow: none !important;
+  width: 6.5rem !important;
+  height: 2.1rem !important;
+  font-size: 0.8rem !important;
+  text-transform: capitalize !important;
+}
 
 
 
@@ -283,11 +386,28 @@ body {
   white-space: nowrap;
 }
 
+/* .sidebar ul li button{
+  color: #383738;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all .4s ease;
+
+  font-size: 1.05rem;
+  white-space: nowrap;
+} */
+
 .sidebar ul li a:hover{
   color: #383738 ;
   background: #EAEAEA ;
   border-radius: 0.6rem;
 }
+/* 
+.sidebar ul li button:hover{
+  color: #383738 ;
+  background: #EAEAEA ;
+  border-radius: 0.6rem;
+} */
 
 .sidebar ul li a i{
   min-width: 3rem;
@@ -296,6 +416,14 @@ body {
   text-align: center;
   font-size:  1.5rem;
 }
+
+/* .sidebar ul li button i{
+  min-width: 3rem;
+  border-radius: 0.6rem;
+  line-height: 3rem;
+  text-align: center;
+  font-size:  1.5rem;
+} */
 
 /* .sidebar ul li a i:hover{
   min-width: 3rem;
@@ -316,6 +444,16 @@ body {
   background: #EAEAEA ;
   border-radius: 0.6rem;
 }
+
+/* .sidebar.active ul li button i:hover{
+  min-width: 3rem;
+  border-radius: 0.6rem;
+  line-height: 3rem;
+  text-align: center;
+  font-size:  1.5rem;
+  background: #EAEAEA ;
+  border-radius: 0.6rem;
+} */
 
 .sidebar.active .firstName_lastName {
   display:none;
@@ -470,6 +608,7 @@ td {
   background-color: #FFFFFF !important;
   font-family: 'Bariol Regular';
   color: #212529;
+  
 }
 
 
@@ -492,6 +631,7 @@ td {
   background-color: #F6F6F6;
   border-left-width: 0;
   border-right-width: 0;
+  
 }
 
 .table-striped>tbody>tr:nth-of-type(odd)>* {
@@ -499,6 +639,7 @@ td {
   border-left-width: 0;
   border-right-width: 0;
   opacity: 1;
+  
 }
 
 .table-striped>tbody>tr:nth-of-type(even)>* {

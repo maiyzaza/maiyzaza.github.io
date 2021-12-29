@@ -55,7 +55,7 @@ const TablePage = (props) =>  {
 
   useEffect(() => {
     let dataArray = JSON.parse(JSON.stringify(dataRow))
-    let reservationData = []
+    var reservationData = []
     dataArray.map((item,index)=>{
       item.date = (
          <div>
@@ -122,59 +122,51 @@ const TablePage = (props) =>  {
     },[dataRow]);
 
   const data = {
-  columns: [
-    {
-      label: '#',
-      field: 'bookingId',
-      sort: 'decs',
-      
-    },
-    {
-      label: 'DATE',
-      field: 'date',
-      sort: 'desc',
-      width: '11%'
-    },
-    {
-      label: 'START TIME',
-      field: 'startTime',
-      sort: 'desc',
-      width: '15%'
-    },
-    {
-      label: 'END TIME',
-      field: 'endTime',
-      sort: 'desc',
-      width: '15%'
-    },
-    {
-      label: 'ROOM',
-      field: 'room',
-      sort: 'desc',
-      width: '15%'
-    },
-    {
-      label: 'STATUS',
-      field: 'status',
-      sort: 'desc',
-      width: '11%'
-    },
-    {
-      label: 'RESERVED BY',
-      field: 'reservedBy',
-      sort: 'desc',
-      width: '20%'
-    },
-    {
-      label: 'INFO',
-      field: 'info',
-      sort: 'desc',
-      width: '10%'
-    }
+    columns: [
+      {
+        label: 'ID',
+        field: 'bookingId',
+        sort: 'asc',
+        
+      },
+      {
+        label: 'DATE',
+        field: 'date',
+        sort: 'asc'
+      },
+      {
+        label: 'START TIME',
+        field: 'startTime',
+        sort: 'acs'
+      },
+      {
+        label: 'END TIME',
+        field: 'endTime',
+        sort: 'asc'
+      },
+      {
+        label: 'ROOM',
+        field: 'room',
+        sort: 'asc'
+      },
+      {
+        label: 'STATUS',
+        field: 'status',
+        sort: 'asc'
+      },
+      {
+        label: 'RESERVED BY',
+        field: 'reservedBy',
+        sort: 'asc'
+      },
+      {
+        label: 'INFO',
+        field: 'info',
+        sort: 'asc'
+      },
   ],
   rows: itemRow
-};
-  
+  } 
       if (!sessionStorage.getItem("token")) {
 
         return <Redirect to="/" />
@@ -188,8 +180,8 @@ const TablePage = (props) =>  {
         small
         
         searching={false}
-        sortable={false}
-        order={['bookingId', 'decs']}
+        // sortable={false}
+        order={["bookingId", "decs"]}
         displayEntries={false}
         data={data}
       />
@@ -200,4 +192,3 @@ const TablePage = (props) =>  {
 
 
 export default TablePage;
-

@@ -10,12 +10,11 @@ import { useHistory } from 'react-router'
 
 function MoreInfo() {
 
-
-  
-    let history = useHistory();
+  let history = useHistory();
 
   // const [dataRow,setDataRow] = useState([])
   // const [itemRow,setItemRow] = useState([])
+
   const [dataRoom,setDataRoom] = useState({})
   const [dataStartTime,setDataStartTime] = useState('')
   const [dataEndTime,setDataEndTime] = useState('')
@@ -34,11 +33,12 @@ function MoreInfo() {
 
   
   const access_token = sessionStorage.getItem("token")
-  // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQwODYwODY3LCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.NPjUTgmVrz3NGiwPmx3vvvGMrN2boOVOARpQqQbJiVE"
+
   if(!access_token){
     history.push("/")
     window.location.reload("/");
   }
+  
   const location = useLocation();
   const BookingId = location.state.booking_id
   const RoomId = location.state.room_id
