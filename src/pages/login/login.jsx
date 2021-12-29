@@ -27,8 +27,6 @@ function Login() {
       // console.log("res",res.data.data.token);
       console.log(res.data.data);
       window.sessionStorage.setItem("token", res.data.data.token)
-      window.sessionStorage.setItem("username", res.data)
-      // window.sessionStorage.setItem("password", res.data.data.)
       history.push("/roomManagement")
       // window.location.reload()
       setAlert(false)
@@ -39,30 +37,27 @@ function Login() {
   }
 
   return (
-    <div className="login_container">
+    <div>
       <form class="login_form" onSubmit={handleSubmit}>
           <img class="login_logo" src={logoImg}></img>
           <input
             onChange={event => setUsername(event.target.value)}
             value={username}
-            required
+            // required
             id="username"
             name="Username"
             placeholder="Username"
           />
           <input
-            required
+            // required
             onChange={event => setPassword(event.target.value)}
             value={password}
-            type="password"
             id="password"
             name="Password"
             placeholder="Password"
           />
           <button>Sign In</button>
-          <div class="login_wrong">
-          {alert && <p> Wrong Username or Password</p>}
-          </div>
+          {alert && <p> Worng Username or Password</p>}
       </form>
     </div>
   );

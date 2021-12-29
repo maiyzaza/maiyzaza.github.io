@@ -702,6 +702,7 @@ tbody + thead{
   color: #383738 !important;
 }
 
+<<<<<<< HEAD
 /* Change Password Page */
 
 .password_wrong {
@@ -713,6 +714,12 @@ tbody + thead{
   font-family: Bariol Bold;
   font-size: 1.4rem;
   margin-bottom: 3rem;
+=======
+/* Login */
+.login_logo {
+  width: 280px;
+  height: 160px
+>>>>>>> 1a5768f (pull origin develop)
 }
 
 .backPage{
