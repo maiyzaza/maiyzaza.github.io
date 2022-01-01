@@ -30,6 +30,7 @@ body {
 
 
 /* MoreInfo */
+
 .headForCard {
   font-size: 1.1rem !important; 
 }
@@ -499,13 +500,26 @@ body {
 
 .headContent {
   position: absolute;
-  height: 100%;
-  width: calc(100% - 22.5rem);
+  /* height: 100%; */
+  /* width: calc(100% - 22.5rem); */
   left: 22.5rem;
   margin-top: 1.5rem;
   color: #383738;
   opacity: 1;
-  pointer-events: auto;
+  /* pointer-events: auto; */
+  font-family: 'Bariol Serif Bold';
+  font-size: 1.3rem;
+}
+
+.headContent .active {
+  position: absolute;
+  /* height: 100%; */
+  /* width: calc(100% - 22.5rem); */
+  left: 20rem;
+  margin-top: 1.5rem;
+  color: #383738;
+  opacity: 1;
+  /* pointer-events: auto; */
   font-family: 'Bariol Serif Bold';
   font-size: 1.3rem;
 }
@@ -733,49 +747,40 @@ tbody + thead{
 
 .changePassword_form {
   position: relative;
-  width: 26rem;
+  width: 26.7rem;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 3rem;
   background: rgba(255, 255, 255, 0.72);
   padding-top: 4rem;
   padding-bottom: 4rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  border-radius: 25px;
-  box-shadow: 0 1px 5px rgb(218, 218, 218);
+  border-radius: 1.5rem;
+  /* box-shadow: 0 1px 5px rgb(218, 218, 218); */
 }
 
 ::placeholder {
-  color: rgb(158, 158, 165, 0.8);
+  color: #9E9EA5;
 }
 
 .changePassword_container input {
   font-family: 'Bariol Regular';
-  width: 18rem;
-  border: 1px solid rgba(252, 252, 252, 0.7);
+  width: 20rem;
   border-radius: 0.5rem;
   padding: 0.5rem 0.7rem;
   margin-bottom: 0.5rem;
   text-align: center;
   border-color: #EBE9F1;
-  /* border: 1px solid #EBE9F1;
-  width: 350px;
-  border-radius: 10px;
-  font-family: 'Bariol Regular';
-  padding: 10px 15px;
-  margin: 0 auto 10px auto;
-  display: block;
-  text-align: center;
-  font-size: 18px;
-  background-color: rgb(255, 255, 255, 1); */
+  font-size: 1rem;
+  border: 0.075rem solid #EBE9F1;
 }
 
 .changePassword_container button {
   font-family: 'Bariol Regular';
   background: #cb002b;
   color: white;
-  width: 18rem;
-  border: 1px solid rgba(252, 252, 252, 0.7);
+  width: 20rem;
+  border: 0rem solid rgba(252, 252, 252, 0.7);
   border-radius: 0.5rem;
   padding: 0.6rem 0.7rem;
   margin-top: -0.5rem;
@@ -823,11 +828,12 @@ tbody + thead{
   padding-bottom: 3.5rem;
   padding-top: 1.5rem;
   border-radius: 1.5rem;
-  box-shadow: 0 1px 5px rgb(218, 218, 218);
-  left: 20rem;
+  /* box-shadow: 0 1px 5px rgb(218, 218, 218); */
+  left: 22.7rem;
   top: auto;
   right: auto;
   bottom: auto;
+  align-items: center;
 }
 ::placeholder {
   color: #9E9EA5;

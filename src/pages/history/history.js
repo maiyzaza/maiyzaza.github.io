@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router'
 
  
-function History() {
+function History(props) {
 
   let history = useHistory();
 
@@ -26,7 +26,9 @@ function History() {
         <div class="card">
           <img class="card-img-top" src={cardImg}></img>
             <div class="card-img-overlay">
-              <h4 class="headContent card-title">HISTORY</h4>
+              <div className={props.isActive ? "headContent" : "headContent active"}>
+                <h4 class="card-title ">HISTORY</h4>
+              </div>
               <p class="content card-text">Suvarnabhumi Campus</p>
               <div className='customSearchBar'>
                 <input type='text' placeholder='Search Room'></input>
