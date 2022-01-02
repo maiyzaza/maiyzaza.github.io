@@ -721,6 +721,8 @@ tbody + thead{
 .password_wrong {
   margin-top: 1rem;
   color: red;
+  margin-left: 2.35rem;
+  margin-right: 2.35rem;
 }
 
 .changePassword {
