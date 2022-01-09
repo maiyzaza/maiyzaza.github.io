@@ -716,10 +716,17 @@ tbody + thead{
   color: #383738 !important;
 }
 
-/* Login */
-.login_logo {
-  width: 280px;
-  height: 160px
+/* Change Password Page */
+
+.password_wrong {
+  margin-top: 1rem;
+  color: red;
+}
+
+.changePassword {
+  font-family: Bariol Bold;
+  font-size: 1.4rem;
+  margin-bottom: 3rem;
 }
 
 .backPage{
