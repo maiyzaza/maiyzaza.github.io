@@ -902,20 +902,12 @@ tbody + thead{
 .password_wrong {
   margin-top: 1rem;
   color: red;
-  margin-left: 2.35rem;
-  margin-right: 2.35rem;
 }
 
 .changePassword {
   font-family: Bariol Bold;
   font-size: 1.4rem;
   margin-bottom: 3rem;
-}
-
-/* Login */
-.login_logo {
-  width: 280px;
-  height: 160px;
 }
 
 .backPage{

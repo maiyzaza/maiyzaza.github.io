@@ -25,11 +25,14 @@ function Login() {
 
     axios.post("https://arr-dev.azurewebsites.net/api/v1/login/login", payload)
     .then((res) => {
-      // console.log("res",res.data.data.token);
-      console.log(res.data.data);
+      // console.log(res.data.data);
+      console.log(res);
+
       window.sessionStorage.setItem("token", res.data.data.token)
+      window.sessionStorage.setItem("username", payload.Username)
+      window.sessionStorage.setItem("password", payload.Password)
+      
       history.push("/roomManagement")
-      // window.location.reload()
       setAlert(false)
     })
     .catch((res) => {
@@ -38,27 +41,30 @@ function Login() {
   }
 
   return (
-    <div>
+    <div className="login_container">
       <form class="login_form" onSubmit={handleSubmit}>
           <img class="login_logo" src={logoImg}></img>
           <input
             onChange={event => setUsername(event.target.value)}
             value={username}
-            // required
+            required
             id="username"
             name="Username"
             placeholder="Username"
           />
           <input
-            // required
+            required
             onChange={event => setPassword(event.target.value)}
             value={password}
+            type="password"
             id="password"
             name="Password"
             placeholder="Password"
           />
           <button>Sign In</button>
-          {alert && <p> Worng Username or Password</p>}
+          <div class="login_wrong">
+          {alert && <p> Wrong Username or Password</p>}
+          </div>
       </form>
     </div>
   );
