@@ -3,7 +3,7 @@ body {
   scroll-behavior: smooth;
   min-height: 100vh;
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #EAEAEA !important;
   /* background-image: url(/src/assets/light-background.png);
   background-size: cover; */
@@ -702,7 +702,6 @@ tbody + thead{
   color: #383738 !important;
 }
 
-<<<<<<< HEAD
 /* Change Password Page */
 
 .password_wrong {
@@ -714,12 +713,6 @@ tbody + thead{
   font-family: Bariol Bold;
   font-size: 1.4rem;
   margin-bottom: 3rem;
-=======
-/* Login */
-.login_logo {
-  width: 280px;
-  height: 160px
->>>>>>> 1a5768f (pull origin develop)
 }
 
 .backPage{
@@ -869,6 +862,154 @@ tbody + thead{
 }
 .login_wrong {
   color: red;
+}
+
+/* Room management */
+.room_management {
+  font-family: 'Bariol Regular';
+}
+.search_container_building {
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 1.9375rem;
+  margin-left: 22.5rem;
+}
+.search_container_floor {
+  font-size: 0.9rem;
+  display: block;
+  margin-top: -1.5rem;
+  margin-left: 35rem;
+}
+.search_button {
+  /* position: relative; */
+  left: -1rem;
+  top: 13.22rem;
+  font-size: 1rem;
+  margin-left: 47rem;
+  background-color: #CB002B;
+  color: #DEE2E6;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 20px;
+  position: absolute;
+}
+.create_room_button {
+  /* position: relative; */
+  position: absolute;
+  right: 9rem;
+  top: 13.22rem;
+  font-size: 1rem;
+  width: 14rem;
+  margin-left: 47rem;
+  background-color: #CB002B;
+  color: #DEE2E6;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 20px;
+}
+.has-search .form-control {
+  position: relative;
+  padding-left: 2.375rem;
+  width: 21rem;
+  left: 94rem;
+  top: -19rem;
+}
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  left: 94rem;
+  top: 4.2rem;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+.card_room_management_room {
+  /* margin-left: 0rem;
+  margin-top: 1rem; */
+  height: 6.5rem;
+  width: 14rem;
+  background-color: white;
+  border-radius: 0.7rem;
+  padding: 0.8rem;
+  box-shadow: 0 1px 5px rgb(218, 218, 218);
+  
+}
+
+/* .mutiCard {
+  margin-bottom: -10rem;
+} */
+
+.col-sm-3 {
+  margin-right: -0.1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.card_room_management_room_roomname {
+  font-family: 'Bariol Serif Bold';
+  font-size: 1rem;
+}
+.card_room_management_room_writeimg {
+  margin-left: 11.4rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-top: -3.5rem;
+}
+
+
+.card_room_management_room_clockimg {
+  margin-top: -2.5rem;
+  width: 0.8rem;
+  height: 0.8rem;
+
+}
+.card_room_management_room_time {
+  font-size: 0.8rem;
+  margin-top: -2.55rem;
+  margin-left: 1.7rem;
+  /* margin-top: 1.6rem;
+  margin-left: 0.5rem; */
+}
+.card_room_management_room_link {
+  font-size: 0.8rem;
+  margin-left: 8.2rem;
+  text-decoration: underline;
+}
+.card_room_management_floor {
+  /* position: absolute; */
+  margin-bottom: 1.5rem;
+  margin-left: 10rem;
+  margin-left: 22.5rem ;
+  padding-right: 0.3rem;
+  /* padding-top: 0.2rem; */
+  padding-left: 0.3rem;
+  background-color: #F6F6F6 ;
+  width: 71%;
+  border-radius: 0.3rem;
+}
+
+.card_room_management_floor_head {
+  font-size: 1.1rem ; 
+  font-family: Bariol Serif Bold;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem !important;
+}
+
+.hr-floor{
+  height: 0.03rem;
+  color: #D7D5DB;
+  width: 61.5rem;
+  margin-left: -0.5rem;
+
+}
+
+.card_room_management_floor .card-body {
+  padding-bottom: 0;
 }
 
 
