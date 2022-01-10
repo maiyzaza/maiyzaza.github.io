@@ -27,12 +27,13 @@ const TablePage = (props) =>  {
   const postdata = async () => {
       try {
        const res = await axios({
-          url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories/",
+          url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
           headers: {
               'Authorization': 'Bearer ' + access_token
               },
           method: "POST",
           data: {
+              BookingId : null,
               RoomName : null,
               Status : null,
               Date : null,
@@ -40,9 +41,12 @@ const TablePage = (props) =>  {
           }
       })
       .then((res) => {
-          console.log(res.data.data.items);
-          const itemData = res.data.data.items
+          // console.log("res", res.data.data)
+          // console.log(res.data.data.items);
+          let itemData = res.data.data
           setDataRow(itemData)
+          // console.log("dd")
+          // console.log("itemData", itemData)
        });
       } catch (err) {
           console.log(err);
@@ -55,6 +59,7 @@ const TablePage = (props) =>  {
 
   useEffect(() => {
     let dataArray = JSON.parse(JSON.stringify(dataRow))
+    // let dataArray = JSON.stringify(dataRow)
     var reservationData = []
     dataArray.map((item,index)=>{
       item.date = (
@@ -187,8 +192,8 @@ const TablePage = (props) =>  {
         small
         
         searching={false}
-        // sortable={false}
-        order={["bookingId", "decs"]}
+        sortable={false}
+        // order={["bookingId", "decs"]}
         displayEntries={false}
         data={data}
       />

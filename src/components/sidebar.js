@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
-import profile from '../assets/profile.jpg';
+// import profile from '../assets/profile.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import LogOutModal from './logOutModal';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 
 const Sidebar = () => {
@@ -14,6 +16,45 @@ const Sidebar = () => {
    };
 
   const [openModal, setOpenModal] = useState(false);
+  
+  
+
+  const access_token = sessionStorage.getItem("token")
+  
+  const [fname,setFname] = useState("");
+  const [pic,setPic] = useState("");
+
+
+  const infoProfile = async () => {
+    try {
+     const res = await axios({
+        url: "https://arr-dev.azurewebsites.net/api/v1/webs/member-info",
+        headers: {
+            'Authorization': 'Bearer ' + access_token
+            },
+        method: "POST",
+        data: {
+          Username : sessionStorage.getItem("username"),
+          Password : sessionStorage.getItem("password")
+        }
+    })
+    .then((res) => {
+        console.log(res.data.data);
+        // console.log(res.data.data.memberNameEn.split(" ")[0])
+        console.log(res.data.data[0].memberNameEn)
+        setFname(res.data.data[0].memberNameEn)
+        setPic(res.data.data[0].memberPictureUrl)
+        window.sessionStorage.setItem("memberId", res.data.data[0].memberId)
+     });
+    } catch (err) {
+        console.log(err);
+    }
+ };
+
+  useEffect(() => {
+    infoProfile();
+  },[]);
+
 
   return (
 
@@ -36,11 +77,11 @@ const Sidebar = () => {
 
             <div class="profile_details row">
               <div class="col-sm-3">
-                <img src={profile} width="50" height="50"/>
+                <img src={pic} alt="new" width="50" height="50"/>
               </div>
               <div class="firstName_lastName col-sm-7">
-                <div class="firstName font-face-bariol-bold">NUTNISA</div>
-                <div class="lastName font-face-bariol-regular">THONGRUSSAMEE</div>
+                <div class="firstName font-face-bariol-bold">{fname.split(" ")[0]}</div>
+                <div class="lastName font-face-bariol-regular">{fname.split(" ")[1]}</div>
 
               </div>
             </div>

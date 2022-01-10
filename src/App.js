@@ -18,24 +18,24 @@ import logOutModal from './components/logOutModal';
 function App() {
 
   // ต้องใช้อันนี้
-  // const [isActive, setActive] = useState("false");
-  // const ToggleClass = () => {
-  //   setActive(!isActive); 
-  //  };
+  const [isActive, setActive] = useState("false");
+  const ToggleClass = () => {
+    setActive(!isActive); 
+   };
+
+  
 
   return (
     <Router>
         <Switch >
           <Route path ="/history" exact={true} component={History}>
-            <History />
+            <History 
+              isActive = {isActive}
+            />
             <Sidebar />
           </Route>
           <Route path="/roomManagement">
             <RoomManagement />
-            <Sidebar />
-          </Route>
-          <Route path="/reservationManagement">
-            <ReservationManagement />
             <Sidebar />
           </Route>
           <Route path="/reservationManagement">

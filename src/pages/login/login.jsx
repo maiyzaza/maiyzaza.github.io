@@ -22,15 +22,17 @@ function Login() {
         Username : username,
         Password : password,
     }
+
     axios.post("https://arr-dev.azurewebsites.net/api/v1/login/login", payload)
     .then((res) => {
-      // console.log("res",res.data.data.token);
-      console.log(res.data.data);
+      // console.log(res.data.data);
+      console.log(res);
+
       window.sessionStorage.setItem("token", res.data.data.token)
-      window.sessionStorage.setItem("username", res.data)
-      // window.sessionStorage.setItem("password", res.data.data.)
+      window.sessionStorage.setItem("username", payload.Username)
+      window.sessionStorage.setItem("password", payload.Password)
+      
       history.push("/roomManagement")
-      // window.location.reload()
       setAlert(false)
     })
     .catch((res) => {
