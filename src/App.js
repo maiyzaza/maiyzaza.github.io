@@ -19,27 +19,32 @@ function App() {
 
   // ต้องใช้อันนี้
   const [isActive, setActive] = useState("false");
-  const ToggleClass = () => {
-    setActive(!isActive); 
-   };
-
-  
 
   return (
     <Router>
         <Switch >
           <Route path ="/history" exact={true} component={History}>
             <History 
-              isActive = {isActive}
+            onCollapse={(isActive) => {
+            setActive(!isActive);
+            }}
             />
             <Sidebar />
           </Route>
           <Route path="/roomManagement">
-            <RoomManagement />
+            <RoomManagement 
+            onCollapse={(isActive) => {
+            setActive(!isActive);
+            }}
+            />
             <Sidebar />
           </Route>
           <Route path="/reservationManagement">
-            <ReservationManagement />
+            <ReservationManagement 
+            onCollapse={(isActive) => {
+            setActive(!isActive);
+            }}
+            />
             <Sidebar />
           </Route>
           <Route path="/changePassword">
@@ -47,7 +52,11 @@ function App() {
           </Route>
           <Route path="/moreInfo">
           {/* <Route path="/moreInfo/:bookingId" element={ <MoreInfo /> } > */}
-            <MoreInfo />
+            <MoreInfo 
+            onCollapse={(isActive) => {
+            setActive(!isActive);
+            }}
+            />
             <Sidebar />
           </Route>
           <Route path="/">

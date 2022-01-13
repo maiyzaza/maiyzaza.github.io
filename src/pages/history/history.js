@@ -7,8 +7,36 @@ import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router'
 
+
  
 function History(props) {
+
+  const [items, setItems] = useState([]);
+  const [inputValue, setValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState(null);
+
+    // handle input change event
+  const handleInputChange = value => {
+    setValue(value);
+  };
+
+  // handle selection
+  const handleChange = value => {
+    setSelectedValue(value);
+  }
+
+  // const fetchData = () => {
+  //   return  axios.get('/users?page=1').then(result => {
+  //     const res =  result.data.data;
+  //     return res;
+  //   });
+  // }
+
+  const [isActive, setActive] = useState(false);
+
+  useEffect(() => {
+    props.onCollapse(!isActive);
+  }, [!isActive]);
 
   let history = useHistory();
 

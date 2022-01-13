@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import LogOutModal from './logOutModal';
 import axios from 'axios';
 import { useEffect } from 'react';
+import ReservationListModal from './reservationListModal';
+
 
 
 const Sidebar = () => {
@@ -16,7 +18,8 @@ const Sidebar = () => {
    };
 
   const [openModal, setOpenModal] = useState(false);
-  
+  const [openModal2, setOpenModal2] = useState(false);
+
   
 
   const access_token = sessionStorage.getItem("token")
@@ -98,10 +101,21 @@ const Sidebar = () => {
             </li>
 
             <li>
-              <a href="/reservationManagement">
+              <a 
+              // href="/reservationManagement"
+              onClick={() => {
+                  setOpenModal2(true);
+                }} 
+
+              
+              >
                 <i class='bx bx-calendar' ></i>
                 <span class="links_name">Reservation Management</span>
               </a>
+              {openModal2 && <ReservationListModal 
+              closeModal={setOpenModal2} 
+
+              />}
             </li>
 
             <li>
@@ -120,7 +134,7 @@ const Sidebar = () => {
 
             <li>
               <a
-                className='openLogOutModal' 
+                // className='openLogOutModal' 
                 onClick={() => {
                   setOpenModal(true);
                 }}
