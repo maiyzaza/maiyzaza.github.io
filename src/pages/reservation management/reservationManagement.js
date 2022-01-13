@@ -1,6 +1,11 @@
 import '../../App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from 'react-router'
+import ReservationListModal from '../../components/reservationListModal';
+import TableReservationList from '../../components/tableReservationList';
+import Table from '../../components/table'
+
+
  
 function ReservationManagement() {
 
@@ -15,7 +20,11 @@ function ReservationManagement() {
   
   return (
     <body>
+      
       <h1 class="content">Hello Reservation</h1>
+      
+
+      
     </body>
   );
 }

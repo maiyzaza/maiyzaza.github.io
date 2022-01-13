@@ -77,7 +77,7 @@ function ChangePassword() {
 
       console.log("aa")
     if (res.status == 200) {
-      if ( (currentPassword == sessionStorage.getItem("password")) && ( newPassword != sessionStorage.getItem("password") ) && ( newPassword == confirmPassword )){
+      if ( (currentPassword == sessionStorage.getItem("password")) && ( newPassword != sessionStorage.getItem("password") ) && (( newPassword == confirmPassword ) != null)){
         history.push("/login")
         sessionStorage.clear()
       }
