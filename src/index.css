@@ -886,10 +886,10 @@ tbody + thead{
   margin-top: -1.5rem;
   margin-left: 35rem;
 }
-.search_button {
+.search_button_room {
   /* position: relative; */
   left: -1rem;
-  top: 13.22rem;
+  top: 12.75rem;
   font-size: 1rem;
   margin-left: 47rem;
   background-color: #CB002B;
@@ -903,8 +903,8 @@ tbody + thead{
 .create_room_button {
   /* position: relative; */
   position: absolute;
-  right: 9rem;
-  top: 13.22rem;
+  right: 6rem;
+  top: 12.6rem;
   font-size: 1rem;
   width: 14rem;
   margin-left: 47rem;
@@ -951,7 +951,7 @@ tbody + thead{
   margin-bottom: -10rem;
 } */
 
-.col-sm-3 {
+div .col-3 {
   margin-right: -0.1rem !important;
   margin-bottom: 1rem !important;
 }
@@ -959,24 +959,28 @@ tbody + thead{
 .card_room_management_room_roomname {
   font-family: 'Bariol Serif Bold';
   font-size: 1rem;
+  margin-top: -3.2rem !important;
 }
+
+
 .card_room_management_room_writeimg {
   margin-left: 11.4rem;
   width: 0.9rem;
   height: 0.9rem;
-  margin-top: -3.5rem;
+  margin-top: -100rem !important;
+  /* top: 10rem !important; */
 }
 
 
 .card_room_management_room_clockimg {
-  margin-top: -2.5rem;
+  margin-top: -3rem !important;
   width: 0.8rem;
   height: 0.8rem;
 
 }
 .card_room_management_room_time {
   font-size: 0.8rem;
-  margin-top: -2.55rem;
+  margin-top: 0.3rem;
   margin-left: 1.7rem;
   /* margin-top: 1.6rem;
   margin-left: 0.5rem; */
@@ -995,7 +999,7 @@ tbody + thead{
   /* padding-top: 0.2rem; */
   padding-left: 0.3rem;
   background-color: #F6F6F6 ;
-  width: 71%;
+  width: 64rem !important;
   border-radius: 0.3rem;
 }
 

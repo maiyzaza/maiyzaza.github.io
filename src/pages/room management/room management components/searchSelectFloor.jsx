@@ -1,12 +1,7 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import '../../../App.css';
-
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
+import axios from 'axios';
 
 const customStylesFloor = {
   control: (base, state) => ({
@@ -33,13 +28,12 @@ const customStylesFloor = {
 
   input: styles => ({
     ...styles,
-    color: 'blue',
-    fontFamily: 'Times New Roman, Times, Serif',
+    color: 'black',
+    fontFamily: 'Bariol Regular',
   }),
 
   menu: styles => ({
     ...styles,
-    // marginTop: "20rem",
     left: "35rem",
     top: "-0.5rem",
     boxShadow: 'none',
@@ -49,18 +43,57 @@ const customStylesFloor = {
 
   singleValue: styles => ({
     ...styles,
-    color: 'rgba(255, 80, 86)',
+    color: 'rgba(0, 0, 0)',
   }),
 }
 
-const MyComponent = () => (
-  <Select
-    className="col-2"
-    options={options}
-    placeholder="Not Specified"
-    styles={customStylesFloor}
-  />
-)
+function MyComponent() {
+
+  const [data, setData] = useState([]);
+  let options = [{ value: "Not Specified", label: "Not Specified" }]
+
+  const postdata = async () => {
+    // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQ0MzQxOTIwLCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.pkA3vaCkD9PWpJ00kCqTjsn0h09qqhT0q_xCY61b5l0"
+    const access_token = sessionStorage.getItem("token")
+
+    axios({
+      url: "https://arr-dev.azurewebsites.net/api/v1/webs/floors",
+      headers: {
+          'Authorization': "Bearer " + access_token
+          },
+      method: "GET",
+    })
+    .then((res) => {
+      setData(res.data.data)
+      console.log(res.data.data)
+    })
+    .catch((res) => {
+      // Todo Do Something
+    });
+  };
+
+  useEffect(() => {
+    postdata();
+  },[]);
+
+  data.forEach(e => {
+    options.push({ value: e.text, label: e.text })
+  });
+
+  const onChange = (e) => {
+    window.sessionStorage.setItem("floor", e.value)
+  }
+
+  return (
+    <Select
+      className="col-2"
+      options={options}
+      placeholder="Not Specified"
+      styles={customStylesFloor}
+      onChange={onChange}
+    />
+  );
+}
 
 export default MyComponent;
 
