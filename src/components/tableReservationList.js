@@ -206,7 +206,7 @@ const TableReservationList = (props) =>  {
       scrollY
       maxHeight="20rem"
       striped
-      bordered
+      // bordered
       small
       
       sortable={false}

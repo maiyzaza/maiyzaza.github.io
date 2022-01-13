@@ -15,6 +15,13 @@ body {
   background-size: 100% 100%; */
 }
 
+.css-b62m3t-container {
+  height: 1.6rem!important;
+}
+
+.positionFloorSelect {
+  margin-top: 0.7rem;
+}
 
 /* x button */
 
@@ -351,7 +358,10 @@ body {
 
 /* Create Room & Modify Room*/
 
-
+.rowWWWW {
+  /* width: 4rem!important; */
+  height: 5rem;
+}
 
 .createRoomPositionForm {
   margin: 2rem !important;
@@ -399,7 +409,7 @@ form .new-col-12 {
   resize: none;
   width: 14rem !important;
   font-family: 'Bariol Regular' ;
-  height: 1.9rem;
+  height: 2.2rem;
   border-radius: 5; 
   color: rgba(0, 0, 0);
   padding-left: 0.5rem;
@@ -479,8 +489,8 @@ form .new-col-12 {
 }
 
 .thirdP {
-  margin-left: 2rem !important;
-  top: -1.1rem !important;
+  margin-left: 16rem !important;
+  top: -3.2rem !important;
 }
 
 .forthP {
@@ -841,11 +851,13 @@ tbody + thead{
 .myTableReservationList tr {
   padding-top: 0rem !important;
   padding-bottom: 0rem !important;
+  background-color: #CB002B;
 }
 
 .myTableReservationList th {
   padding-top: 0rem !important;
   padding-bottom: 0rem !important;
+  color: white;
 }
 
 .myTableReservationList td {
@@ -854,8 +866,14 @@ tbody + thead{
 }
 
 .iconReservationList {
-  padding-top: 1.1rem;
+  padding-top: 1.3rem;
 }
+
+.iconReservationList :hover{
+
+  background: none !important;
+}
+
 
 
 

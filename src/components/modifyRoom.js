@@ -60,13 +60,13 @@ function ModifyRoom({closeModal}) {
                             
                             <label className="col-6 firstForm">Min Duration</label>
                             <label className="col-6 secondForm">Max Duration</label>
-                            <textarea className="size" value={dataRoom.minDuaration} onChange={setDataRoom}></textarea>
-                            <textarea className="size  secondP" value={dataRoom.maxDuration} onChange={setDataRoom}></textarea>
+                            <select className="size" value={dataRoom.minDuaration} onChange={setDataRoom}></select>
+                            <select className="size  secondP" value={dataRoom.maxDuration} onChange={setDataRoom}></select>
 
                             <label className="col-6 firstForm">Start Time</label>
                             <label className="col-6 secondForm">End Time</label>
-                            <textarea className="size" value={dataStartTime} onChange={setDataStartTime}></textarea>
-                            <textarea className="size  secondP" value={dataEndTime} onChange={setDataEndTime}></textarea>
+                            <select className="size" value={dataStartTime} onChange={setDataStartTime}></select>
+                            <select className="size  secondP" value={dataEndTime} onChange={setDataEndTime}></select>
 
 
                         </form>
