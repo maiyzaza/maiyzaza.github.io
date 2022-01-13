@@ -66,9 +66,6 @@ function MyComponent() {
     .then((res) => {
       setData(res.data.data)
     })
-    .catch((res) => {
-      // Todo Do Something
-    });
   };
 
   useEffect(() => {

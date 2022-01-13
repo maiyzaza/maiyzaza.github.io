@@ -988,6 +988,7 @@ div .col-3 {
 .card_room_management_room_link {
   font-size: 0.8rem;
   margin-left: 8.2rem;
+  margin-bottom: 0rem !important;
   text-decoration: underline;
 }
 .card_room_management_floor {

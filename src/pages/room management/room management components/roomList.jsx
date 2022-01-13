@@ -13,17 +13,12 @@ function Card(props) {
       <a href="#" class="">
         <i class='card_room_management_room_writeimg bx bx-edit'></i>
       </a>
-      <a href="#">
         <i class='card_room_management_room_clockimg bx bx-time-five'></i>
-      </a>
       <div className="card_room_management_room_roomname">{data.roomName}</div>
-      
-      {/* <img className="card_room_management_room_writeimg" src={writeicon}></img> */}
       <div className="card_room_management_room_time">{data.openTime} - {data.closeTime} hrs.</div>
       <a href="#" class="card_room_management_room_link">See more {">"}</a>
     </div>
     </div>
-
   )
 }
 

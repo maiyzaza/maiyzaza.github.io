@@ -2,9 +2,7 @@ import React from "react";
 import CardRoomList from './roomList';
 
 function RoomManagementCard(props) {
-
     const data = props.data;
-    console.log(data)
 
     let listFloor = null
 
