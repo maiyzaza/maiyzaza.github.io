@@ -102,7 +102,6 @@ const Sidebar = () => {
 
             <li>
               <a 
-              // href="/reservationManagement"
               onClick={() => {
                   setOpenModal2(true);
                 }} 

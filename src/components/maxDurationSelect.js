@@ -14,7 +14,7 @@ const customStylesFloor = {
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
-    fontSize: "0.7rem",
+    fontSize: "0.8rem",
     width: "14rem",
     borderColor: "#EAEAEA"
   }),
@@ -26,6 +26,7 @@ const customStylesFloor = {
       backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
+    
     }
   },
 
@@ -33,6 +34,7 @@ const customStylesFloor = {
     ...styles,
     color: 'black',
     fontFamily: 'Bariol Regular',
+    
   }),
 
   menu: styles => ({
@@ -41,19 +43,15 @@ const customStylesFloor = {
     top: "-0.4rem",
     boxShadow: 'none',
     borderRadius: 5,
-    fontSize: "0.7rem",
+    fontSize: '0.8rem',
     width: "14rem"
   }),
 
   singleValue: styles => ({
     ...styles,
     color: 'rgba(0, 0, 0)',
-  }),
-
-  singleValue: styles => ({
-    ...styles,
-    color: 'rgba(0, 0, 0)',
-  }),
+    fontSize: '0.8rem'
+  })
 }
 
 function MaxDurationSelect() {
@@ -61,7 +59,12 @@ function MaxDurationSelect() {
 
 
         //   const [data, setData] = useState([]);
-          let options = [{ value: "Not Specified", label: "Not Specified" }]
+        let options = [{ value: "1 hrs.", label: "1 hrs."  },
+                       { value: "1 hrs. 30 min.", label: "1 hrs. 30 min." },
+                       { value: "2 hrs.", label: "2 hrs." },
+                       { value: "2 hrs. 30 min.", label: "2 hrs. 30 min." },
+                       { value: "3 hrs.", label: "3 hrs."  }
+                      ]
         
         //   const postdata = async () => {
         //     // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQ0MzQxOTIwLCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.pkA3vaCkD9PWpJ00kCqTjsn0h09qqhT0q_xCY61b5l0"

@@ -38,7 +38,7 @@ body {
   text-indent: 100%;
   cursor: pointer;
   margin-top: -3rem!important;
-  margin-left: 62rem;
+  margin-left: 56rem;
   opacity: 0.5;
 }
 #close:focus {
@@ -302,6 +302,7 @@ body {
 #cancelLogOut {
   background-color: #F2F2F2 !important;
   color: #383738 !important;
+  margin-right: 0rem!important
 }
 
 .btn{
@@ -329,7 +330,7 @@ body {
 }
 
 .reservationList-modalContainer {
-  width: 71rem;
+  width: 65rem;
   /* height: 14rem; */
   border-radius: 12px;
   background-color: white;
@@ -472,7 +473,7 @@ form .new-col-12 {
   /* display: flex;
   align-self: right; */
   margin-top: 2.5rem;
-  margin-left: 14.5rem;
+  margin-left: 15.8rem;
   /* border: 0 !important; */
 
 }
@@ -482,6 +483,7 @@ form .new-col-12 {
   border: none;
   border-radius: 5px;
   background-color: #CB002B !important;
+  /* margin-right: 0rem !important; */
 }
 
 .secondP {
@@ -491,12 +493,18 @@ form .new-col-12 {
 .thirdP {
   margin-left: 16rem !important;
   top: -3.2rem !important;
+  border-color: #EAEAEA !important;
+  font-size: 0.8rem !important;
+  font-family: 'Bariol Regular';
 }
 
 .forthP {
   margin-left: 0rem !important;
   top: -1.1rem !important;
   width: 30rem !important;
+  border-color: #EAEAEA !important;
+  font-size: 0.8rem !important;
+  font-family: 'Bariol Regular';
 }
 
 

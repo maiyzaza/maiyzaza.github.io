@@ -22,8 +22,8 @@ const TableReservationList = (props) =>  {
   const postdata = async () => {
       try {
        const res = await axios({
-          // url: "https://arr-dev.azurewebsites.net/api/v1/webs/reserved-list",
-          url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
+          url: "https://arr-dev.azurewebsites.net/api/v1/webs/reserved-list",
+          // url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
           headers: {
               'Authorization': 'Bearer ' + access_token
               },
