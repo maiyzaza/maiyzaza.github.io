@@ -1065,14 +1065,14 @@ tbody + thead{
   font-size: 0.9rem;
   display: block;
   margin-top: -1.5rem;
-  margin-left: 35rem;
+  margin-left: 33.5rem;
 }
 .search_button_room {
   /* position: relative; */
-  left: -1rem;
-  top: 12.75rem;
+  
+  top: 12.5rem;
   font-size: 1rem;
-  margin-left: 47rem;
+  margin-left: 44.5rem;
   background-color: #CB002B;
   color: #DEE2E6;
   border: none;
@@ -1080,21 +1080,22 @@ tbody + thead{
   text-align: center;
   padding: 5px 20px;
   position: absolute;
+  height: 2.4rem !important;
 }
 .create_room_button {
   /* position: relative; */
   position: absolute;
-  right: 6rem;
-  top: 12.6rem;
+  top: 12.5rem;
   font-size: 1rem;
   width: 14rem;
-  margin-left: 47rem;
+  margin-left: 72rem;
   background-color: #CB002B;
   color: #DEE2E6;
   border: none;
   border-radius: 5px;
   text-align: center;
   padding: 5px 20px;
+  height: 2.4rem !important;
 }
 .has-search .form-control {
   position: relative;
@@ -1129,7 +1130,7 @@ tbody + thead{
 .room_management_not_find {
   background-image: url(./assets/room_not_found.png);
   margin-left: 40rem;
-  margin-top: 10rem;
+  margin-top: 7rem;
   text-align: center;
   width: 50vh;
   height: 50vh;

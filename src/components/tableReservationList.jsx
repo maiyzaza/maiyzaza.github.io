@@ -140,19 +140,19 @@ const TableReservationList = (props) =>  {
         label: 'DATE',
         field: 'date',
         sort: 'asc',
-        width: 80
+        width: 70
       },
       {
         label: 'START TIME',
         field: 'startTime',
         sort: 'acs',
-        width: 70
+        width: 60
       },
       {
         label: 'END TIME',
         field: 'endTime',
         sort: 'asc',
-        width: 70
+        width: 60
       },
       {
         label: 'ROOM',
@@ -164,7 +164,7 @@ const TableReservationList = (props) =>  {
         label: 'STATUS',
         field: 'status',
         sort: 'asc',
-        width: 50
+        width: 60
       },
       {
         label: 'RESERVED BY',

@@ -1,18 +1,30 @@
 import '../../App.css';
-import React, { useState, useEffect } from 'react';
-import cardImg from '../../assets/cardImg.png';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { useHistory } from 'react-router'
+import React, { useEffect, useState } from "react";
+// import CreateRoom from '../../components/createRoom';
+// import ModifyRoom from '../../components/modifyRoom';
 import SearchRoomManagement from "./room management components/searchRoomManagement"
-import axios from 'axios';
+import cardImg from '../../assets/cardImg.png';
 
-// import Sidebar from '../../components/sidebar'
-
-  
+ 
 function RoomManagement() {
 
+  let history = useHistory();
+
+  const access_token = sessionStorage.getItem("token")
+
+  // const [openModal, setOpenModal] = useState(false);
+  // const [openModal1, setOpenModal1] = useState(false);
+
+  if(!access_token){
+    history.push("/")
+    window.location.reload("/");
+  }
+
   return (
-    <div> 
-      <body>
-        <div class="card">
+    <body>
+       <div class="card">
           <img class="card-img-top" src={cardImg}></img>
             <div class="card-img-overlay">
               <h4 class="headContent card-title">RoomManagement</h4>
@@ -20,8 +32,29 @@ function RoomManagement() {
             </div>
         </div>
         <SearchRoomManagement />
-      </body>
-    </div>
+
+      {/* <h1 class="content">Hello Room</h1>
+      <button
+      className='openLogOutModal test' 
+      onClick={() => {
+        setOpenModal(true);
+      }}
+      >
+      <span class="links_name">Create Room</span>
+      </button>
+      {openModal && <CreateRoom closeModal={setOpenModal} />}
+
+      <button
+      className='openLogOutModal test' 
+      onClick={() => {
+        setOpenModal1(true);
+      }}
+      >
+      <span class="links_name">Modify Room</span>
+      </button>
+      {openModal1 && <ModifyRoom closeModal={setOpenModal1} />} */}
+      
+    </body>
   );
 }
  
