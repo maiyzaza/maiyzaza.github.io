@@ -1,7 +1,7 @@
 import './App.css';
 import Sidebar from './components/sidebar';
 import History from './pages/history/history';
-import RoomManagement from './pages/room management/roomManagement.jsx';
+import RoomManagement from './pages/room management/roomManagement';
 import ReservationManagement from './pages/reservation management/reservationManagement';
 import {
   BrowserRouter as Router,
@@ -32,7 +32,7 @@ function App() {
             <Sidebar />
           </Route>
           <Route path="/roomManagement">
-            <RoomManagement
+            <RoomManagement 
             onCollapse={(isActive) => {
             setActive(!isActive);
             }}
@@ -52,7 +52,12 @@ function App() {
             <Sidebar />
           </Route>
           <Route path="/moreInfo">
-            <MoreInfo />
+          {/* <Route path="/moreInfo/:bookingId" element={ <MoreInfo /> } > */}
+            <MoreInfo 
+            onCollapse={(isActive) => {
+            setActive(!isActive);
+            }}
+            />
             <Sidebar />
           </Route>
           <Route path="/">
@@ -60,6 +65,7 @@ function App() {
               <Login />
             </div>
           </Route>
+          
         </Switch>
     </Router>
   );
