@@ -912,6 +912,12 @@ tbody + thead{
   margin-bottom: 3rem;
 }
 
+/* Login */
+.login_logo {
+  width: 280px;
+  height: 160px;
+}
+
 .backPage{
   margin-top: 2.5rem;
   color: #cb002b;
