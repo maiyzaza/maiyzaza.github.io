@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
-import '../../../App.css';
+
 import axios from 'axios';
 
-const customStylesBuilding = {
+const customStylesFloor = {
   control: (base, state) => ({
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    left: "21.55rem",
-    top: "0rem",
+    left: "32.5rem",
+    top: "-1.5965rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
@@ -34,13 +34,12 @@ const customStylesBuilding = {
 
   menu: styles => ({
     ...styles,
-    left: "22.5rem",
-    top: "1.9rem",
+    left: "33.5rem",
+    top: "0.27rem",
     boxShadow: 'none',
     borderRadius: 5,
     fontSize: "0.8rem",
-    width: "10rem",
-    
+    width: "10rem"
   }),
 
   singleValue: styles => ({
@@ -49,7 +48,7 @@ const customStylesBuilding = {
   }),
 }
 
-function MyComponent() {
+function SearchSelectStatus() {
 
   const [data, setData] = useState([]);
   let options = [{ value: "Not Specified", label: "Not Specified" }]
@@ -57,9 +56,9 @@ function MyComponent() {
   const postdata = async () => {
     // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQ0MzQxOTIwLCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.pkA3vaCkD9PWpJ00kCqTjsn0h09qqhT0q_xCY61b5l0"
     const access_token = sessionStorage.getItem("token")
-    
+
     axios({
-      url: "https://arr-dev.azurewebsites.net/api/v1/webs/buildings",
+      url: "https://arr-dev.azurewebsites.net/api/v1/webs/floors",
       headers: {
           'Authorization': "Bearer " + access_token
           },
@@ -79,20 +78,19 @@ function MyComponent() {
   });
 
   const onChange = (e) => {
-    window.sessionStorage.setItem("building", e.value)
+    window.sessionStorage.setItem("floor", e.value)
   }
-
 
   return (
     <Select
       className="col-2"
       options={options}
       placeholder="Not Specified"
-      styles={customStylesBuilding}
+      styles={customStylesFloor}
       onChange={onChange}
     />
   );
 }
 
-export default MyComponent;
+export default SearchSelectStatus;
 

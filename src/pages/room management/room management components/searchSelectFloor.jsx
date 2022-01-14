@@ -8,12 +8,12 @@ const customStylesFloor = {
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    left: "34rem",
+    left: "32.5rem",
     top: "-1.5965rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
-    fontSize: "0.7rem",
+    fontSize: "0.8rem",
   }),
 
   option: (styles, { isFocused }) => {
@@ -34,11 +34,12 @@ const customStylesFloor = {
 
   menu: styles => ({
     ...styles,
-    left: "35rem",
+    left: "33.5rem",
     top: "0.27rem",
     boxShadow: 'none',
     borderRadius: 5,
-    fontSize: "0.7rem",
+    fontSize: "0.8rem",
+    width: "10rem"
   }),
 
   singleValue: styles => ({
