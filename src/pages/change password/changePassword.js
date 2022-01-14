@@ -28,27 +28,7 @@ function ChangePassword() {
 
     event.preventDefault();
 
-    // if (currentPassword != sessionStorage.getItem("password")) {
-    //   console.log("aa")
-    //   setAlert("The current password is incorrect")
-    // } 
-
-   
     const confirmation = []
-
-    // if (newPassword == sessionStorage.getItem("password")){
-    //   setAlert("New password same with current password")
-    // } else {
-    
-    //   if (newPassword != confirmPassword){
-    //     setAlert("The password confirmation does not match")
-    //   } else {
-        
-    //     confirmation.push(newPassword)
-    //     console.log("confirmation", confirmation)
-    //   }
- 
-    // }
 
     if (currentPassword != sessionStorage.getItem("password")) {
       setAlert("The current password is incorrect")
