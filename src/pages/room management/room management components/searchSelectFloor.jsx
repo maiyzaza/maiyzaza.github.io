@@ -9,7 +9,7 @@ const customStylesFloor = {
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
     left: "34rem",
-    top: "-2.365rem",
+    top: "-1.5965rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
@@ -35,9 +35,9 @@ const customStylesFloor = {
   menu: styles => ({
     ...styles,
     left: "35rem",
-    top: "-0.5rem",
+    top: "0.27rem",
     boxShadow: 'none',
-    borderRadius: 0,
+    borderRadius: 5,
     fontSize: "0.7rem",
   }),
 
