@@ -26,6 +26,11 @@ function MoreInfo() {
 
   const [dataStudents, setDataStudents] = useState([])
 
+  const [dataMinDu,setDataMinDu] = useState('')
+  const [dataMaxDu,setDataMaxDu] = useState('')
+
+  
+
 
 
   // const {description, title, images} = (location.state.item);
@@ -87,11 +92,47 @@ function MoreInfo() {
         }
     })
     .then((res) => {
-        console.log(res.data.data);
+        
 
         setDataRoom(res.data.data)
         setDataStartTime(res.data.data.startTime.slice(0,5))
         setDataEndTime(res.data.data.endTime.slice(0,5))
+
+        if (res.data.data.minDuaration >= 60) {
+          var num = res.data.data.minDuaration;
+          var hours = (num / 60);
+          var rhours = Math.floor(hours);
+          var minutes = (hours - rhours) * 60;
+          var rminutes = Math.round(minutes);
+          if (rminutes == 0) {
+            // console.log(rhours + " hrs.")
+            setDataMinDu(rhours + " hrs.")
+          } else {
+            // console.log(rhours + " hrs." + rminutes + " min.") 
+            setDataMinDu(rhours + " hrs." + rminutes + " min.") 
+          }
+          
+        } else {
+          // console.log(res.data.data.minDuaration+ " min.")
+          setDataMinDu(res.data.data.minDuaration+ " min.")
+        }
+
+        if (res.data.data.maxDuration >= 60) {
+          var num = res.data.data.maxDuration;
+          var hours = (num / 60);
+          var rhours = Math.floor(hours);
+          var minutes = (hours - rhours) * 60;
+          var rminutes = Math.round(minutes);
+          if (rminutes == 0) {
+            // console.log(rhours + " hrs.") 
+            setDataMaxDu(rhours + " hrs.") 
+          } else {
+            setDataMaxDu(rhours + " hrs." + rminutes + " min.") 
+        }
+      } else {
+        setDataMaxDu(res.data.data.maxDuration+ " min.")
+      }
+        
         
      });
     } catch (err) {
@@ -155,10 +196,10 @@ function MoreInfo() {
               <p class="customPForBuilding card-text regularB">Min Duration</p>
               <p class="customPForBuilding1 card-text regularB">Max Duration</p>
               <div className='customForDisable0'>
-                <textarea disabled value={dataRoom.minDuaration + ' min.'} onChange={setDataRoom}></textarea>
+                <textarea disabled value={dataMinDu} onChange={setDataMinDu}></textarea>
               </div>
               <div className='customPosition customForDisable0'>
-                <textarea disabled value={dataRoom.maxDuration + ' min.'} onChange={setDataRoom}></textarea>
+                <textarea disabled value={dataMaxDu} onChange={setDataMaxDu}></textarea>
               </div>
             </div>
 

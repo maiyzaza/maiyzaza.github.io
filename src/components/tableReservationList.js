@@ -4,30 +4,26 @@ import { MDBDataTable } from 'mdbreact';
 import MoreInfo from "../pages/history/moreInfo";
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router-dom';
-// import { useHistory } from 'react-router'
 
 
 
-const TablePage = (props) =>  {
-  // let history = useHistory();
+
+
+const TableReservationList = (props) =>  {
+
 
 
   const [dataRow,setDataRow] = useState([])
   const [itemRow,setItemRow] = useState([])
   
-  // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQwODYwODY3LCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.NPjUTgmVrz3NGiwPmx3vvvGMrN2boOVOARpQqQbJiVE"
   const access_token = sessionStorage.getItem("token")
-  // console.log("access_token",access_token)
-  // if(!access_token){
-  //   history.push("/")
-  //   window.location.reload("/");
-  // }
 
 
   const postdata = async () => {
       try {
        const res = await axios({
-          url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
+          url: "https://arr-dev.azurewebsites.net/api/v1/webs/reserved-list",
+          // url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
           headers: {
               'Authorization': 'Bearer ' + access_token
               },
@@ -41,12 +37,10 @@ const TablePage = (props) =>  {
           }
       })
       .then((res) => {
-          // console.log("res", res.data.data)
-          // console.log(res.data.data.items);
+
           let itemData = res.data.data
           setDataRow(itemData)
-          // console.log("dd")
-          // console.log("itemData", itemData)
+
        });
       } catch (err) {
           console.log(err);
@@ -107,7 +101,7 @@ const TablePage = (props) =>  {
         // bookingId={item.bookingId}
         // <Link to={`/moreinfo/${item.bookingId}`}   >
         <Link to={{pathname:`/moreinfo/${booking_id}`,  state:{ booking_id,room_id } } } > 
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div class="iconReservationList" style={{ display: "flex", justifyContent: "space-between" }}>
           <div
             className="bx bx-info-circle"
             style={{
@@ -193,8 +187,10 @@ const TablePage = (props) =>  {
       } 
 
   return (
-    <div className="myTable">
-      <MDBDataTable
+    <div 
+    className="myTableReservationList"
+    >
+      {/* <MDBDataTable scrollY
         striped
         bordered
         small
@@ -204,6 +200,19 @@ const TablePage = (props) =>  {
         // order={["bookingId", "decs"]}
         displayEntries={false}
         data={data}
+      /> */}
+
+      <MDBDataTable
+      scrollY
+      maxHeight="20rem"
+      striped
+      // bordered
+      small
+      
+      sortable={false}
+      paging={false}
+      searching={false}
+      data={data}
       />
     </div>
 
@@ -211,4 +220,4 @@ const TablePage = (props) =>  {
 }
 
 
-export default TablePage;
+export default TableReservationList;

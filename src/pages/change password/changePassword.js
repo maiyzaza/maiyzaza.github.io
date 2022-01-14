@@ -33,9 +33,9 @@ function ChangePassword() {
     if (currentPassword != sessionStorage.getItem("password")) {
       setAlert("The current password is incorrect")
     } else if (newPassword == sessionStorage.getItem("password")) {
-      setAlert("Current password and New Password cannot be same")
+      setAlert("The current password and the new password are the same")
     } else if (newPassword != confirmPassword){
-      setAlert("The password confirmation does not match")
+      setAlert("The confirmation password does not match the new password")
     } else {
       confirmation.push(newPassword)
       console.log("confirmation", confirmation)
@@ -57,7 +57,7 @@ function ChangePassword() {
 
       console.log("aa")
     if (res.status == 200) {
-      if ( (currentPassword == sessionStorage.getItem("password")) && ( newPassword != sessionStorage.getItem("password") ) && ( newPassword == confirmPassword )){
+      if ( (currentPassword == sessionStorage.getItem("password")) && ( newPassword != sessionStorage.getItem("password") ) && (( newPassword == confirmPassword ) != null)){
         history.push("/login")
         sessionStorage.clear()
       }
