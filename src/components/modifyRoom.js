@@ -1,6 +1,10 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
+import MinDurationSelect from './minDurationSelect';
+import MaxDurationSelect from './maxDurationSelect';
+import StartTimeSelect from './startTimeSelect';
+import EndTimeSelect from './endTimeSelect';
 
 
 function ModifyRoom({closeModal}) {
@@ -55,10 +59,23 @@ function ModifyRoom({closeModal}) {
 
                             <label className="col-12 firstForm">Room Image</label>
                         
-                            <input className="size form-control-sm forthP" type="file"  id="customFile"></input>
-                            
+                            <input className="size form-control forthP" type="file"  id="customFile"></input>
                             
                             <label className="col-6 firstForm">Min Duration</label>
+                            <label className="col-6 secondForm">Max Duration</label>
+                            <MinDurationSelect className="size zero" required />
+                            <MaxDurationSelect className="size secondP" required />
+                            {/* <textarea className="size"></textarea>
+                            <textarea className="size  secondP"></textarea> */}
+
+                            <label className="col-6 firstForm">Start Time</label>
+                            <label className="col-6 secondForm">End Time</label>
+                            <StartTimeSelect className="size zero" required />
+                            <EndTimeSelect className="size secondP" required />
+                            {/* <textarea className="size"></textarea>
+                            <textarea className="size  secondP"></textarea> */}
+
+                            {/* <label className="col-6 firstForm">Min Duration</label>
                             <label className="col-6 secondForm">Max Duration</label>
                             <select className="size" value={dataRoom.minDuaration} onChange={setDataRoom}></select>
                             <select className="size  secondP" value={dataRoom.maxDuration} onChange={setDataRoom}></select>
@@ -66,7 +83,7 @@ function ModifyRoom({closeModal}) {
                             <label className="col-6 firstForm">Start Time</label>
                             <label className="col-6 secondForm">End Time</label>
                             <select className="size" value={dataStartTime} onChange={setDataStartTime}></select>
-                            <select className="size  secondP" value={dataEndTime} onChange={setDataEndTime}></select>
+                            <select className="size  secondP" value={dataEndTime} onChange={setDataEndTime}></select> */}
 
 
                         </form>

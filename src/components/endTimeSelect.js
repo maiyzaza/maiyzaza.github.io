@@ -14,7 +14,7 @@ const customStylesFloor = {
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
-    fontSize: "0.7rem",
+    fontSize: "0.8rem",
     width: "14rem",
     borderColor: "#EAEAEA"
   }),
@@ -41,19 +41,16 @@ const customStylesFloor = {
     top: "-0.4rem",
     boxShadow: 'none',
     borderRadius: 5,
-    fontSize: "0.7rem",
-    width: "14rem"
+    fontSize: "0.8rem",
+    width: "14rem",
+    borderColor: "#EAEAEA"
   }),
 
   singleValue: styles => ({
     ...styles,
     color: 'rgba(0, 0, 0)',
-  }),
-
-  singleValue: styles => ({
-    ...styles,
-    color: 'rgba(0, 0, 0)',
-  }),
+    fontSize: "0.8rem"
+  })
 }
 
 function EndTimeSelect() {
@@ -61,7 +58,7 @@ function EndTimeSelect() {
 
 
         //   const [data, setData] = useState([]);
-          let options = [{ value: "Not Specified", label: "Not Specified" }]
+          let options = [{ value: "16:00", label: "16:00" }]
         
         //   const postdata = async () => {
         //     // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQ0MzQxOTIwLCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.pkA3vaCkD9PWpJ00kCqTjsn0h09qqhT0q_xCY61b5l0"

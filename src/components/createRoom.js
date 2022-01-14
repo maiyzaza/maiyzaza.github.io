@@ -9,10 +9,12 @@ import EndTimeSelect from './endTimeSelect';
 
 
 
+
 function CreateRoom({closeModal}) {
     const [building, setbuilding] = useState('');
     const [floor, setfloor] = useState('');
     const [data, setData] = useState();
+    const [baseImage, setBaseImage] = useState("");
     const access_token = sessionStorage.getItem("token")
 
     const onClick = (event) => {
@@ -47,6 +49,35 @@ function CreateRoom({closeModal}) {
     }
 
     let listFloor = null
+
+
+
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertBase64(file);
+    setBaseImage(base64);
+    
+  };
+  console.log("url", baseImage)
+
+
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+    
 
     // if (data) {
     //     listFloor = data.map((Floor) => 
@@ -112,7 +143,7 @@ function CreateRoom({closeModal}) {
                             <label className="col-6 secondForm">Room Image</label>
                             <textarea className="size" required></textarea>
                             
-                            <input className="col-6 size form-control thirdP" type="file"  id="customFile"></input>
+                            <input type="file" className="col-6 size form-control thirdP" id="customFile" onChange={(e) => {uploadImage(e);}}></input>
                             </div>
                             
                             <label className="col-6 firstForm">Min Duration</label>
