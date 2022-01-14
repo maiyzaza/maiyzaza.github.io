@@ -944,12 +944,17 @@ tbody + thead{
   border-radius: 0.7rem;
   padding: 0.8rem;
   box-shadow: 0 1px 5px rgb(218, 218, 218);
-  
 }
-
-/* .mutiCard {
-  margin-bottom: -10rem;
-} */
+.room_management_not_find {
+  background-image: url(./assets/room_not_found.png);
+  margin-left: 40rem;
+  margin-top: 10rem;
+  text-align: center;
+  width: 50vh;
+  height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 div .col-3 {
   margin-right: -0.1rem !important;

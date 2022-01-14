@@ -11,6 +11,7 @@ function SearchRoomManagement(props) {
 
     // const [building, setbuilding] = useState('');
     // const [floor, setfloor] = useState('');
+    const [nonData, setNonData] = useState(true);
     const [data, setData] = useState();
 
     const onClick = async (event) => {
@@ -21,10 +22,8 @@ function SearchRoomManagement(props) {
         let buildings = window.sessionStorage.getItem("building")
         let floors = window.sessionStorage.getItem("floor")
 
-        if ((buildings == "Not Specified") || (floors == "Not Specified")) {
-            buildings = null
-            floors = null
-        }
+        if (buildings == "Not Specified") { buildings = null  }
+        if (floors == "Not Specified") { floors = null}
         
         await axios({
             url: "https://arr-dev.azurewebsites.net/api/v1/webs/explore-rooms",
@@ -39,8 +38,18 @@ function SearchRoomManagement(props) {
         })
         .then((res) => {
             setData(res.data.data)
-            window.sessionStorage.setItem("building", "Not Specified")
-            window.sessionStorage.setItem("floor", "Not Specified")
+            console.log(res.data.data)
+            // ! window.sessionStorage.setItem("building", buildings)
+            // ! window.sessionStorage.setItem("floor", floors)
+            
+            if (res.data.data.length != 0) {
+                setNonData(false)
+                window.sessionStorage.setItem("building", "Not Specified")
+                window.sessionStorage.setItem("floor", "Not Specified")
+            }
+            else {
+                setNonData(true)
+            }
         })
         .catch((res) => {
             // Todo Do Something
@@ -62,9 +71,16 @@ function SearchRoomManagement(props) {
             <SearchSelectBuilding />
             <SearchSelectFloor />
             <button class="search_button_room" onClick={onClick}> Search </button>
-                <div class="row">
+            {nonData && <div class="room_management_not_find">
+                No Room Management
+            </div>}
+            {!nonData && <div  class="row">
+                {listFloor}
+            </div>}
+            {/* {<div class="room_management_not_find" />} */}
+                { /* {<div  class="row">
                     {listFloor}
-                </div>
+                </div>} */}
             <button class="create_room_button"> Create Room </button>
             {/* <SearchSelectRoom /> */}
         </div>
