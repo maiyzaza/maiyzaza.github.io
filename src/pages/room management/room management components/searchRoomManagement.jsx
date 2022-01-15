@@ -80,7 +80,7 @@ function SearchRoomManagement(props) {
             {nonData && <div class="room_management_not_find">
                 No Room Management
             </div>}
-            {!nonData && <div  class="row">
+            {!nonData && <div  class="row canScroll">
                 {listFloor}
             </div>}
             {/* {<div class="room_management_not_find" />} */}

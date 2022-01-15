@@ -49,7 +49,7 @@ function App() {
           </Route>
           <Route path="/changePassword">
             <ChangePassword />
-            <Sidebar />
+            {/* <Sidebar /> */}
           </Route>
           <Route path="/moreInfo">
           {/* <Route path="/moreInfo/:bookingId" element={ <MoreInfo /> } > */}

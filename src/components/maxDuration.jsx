@@ -7,8 +7,9 @@ const customStyles = {
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    // left: "21.55rem",
-    top: "0rem",
+    left: "16rem",
+    paddingBottom: "0rem",
+    top: "-1.6rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
@@ -24,6 +25,7 @@ const customStyles = {
       backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
+    
     }
   },
 
@@ -31,12 +33,13 @@ const customStyles = {
     ...styles,
     color: 'black',
     fontFamily: 'Bariol Regular',
+    
   }),
 
   menu: styles => ({
     ...styles,
-    // left: "22.5rem",
-    top: "1.9rem",
+    left: "16rem",
+    top: "-0.4rem",
     boxShadow: 'none',
     borderRadius: 5,
     fontSize: '0.8rem',
@@ -47,7 +50,7 @@ const customStyles = {
     ...styles,
     color: 'rgba(0, 0, 0)',
     fontSize: '0.8rem'
-  }),
+  })
 }
 
 

@@ -3,14 +3,17 @@ import Select from 'react-select'
 
 import axios from 'axios';
 
+
+
 const customStylesFloor = {
+  
   control: (base, state) => ({
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
     left: "16rem",
     paddingBottom: "0rem",
-    top: "-2.3rem",
+    top: "-1.6rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
@@ -54,10 +57,33 @@ const customStylesFloor = {
   })
 }
 
-function MaxDurationSelect() {
 
 
+function MaxDurationSelect(props) {
 
+  // const [dataMaxDu,setDataMaxDu] = useState('')
+
+
+        let defaultState = props.maxDu
+        let a 
+
+        if(defaultState < 60){
+          a = defaultState+ " min."
+        }
+        else if (defaultState >= 60) {
+          var num = defaultState;
+          var hours = (num / 60);
+          var rhours = Math.floor(hours);
+          var minutes = (hours - rhours) * 60;
+          var rminutes = Math.round(minutes);
+          if (rminutes == 0) {
+            a = rhours + " hrs."
+          } else {
+            a = rhours + " hrs." + rminutes + " min."
+        }
+      } else {
+        a = props.maxDu
+      }
         //   const [data, setData] = useState([]);
         let options = [{ value: "1 hrs.", label: "1 hrs."  },
                        { value: "1 hrs. 30 min.", label: "1 hrs. 30 min." },
@@ -102,7 +128,7 @@ function MaxDurationSelect() {
     <Select
       className="positionFloorSelect"
       options={options}
-      placeholder="Not Specified"
+      placeholder={a}
       styles={customStylesFloor}
     //   onChange={onChange}
     />

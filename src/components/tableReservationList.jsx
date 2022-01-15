@@ -40,6 +40,7 @@ const TableReservationList = (props) =>  {
 
           let itemData = res.data.data
           setDataRow(itemData)
+          
 
        });
       } catch (err) {
@@ -109,6 +110,8 @@ const TableReservationList = (props) =>  {
               color: "black",
               fontSize: "1.1rem",
             }}
+            reservationId = {item.bookingId}
+            
               // onClick={() => deletePost(posts[index].id)}
               // onClick={() => Post(posts[index].id)}
           > 

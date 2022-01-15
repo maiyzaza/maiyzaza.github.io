@@ -1,8 +1,9 @@
-body {
+body  {
   position: relative;
   scroll-behavior: smooth;
   min-height: 100vh;
   width: 100%;
+  /* overflow: hidden ; */
   /* overflow: hidden; */
   background-color: #EAEAEA !important;
   /* background-image: url(/src/assets/light-background.png);
@@ -15,13 +16,17 @@ body {
   background-size: 100% 100%; */
 }
 
+.canScroll {
+  /* overflow: auto !important; */
+}
+
 .css-b62m3t-container {
   height: 1.6rem!important;
 }
 
-.positionFloorSelect {
+/* .positionFloorSelect {
   margin-top: 0.7rem;
-}
+} */
 
 /* x button */
 
@@ -79,6 +84,7 @@ body {
 .card {
   box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;
   border-bottom: 0.08rem solid #D7D5DB !important;
+  /* position: fixed !; */
 }
 
 .card img{
@@ -103,6 +109,7 @@ body {
   padding-right: 1.7rem !important;
   background-color: #F6F6F6 !important;
   width: 34rem;
+  /* display: block!important; */
 }
 
 .myCard1 {
@@ -346,7 +353,7 @@ body {
   font-size: 1.4rem;
   font-family: 'Bariol Serif Bold';
   /* margin-top: -1rem; */
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .reservationList-modalContainer .body {
@@ -358,6 +365,19 @@ body {
 
 
 /* Create Room & Modify Room*/
+
+.oldImg {
+  width: 30rem;
+  height: 10rem;
+  /* width: 20rem;
+  height: 10rem; */
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
 
 .rowWWWW {
   /* width: 4rem!important; */
@@ -449,7 +469,7 @@ form .new-col-12 {
   /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
   display: flex;
   flex-direction: column;
-  padding: 5rem;
+  padding: 5rem !important;
 }
 
 .createRoom-modalContainer .title {
@@ -458,7 +478,7 @@ form .new-col-12 {
   font-size: 1.4rem;
   font-family: 'Bariol Serif Bold';
   /* margin-top: -1rem; */
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .createRoom-modalContainer .body {
@@ -472,7 +492,7 @@ form .new-col-12 {
   /* flex: 20%; */
   /* display: flex;
   align-self: right; */
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   margin-left: 15.8rem;
   /* border: 0 !important; */
 

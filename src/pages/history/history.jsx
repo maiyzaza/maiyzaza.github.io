@@ -50,7 +50,7 @@ function History(props) {
   return (
     <div> 
     {/* {/* ใส่ Div เพื่อให้ใส่ component ได้ /} */}
-      <body>      
+      <body >      
         <div class="card">
           <img class="card-img-top" src={cardImg}></img>
             <div class="card-img-overlay">
@@ -58,9 +58,9 @@ function History(props) {
                 <h4 class="card-title ">HISTORY</h4>
               </div>
               <p class="content card-text">Suvarnabhumi Campus</p>
-              <div className='customSearchBar'>
+              {/* <div className='customSearchBar'>
                 <input type='text' placeholder='Search Room'></input>
-              </div>
+              </div> */}
             </div>
         </div>
         

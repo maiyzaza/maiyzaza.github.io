@@ -29,6 +29,8 @@ function MoreInfo() {
   const [dataMinDu,setDataMinDu] = useState('')
   const [dataMaxDu,setDataMaxDu] = useState('')
 
+  const [newImg,SetNewImg] = useState('')
+
   
 
 
@@ -62,7 +64,7 @@ function MoreInfo() {
           }
       })
       .then((res) => {
-          console.log(res.data.data);
+          // console.log(res.data.data);
           setDataReservation(res.data.data)
           setDataStudents(res.data.data.student)
 
@@ -93,7 +95,7 @@ function MoreInfo() {
     })
     .then((res) => {
         
-
+        console.log(res.data.data)
         setDataRoom(res.data.data)
         setDataStartTime(res.data.data.startTime.slice(0,5))
         setDataEndTime(res.data.data.endTime.slice(0,5))

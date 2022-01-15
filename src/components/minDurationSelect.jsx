@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 
+
 import axios from 'axios';
 
 const customStylesBuilding = {
@@ -8,8 +9,9 @@ const customStylesBuilding = {
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    // left: "21.55rem",
-    top: "0rem",
+    left: "16rem",
+    paddingBottom: "0rem",
+    top: "-1.6rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
@@ -36,26 +38,51 @@ const customStylesBuilding = {
 
   menu: styles => ({
     ...styles,
-    // left: "22.5rem",
-    top: "1.9rem",
+    left: "16rem",
+    top: "0.3rem",
     boxShadow: 'none',
     borderRadius: 5,
-    fontSize: '0.8rem',
-    width: "14rem"
+    fontSize: "0.8rem",
+    width: "14rem",
+    borderColor: "#EAEAEA"
   }),
 
   singleValue: styles => ({
     ...styles,
     color: 'rgba(0, 0, 0)',
-    fontSize: '0.8rem'
-  }),
+    fontSize: "0.8rem"
+  })
 }
 
-function MinDurationSelect() {
+function MinDurationSelect(props) {
+
+  // console.log("props",props.minDu)
+
+  let defaultState = props.minDu
+  let a 
+
+  if(defaultState < 60){
+    a = defaultState+ " min."
+  }
+  else if (defaultState >= 60) {
+    var num = defaultState;
+    var hours = (num / 60);
+    var rhours = Math.floor(hours);
+    var minutes = (hours - rhours) * 60;
+    var rminutes = Math.round(minutes);
+    if (rminutes == 0) {
+      a = rhours + " hrs."
+    } else {
+      a = rhours + " hrs." + rminutes + " min."
+  }
+} else {
+  a = props.minDu
+}
 
 //   const [data, setData] = useState([]);
-  let options = [{ value: "30 min.", label: "30 min." },
-                 { value: "1 hrs.", label: "1 hrs." }
+  let options = [{ value: '30', label: '30 min.' },
+                 { value: '60', label: '1 hrs.' },
+                 { value: '90', label: '1 hrs. 30 min.' }
 ]
 
 //   const postdata = async () => {
@@ -85,18 +112,21 @@ function MinDurationSelect() {
 //     options.push({ value: e.text, label: e.text })
 //   });
 
-//   const onChange = (e) => {
-//     window.sessionStorage.setItem("building", e.value)
-//   }
+  // const onChange = (e) => {
+
+  //   e.value = props
+  // }
 
 
   return (
     <Select
       // className="col-2"
       options={options}
-      placeholder="Not Specified"
+      value={a}
+      // placeholder={a}
       styles={customStylesBuilding}
-    //   onChange={onChange}
+      onChange={a}
+      // value={defaultState}
     />
   );
 }

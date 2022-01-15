@@ -7,6 +7,8 @@ function Card(props) {
 
 
   let data = props.data;
+  let roomId = data.roomId;
+  // console.log("asa", roomId)
 
   return (
     
@@ -16,7 +18,7 @@ function Card(props) {
       {/* <a href="#" class=""> */}
 
         <i class='card_room_management_room_writeimg bx bx-edit' onClick={() => {setOpenModal1(true);}}></i>
-        {openModal1 && <ModifyRoom closeModal={setOpenModal1} />} 
+        {openModal1 && <ModifyRoom closeModal={setOpenModal1} roomId = {roomId} />} 
 
       {/* </a> */}
 
