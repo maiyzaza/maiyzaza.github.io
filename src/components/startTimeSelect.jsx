@@ -84,9 +84,9 @@ function StartTimeSelect() {
 //     options.push({ value: e.text, label: e.text })
 //   });
 
-//   const onChange = (e) => {
-//     window.sessionStorage.setItem("building", e.value)
-//   }
+  const onChange = (e) => {
+    window.sessionStorage.setItem("startTime", e.value)
+  }
 
 
   return (
@@ -95,7 +95,7 @@ function StartTimeSelect() {
       options={options}
       placeholder="Not Specified"
       styles={customStylesBuilding}
-    //   onChange={onChange}
+      onChange={onChange}
     />
   );
 }

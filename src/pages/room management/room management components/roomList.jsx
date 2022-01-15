@@ -16,7 +16,6 @@ function Card(props) {
       {/* <a href="#" class=""> */}
 
         <i class='card_room_management_room_writeimg bx bx-edit' onClick={() => {setOpenModal1(true);}}></i>
-        {openModal1 && <ModifyRoom closeModal={setOpenModal1} />} 
 
       {/* </a> */}
 
@@ -34,6 +33,7 @@ function Card(props) {
       <div className="card_room_management_room_roomname">{data.roomName}</div>
       <div className="card_room_management_room_time">{data.openTime} - {data.closeTime} hrs.</div>
       <a href="#" class="card_room_management_room_link">See more {">"}</a>
+      {openModal1 && <ModifyRoom closeModal={setOpenModal1} />} 
     </div>
     </div>
   )
