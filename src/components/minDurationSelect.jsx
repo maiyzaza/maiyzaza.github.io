@@ -51,44 +51,20 @@ const customStylesBuilding = {
   }),
 }
 
+
+
 function MinDurationSelect() {
 
-//   const [data, setData] = useState([]);
-  let options = [{ value: "30 min.", label: "30 min." },
-                 { value: "1 hrs.", label: "1 hrs." }
-]
+  let options = [{ value: 30 , label: "30 min." },
+                { value: 60 , label: "1 hr." },
+                { value: 90 , label: "1 hr. 30 min." },
+                { value: 120 , label: "2 hrs." },
+                { value: 150 , label: "2 hrs. 30 min." },
+                { value: 180 , label: "3 hrs." }]
 
-//   const postdata = async () => {
-//     // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQ0MzQxOTIwLCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.pkA3vaCkD9PWpJ00kCqTjsn0h09qqhT0q_xCY61b5l0"
-//     const access_token = sessionStorage.getItem("token")
-    
-//     axios({
-//       url: "https://arr-dev.azurewebsites.net/api/v1/webs/buildings",
-//       headers: {
-//           'Authorization': "Bearer " + access_token
-//           },
-//       method: "GET",
-//     })
-//     .then((res) => {
-//       setData(res.data.data)
-//     })
-//     .catch((res) => {
-//       // Todo Do Something
-//     });
-//   };
-
-//   useEffect(() => {
-//     postdata();
-//   },[]);
-
-//   data.forEach(e => {
-//     options.push({ value: e.text, label: e.text })
-//   });
-
-//   const onChange = (e) => {
-//     window.sessionStorage.setItem("building", e.value)
-//   }
-
+  const onChange = (e) => {
+    window.sessionStorage.setItem("minDuration", e.value)
+  }
 
   return (
     <Select
@@ -96,7 +72,7 @@ function MinDurationSelect() {
       options={options}
       placeholder="Not Specified"
       styles={customStylesBuilding}
-    //   onChange={onChange}
+      onChange={onChange}
     />
   );
 }
