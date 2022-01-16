@@ -10,7 +10,7 @@ const customStylesFloor = {
     boxShadow: 0,
     left: "16rem",
     paddingBottom: "0rem",
-    top: "-2.3rem",
+    top: "-1.6rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
@@ -38,7 +38,7 @@ const customStylesFloor = {
   menu: styles => ({
     ...styles,
     left: "16rem",
-    top: "-0.4rem",
+    top: "0.3rem",
     boxShadow: 'none',
     borderRadius: 5,
     fontSize: "0.8rem",

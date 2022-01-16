@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 
-
 import axios from 'axios';
 
 const customStylesBuilding = {
@@ -9,9 +8,8 @@ const customStylesBuilding = {
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    left: "16rem",
-    paddingBottom: "0rem",
-    top: "-1.6rem",
+    // left: "21.55rem",
+    top: "0rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
@@ -38,95 +36,43 @@ const customStylesBuilding = {
 
   menu: styles => ({
     ...styles,
-    left: "16rem",
-    top: "0.3rem",
+    // left: "22.5rem",
+    top: "1.9rem",
     boxShadow: 'none',
     borderRadius: 5,
-    fontSize: "0.8rem",
-    width: "14rem",
-    borderColor: "#EAEAEA"
+    fontSize: '0.8rem',
+    width: "14rem"
   }),
 
   singleValue: styles => ({
     ...styles,
     color: 'rgba(0, 0, 0)',
-    fontSize: "0.8rem"
-  })
+    fontSize: '0.8rem'
+  }),
 }
 
-function MinDurationSelect(props) {
 
-  // console.log("props",props.minDu)
 
-  let defaultState = props.minDu
-  let a 
+function MinDurationSelect() {
 
-  if(defaultState < 60){
-    a = defaultState+ " min."
+  let options = [{ value: 30 , label: "30 min." },
+                { value: 60 , label: "1 hr." },
+                { value: 90 , label: "1 hr. 30 min." },
+                { value: 120 , label: "2 hrs." },
+                { value: 150 , label: "2 hrs. 30 min." },
+                { value: 180 , label: "3 hrs." }]
+
+  const onChange = (e) => {
+    window.sessionStorage.setItem("minDuration", e.value)
   }
-  else if (defaultState >= 60) {
-    var num = defaultState;
-    var hours = (num / 60);
-    var rhours = Math.floor(hours);
-    var minutes = (hours - rhours) * 60;
-    var rminutes = Math.round(minutes);
-    if (rminutes == 0) {
-      a = rhours + " hrs."
-    } else {
-      a = rhours + " hrs." + rminutes + " min."
-  }
-} else {
-  a = props.minDu
-}
-
-//   const [data, setData] = useState([]);
-  let options = [{ value: '30', label: '30 min.' },
-                 { value: '60', label: '1 hrs.' },
-                 { value: '90', label: '1 hrs. 30 min.' }
-]
-
-//   const postdata = async () => {
-//     // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQ0MzQxOTIwLCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.pkA3vaCkD9PWpJ00kCqTjsn0h09qqhT0q_xCY61b5l0"
-//     const access_token = sessionStorage.getItem("token")
-    
-//     axios({
-//       url: "https://arr-dev.azurewebsites.net/api/v1/webs/buildings",
-//       headers: {
-//           'Authorization': "Bearer " + access_token
-//           },
-//       method: "GET",
-//     })
-//     .then((res) => {
-//       setData(res.data.data)
-//     })
-//     .catch((res) => {
-//       // Todo Do Something
-//     });
-//   };
-
-//   useEffect(() => {
-//     postdata();
-//   },[]);
-
-//   data.forEach(e => {
-//     options.push({ value: e.text, label: e.text })
-//   });
-
-  // const onChange = (e) => {
-
-  //   e.value = props
-  // }
-
 
   return (
     <Select
       // className="col-2"
       options={options}
-      value={a}
-      // placeholder={a}
+      placeholder="Not Specified"
       styles={customStylesBuilding}
-      onChange={a}
-      // value={defaultState}
+      onChange={onChange}
     />
   );
 }
