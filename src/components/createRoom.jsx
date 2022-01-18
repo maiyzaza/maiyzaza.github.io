@@ -6,25 +6,22 @@ import MinDurationSelect from './minDurationSelect';
 import MaxDurationSelect from './maxDurationSelect';
 import StartTimeSelect from './startTimeSelect';
 import EndTimeSelect from './endTimeSelect';
+import { useHistory } from 'react-router'
 
 
 
 
 function CreateRoom({closeModal}) {
-    // const [building, setbuilding] = useState('');
-    // const [floor, setfloor] = useState('');
+
     const [roomTitle, setRoomTitle] = useState('');
     const [roomCapacity, setCapacity] = useState('');
     const [requireMember, setRequireMember] = useState('');
-    // const [minDuaration, setMinDuaration] = useState('');
-    // const [maxDuaration, setMaxDuaration] = useState('');
-    // const [startTime, setStartTime] = useState('');
-    // const [endTime, setEndTime] = useState('');
-    
-
-    const [data, setData] = useState();
+    const [data, setData] = useState(false);
     const [baseImage, setBaseImage] = useState("");
     const access_token = sessionStorage.getItem("token")
+    
+
+    let history = useHistory();
 
     const onClick = (event) => {
 
@@ -34,16 +31,6 @@ function CreateRoom({closeModal}) {
         let maxDuration = window.sessionStorage.getItem("maxDuration")
         let startTime = window.sessionStorage.getItem("startTime")
         let endTime = window.sessionStorage.getItem("endTime")
-
-        console.log(building)
-        console.log(floor)
-        console.log(roomTitle)
-        console.log(roomCapacity)
-        console.log(requireMember)
-        console.log(minDuration)
-        console.log(maxDuration)
-        console.log(startTime)
-        console.log(endTime)
 
         event.preventDefault();
 
@@ -59,7 +46,7 @@ function CreateRoom({closeModal}) {
                 Floor : floor,
                 RoomTitle: roomTitle,
                 RoomCapacity: roomCapacity,
-                RoomPictureUrl: "https://cdn.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_1024/https://truelab.info/wp-content/uploads/2020/03/DSC_1945-HDR-1024x683.jpg",
+                RoomPictureUrl: baseImage,
                 MinAttendee: requireMember,
                 MinDuration: minDuration,
                 MaxDuration: maxDuration,
@@ -68,11 +55,22 @@ function CreateRoom({closeModal}) {
         }
         })
         .then((res) => {
-            // setData(res.data.data)
+            setData(false)
+            console.log(res.data)
+            window.sessionStorage.setItem("building", null)
+            window.sessionStorage.setItem("floor", null)
+            window.sessionStorage.setItem("minDuration", null)
+            window.sessionStorage.setItem("maxDuration", null)
+            window.sessionStorage.setItem("startTime", null)
+            window.sessionStorage.setItem("endTime", null)
+
+            history.push("/roomManagement")
+            window.location.reload("/roomManagement");
         })
         .catch((res) => {
-            // Todo Do Something
+            setData(true)
         });
+
     }
 
   const uploadImage = async (e) => {
@@ -81,7 +79,6 @@ function CreateRoom({closeModal}) {
     setBaseImage(base64);
     
   };
-  console.log("url", baseImage)
 
 
 
@@ -112,8 +109,6 @@ function CreateRoom({closeModal}) {
                             <label className="col-6 secondForm">Floor</label>
                             <SearchSelectBuilding className="size zero" required />
                             <SearchSelectFloor className="size secondP" required />
-                            {/* <textarea className="size" required></textarea>
-                            <textarea className="size secondP" required></textarea> */}
                             
                             <label className="col-6 firstForm">Room Title</label>
                             <label className="col-6 secondForm">Room Capacity</label>
@@ -145,6 +140,8 @@ function CreateRoom({closeModal}) {
                         <button className="btn btn-danger btn-sm" onClick={onClick} type="button">Create</button>
                         <button className="btn btn-primary btn-sm" type="button" onClick={() => closeModal(false)} id="cancelLogOut">Cancel</button>
                     </div>
+                    {data && <p className='text_alert_create'> Please fill evry things.</p>}
+                    
                 </div>
                 
             </div>

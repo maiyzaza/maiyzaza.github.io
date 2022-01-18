@@ -11,7 +11,6 @@ const customStylesFloor = {
     left: "16rem",
     paddingBottom: "0rem",
     top: "-2.3rem",
-    width: "10rem",
     cursor: 'text',
     borderRadius: 5,
     fontSize: "0.8rem",
@@ -46,6 +45,11 @@ const customStylesFloor = {
     borderColor: "#EAEAEA"
   }),
 
+  menuList: styles => ({
+    ...styles,
+    height: "9rem",
+  }),
+
   singleValue: styles => ({
     ...styles,
     color: 'rgba(0, 0, 0)',
@@ -55,12 +59,27 @@ const customStylesFloor = {
 
 function EndTimeSelect() {
 
-  let options = [{ value: "16:00", label: "16:00" }]
+  let options = [{ value: "09:00", label: "09:00" },
+                { value: "09:00", label: "09:30" },
+                { value: "10:00", label: "10:00" },
+                { value: "10:30", label: "10:30" },
+                { value: "11:00", label: "11:00" },
+                { value: "11:30", label: "11:30" },
+                { value: "12:00", label: "12:00" },
+                { value: "12:30", label: "12:30" },
+                { value: "13:00", label: "13:00" },
+                { value: "13:30", label: "13:30" },
+                { value: "14:00", label: "14:00" },
+                { value: "14:30", label: "14:30" },
+                { value: "15:00", label: "15:00" },
+                { value: "15:30", label: "15:30" },
+                { value: "16:00", label: "16:00" },
+                { value: "16:30", label: "16:30" },
+                { value: "17:00", label: "17:00" }]
         
   const onChange = (e) => {
     window.sessionStorage.setItem("endTime", e.value)
   }
-        
 
   return (
     <Select

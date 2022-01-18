@@ -10,7 +10,6 @@ const customStylesBuilding = {
     boxShadow: 0,
     // left: "21.55rem",
     top: "0rem",
-    width: "10rem",
     cursor: 'text',
     borderRadius: 5,
     fontSize: "0.8rem",
@@ -42,6 +41,12 @@ const customStylesBuilding = {
     borderRadius: 5,
     fontSize: "0.8rem",
     width: "14rem"
+    
+  }),
+
+  menuList: styles => ({
+    ...styles,
+    height: "9rem",
   }),
 
   singleValue: styles => ({
@@ -54,35 +59,23 @@ const customStylesBuilding = {
 function StartTimeSelect() {
 
 //   const [data, setData] = useState([]);
-  let options = [{ value: "09:00", label: "09:00" }
-                ]
-
-//   const postdata = async () => {
-//     // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQ0MzQxOTIwLCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.pkA3vaCkD9PWpJ00kCqTjsn0h09qqhT0q_xCY61b5l0"
-//     const access_token = sessionStorage.getItem("token")
-    
-//     axios({
-//       url: "https://arr-dev.azurewebsites.net/api/v1/webs/buildings",
-//       headers: {
-//           'Authorization': "Bearer " + access_token
-//           },
-//       method: "GET",
-//     })
-//     .then((res) => {
-//       setData(res.data.data)
-//     })
-//     .catch((res) => {
-//       // Todo Do Something
-//     });
-//   };
-
-//   useEffect(() => {
-//     postdata();
-//   },[]);
-
-//   data.forEach(e => {
-//     options.push({ value: e.text, label: e.text })
-//   });
+  let options = [{ value: "09:00", label: "09:00" },
+                { value: "09:00", label: "09:30" },
+                { value: "10:00", label: "10:00" },
+                { value: "10:30", label: "10:30" },
+                { value: "11:00", label: "11:00" },
+                { value: "11:30", label: "11:30" },
+                { value: "12:00", label: "12:00" },
+                { value: "12:30", label: "12:30" },
+                { value: "13:00", label: "13:00" },
+                { value: "13:30", label: "13:30" },
+                { value: "14:00", label: "14:00" },
+                { value: "14:30", label: "14:30" },
+                { value: "15:00", label: "15:00" },
+                { value: "15:30", label: "15:30" },
+                { value: "16:00", label: "16:00" },
+                { value: "16:30", label: "16:30" },
+                { value: "17:00", label: "17:00" }]
 
   const onChange = (e) => {
     window.sessionStorage.setItem("startTime", e.value)
