@@ -6,20 +6,18 @@ import MinDurationSelect from './minDurationSelect';
 import MaxDurationSelect from './maxDurationSelect';
 import StartTimeSelect from './startTimeSelect';
 import EndTimeSelect from './endTimeSelect';
+import { useHistory } from 'react-router-dom';
 
 
 
 
 function CreateRoom({closeModal}) {
-    // const [building, setbuilding] = useState('');
-    // const [floor, setfloor] = useState('');
+    let history = useHistory();
+  
     const [roomTitle, setRoomTitle] = useState('');
     const [roomCapacity, setCapacity] = useState('');
     const [requireMember, setRequireMember] = useState('');
-    // const [minDuaration, setMinDuaration] = useState('');
-    // const [maxDuaration, setMaxDuaration] = useState('');
-    // const [startTime, setStartTime] = useState('');
-    // const [endTime, setEndTime] = useState('');
+
     
 
     const [data, setData] = useState();
@@ -68,7 +66,8 @@ function CreateRoom({closeModal}) {
         }
         })
         .then((res) => {
-            // setData(res.data.data)
+            history.push("/roomManagement")
+            window.location.reload()
         })
         .catch((res) => {
             // Todo Do Something

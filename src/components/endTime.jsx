@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Select from 'react-select'
 
-import axios from 'axios';
 
-const customStylesFloor = {
+const customStyles = {
   control: (base, state) => ({
     ...base,
     fontFamily: 'Bariol Regular',
@@ -26,6 +25,7 @@ const customStylesFloor = {
       backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
+    
     }
   },
 
@@ -33,6 +33,7 @@ const customStylesFloor = {
     ...styles,
     color: 'black',
     fontFamily: 'Bariol Regular',
+    
   }),
 
   menu: styles => ({
@@ -41,37 +42,22 @@ const customStylesFloor = {
     top: "-0.4rem",
     boxShadow: 'none',
     borderRadius: 5,
-    fontSize: "0.8rem",
-    width: "14rem",
-    borderColor: "#EAEAEA"
+    fontSize: '0.8rem',
+    width: "14rem"
   }),
 
   singleValue: styles => ({
     ...styles,
     color: 'rgba(0, 0, 0)',
-    fontSize: "0.8rem"
+    fontSize: '0.8rem'
   })
 }
 
-function EndTimeSelect() {
 
-  let options = [{ value: "16:00", label: "16:00" }]
-        
-  const onChange = (e) => {
-    window.sessionStorage.setItem("endTime", e.value)
-  }
-        
-
-  return (
-    <Select
-      className="positionFloorSelect"
-      options={options}
-      placeholder="Not Specified"
-      styles={customStylesFloor}
-      onChange={onChange}
-    />
-  );
+function CustomSelect({style,options,onChange,defaultValue}){
+    return <div style={style}>
+        <Select styles={customStyles} options={options} onChange={onChange} defaultValue={defaultValue}/>
+    </div>
 }
 
-export default EndTimeSelect;
-
+export default CustomSelect;

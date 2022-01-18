@@ -49,7 +49,6 @@ function App() {
           </Route>
           <Route path="/changePassword">
             <ChangePassword />
-            <Sidebar />
           </Route>
           <Route path="/moreInfo">
             <MoreInfo />

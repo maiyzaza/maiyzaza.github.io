@@ -13,7 +13,7 @@ function ChangePassword() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  // const [confirmation,setConfirmation] = useState("");
+
 
   const [alert, setAlert] = useState("");
 
@@ -103,18 +103,12 @@ function ChangePassword() {
         <br/>
         <br/>
         <button>Confirm</button>
-        {/* <div class="password_wrong">
-          {alert && <p> The current password is incorrect</p>}
-        </div> */}
+       
         
         <div class="password_wrong">
           {alert}
         </div>
 
-        {/* <div class="password_wrong">
-          {alert && <p> The password confirmation does not match</p>}
-        </div> */}
-        {/* <p class="backPage" ><u><a href="/reservationManagement">Back to previous page</a></u></p> */}
     </form>
   </div>
   );
