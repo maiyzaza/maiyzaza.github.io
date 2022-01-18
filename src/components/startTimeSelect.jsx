@@ -58,7 +58,6 @@ const customStylesBuilding = {
 
 function StartTimeSelect() {
 
-//   const [data, setData] = useState([]);
   let options = [{ value: "09:00", label: "09:00" },
                 { value: "09:00", label: "09:30" },
                 { value: "10:00", label: "10:00" },
@@ -84,7 +83,6 @@ function StartTimeSelect() {
 
   return (
     <Select
-      // className="col-2"
       options={options}
       placeholder="Not Specified"
       styles={customStylesBuilding}

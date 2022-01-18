@@ -5,6 +5,8 @@ import TableReservationList from './tableReservationList'
 
 function ReservationListModal({closeModal}) {
 
+    
+
     const history = useHistory();
 
     const goToReservationManagement = () => {

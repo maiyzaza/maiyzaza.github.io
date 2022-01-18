@@ -8,7 +8,7 @@ import CreateRoom from '../../../components/createRoom';
 
 
 function SearchRoomManagement(props) {
-
+    
     const access_token = sessionStorage.getItem("token")
 
     const [nonData, setNonData] = useState(true);
@@ -72,7 +72,7 @@ function SearchRoomManagement(props) {
             {nonData && <div class="room_management_not_find">
                 No Room Management
             </div>}
-            {!nonData && <div  class="row">
+            {!nonData && <div  class="row canScroll">
                 {listFloor}
             </div>}
             <button className='create_room_button' onClick={() => {setOpenModal(true);}}>

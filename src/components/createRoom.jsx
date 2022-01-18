@@ -6,7 +6,7 @@ import MinDurationSelect from './minDurationSelect';
 import MaxDurationSelect from './maxDurationSelect';
 import StartTimeSelect from './startTimeSelect';
 import EndTimeSelect from './endTimeSelect';
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -65,7 +65,7 @@ function CreateRoom({closeModal}) {
             window.sessionStorage.setItem("endTime", null)
 
             history.push("/roomManagement")
-            window.location.reload("/roomManagement");
+            window.location.reload()
         })
         .catch((res) => {
             setData(true)

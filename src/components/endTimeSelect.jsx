@@ -10,7 +10,7 @@ const customStylesFloor = {
     boxShadow: 0,
     left: "16rem",
     paddingBottom: "0rem",
-    top: "-2.3rem",
+    top: "-1.61rem",
     cursor: 'text',
     borderRadius: 5,
     fontSize: "0.8rem",

@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Select from 'react-select'
 
-import axios from 'axios';
 
-const customStylesBuilding = {
+const customStyles = {
   control: (base, state) => ({
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    top: "0rem",
+    left: "16rem",
+    paddingBottom: "0rem",
+    top: "-1.6rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
@@ -24,6 +25,7 @@ const customStylesBuilding = {
       backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
+    
     }
   },
 
@@ -31,12 +33,13 @@ const customStylesBuilding = {
     ...styles,
     color: 'black',
     fontFamily: 'Bariol Regular',
+    
   }),
 
   menu: styles => ({
     ...styles,
-    // left: "22.5rem",
-    top: "1.9rem",
+    left: "16rem",
+    top: "-0.4rem",
     boxShadow: 'none',
     borderRadius: 5,
     fontSize: '0.8rem',
@@ -47,33 +50,14 @@ const customStylesBuilding = {
     ...styles,
     color: 'rgba(0, 0, 0)',
     fontSize: '0.8rem'
-  }),
+  })
 }
 
 
-
-function MinDurationSelect() {
-
-  let options = [{ value: 30 , label: "30 min." },
-                { value: 60 , label: "1 hr." },
-                { value: 90 , label: "1 hr. 30 min." },
-                { value: 120 , label: "2 hrs." },
-                { value: 150 , label: "2 hrs. 30 min." },
-                { value: 180 , label: "3 hrs." }]
-
-  const onChange = (e) => {
-    window.sessionStorage.setItem("minDuration", e.value)
-  }
-
-  return (
-    <Select
-      options={options}
-      placeholder="Not Specified"
-      styles={customStylesBuilding}
-      onChange={onChange}
-    />
-  );
+function CustomSelect({style,options,onChange,defaultValue}){
+    return <div style={style}>
+        <Select styles={customStyles} options={options} onChange={onChange} defaultValue={defaultValue}/>
+    </div>
 }
 
-export default MinDurationSelect ;
-
+export default CustomSelect;

@@ -2,8 +2,6 @@ import '../../App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from 'react-router'
 import React, { useEffect, useState } from "react";
-// import CreateRoom from '../../components/createRoom';
-// import ModifyRoom from '../../components/modifyRoom';
 import SearchRoomManagement from "./room management components/searchRoomManagement"
 import cardImg from '../../assets/cardImg.png';
 
@@ -24,11 +22,11 @@ function RoomManagement() {
        <div class="card">
           <img class="card-img-top" src={cardImg}></img>
             <div class="card-img-overlay">
-              <h4 class="headContent card-title">RoomManagement</h4>
+              <h4 class="headContent card-title">ROOM MANAGEMENT</h4>
               <p class="content card-text">Suvarnabhumi Campus</p>
             </div>
         </div>
-        <SearchRoomManagement />
+        <SearchRoomManagement />   
     </body>
   );
 }
