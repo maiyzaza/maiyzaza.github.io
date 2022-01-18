@@ -8,7 +8,6 @@ const customStylesBuilding = {
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    // left: "21.55rem",
     top: "0rem",
     width: "10rem",
     cursor: 'text',
@@ -68,7 +67,6 @@ function MinDurationSelect() {
 
   return (
     <Select
-      // className="col-2"
       options={options}
       placeholder="Not Specified"
       styles={customStylesBuilding}

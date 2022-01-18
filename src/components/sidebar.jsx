@@ -69,7 +69,7 @@ const Sidebar = () => {
           </div>
 
           <div className={isActive ? "menu" : "menu active"}>
-            <i class='bx bx-menu' onClick={ToggleClass} id="btn"></i>
+            {/* <i class='bx bx-menu' onClick={ToggleClass} id="btn"></i> */}
           </div>
 
         </div>

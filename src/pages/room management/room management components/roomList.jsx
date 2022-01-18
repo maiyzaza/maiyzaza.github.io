@@ -8,34 +8,19 @@ function Card(props) {
 
   let data = props.data;
   let roomId = data.roomId;
-  // console.log("asa", roomId)
+  console.log("asa", roomId)
 
   return (
     
     <div className="col-3">
     <div className="card_room_management_room">
-    
-      {/* <a href="#" class=""> */}
-
         <i class='card_room_management_room_writeimg bx bx-edit' onClick={() => {setOpenModal1(true);}}></i>
         {openModal1 && <ModifyRoom closeModal={setOpenModal1} roomId = {roomId} />} 
-
-      {/* </a> */}
-
-      {/* <button
-      className='openLogOutModal test' 
-      onClick={() => {
-        setOpenModal1(true);
-      }}
-      >
-      <span class="links_name">Modify Room</span>
-      </button>
-      {openModal1 && <ModifyRoom closeModal={setOpenModal1} />}  */}
-
         <i class='card_room_management_room_clockimg bx bx-time-five'></i>
       <div className="card_room_management_room_roomname">{data.roomName}</div>
       <div className="card_room_management_room_time">{data.openTime.slice(0,5)} - {data.closeTime.slice(0,5)} hrs.</div>
       <a href="#" class="card_room_management_room_link">See more {">"}</a>
+
     </div>
     </div>
   )

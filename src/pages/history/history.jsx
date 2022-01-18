@@ -25,13 +25,6 @@ function History(props) {
     setSelectedValue(value);
   }
 
-  // const fetchData = () => {
-  //   return  axios.get('/users?page=1').then(result => {
-  //     const res =  result.data.data;
-  //     return res;
-  //   });
-  // }
-
   const [isActive, setActive] = useState(false);
 
   useEffect(() => {
@@ -58,9 +51,7 @@ function History(props) {
                 <h4 class="card-title ">HISTORY</h4>
               </div>
               <p class="content card-text">Suvarnabhumi Campus</p>
-              {/* <div className='customSearchBar'>
-                <input type='text' placeholder='Search Room'></input>
-              </div> */}
+  
             </div>
         </div>
         
@@ -73,8 +64,7 @@ function History(props) {
         <button class="search_button">Search</button>
         
     
-        
-        {/* <button className="historyFooterButton"></button> */}
+    
 
         <Table />
         

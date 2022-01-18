@@ -49,15 +49,9 @@ function App() {
           </Route>
           <Route path="/changePassword">
             <ChangePassword />
-            {/* <Sidebar /> */}
           </Route>
           <Route path="/moreInfo">
-          {/* <Route path="/moreInfo/:bookingId" element={ <MoreInfo /> } > */}
-            <MoreInfo 
-            onCollapse={(isActive) => {
-            setActive(!isActive);
-            }}
-            />
+            <MoreInfo />
             <Sidebar />
           </Route>
           <Route path="/">

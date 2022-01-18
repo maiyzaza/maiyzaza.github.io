@@ -25,9 +25,6 @@ function Login() {
 
     axios.post("https://arr-dev.azurewebsites.net/api/v1/login/login", payload)
     .then((res) => {
-      // console.log(res.data.data);
-      console.log(res);
-
       window.sessionStorage.setItem("token", res.data.data.token)
       window.sessionStorage.setItem("username", payload.Username)
       window.sessionStorage.setItem("password", payload.Password)

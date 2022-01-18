@@ -59,22 +59,22 @@ function ModifyRoom({closeModal,roomId}) {
       ]
 
       function onChangeInput(value){
-        console.log("value select",value);
+        // console.log("value select",value);
         setNewMinD(value)
       }
 
       function onChangeInput1(value){
-        console.log("value select start",value);
+        // console.log("value select start",value);
         setNewMaxD(value)
       }
 
       function onChangeInputStartTime(value){
-        console.log("value select end",value);
+        // console.log("value select end",value);
         setNewDataStartTime(value)
       }
       
       function onChangeInputEndTime(value){
-        console.log("value select max",value);
+        // console.log("value select max",value);
         setNewDataEndTime(value)
       }
 
@@ -107,6 +107,7 @@ function ModifyRoom({closeModal,roomId}) {
 
     const postdata = async () => {
         try {
+          console.log("room id",roomId)
          const roomInfo = await axios({
             url: `https://arr-dev.azurewebsites.net/api/v1/webs/room-infos/${roomId}`,
             headers: {
@@ -117,7 +118,7 @@ function ModifyRoom({closeModal,roomId}) {
             }
         })
         .then((res) => {
-            console.log("data",res.data.data);
+            // console.log("data",res.data.data);
             setDataRoom(res.data.data)
             setDataStartTime(res.data.data.startTime.slice(0,5))
             setDataEndTime(res.data.data.endTime.slice(0,5))
@@ -144,8 +145,8 @@ function ModifyRoom({closeModal,roomId}) {
         postdata();
    },[]);
 
-   console.log("minD old1",minD)
-   console.log("maxD old1",maxD)
+  //  console.log("minD old1",minD)
+  //  console.log("maxD old1",maxD)
 
     let a
    
@@ -181,46 +182,18 @@ function ModifyRoom({closeModal,roomId}) {
         b = maxD+ " min."
     }
 
-    console.log("b",b)
+    // console.log("b",b)
 
 
      const postdata1 = async (event) => {
         event.preventDefault();
 
-        // if (cap == "" || cap == null) {
-        //     setCap(dataRoom.capacity)
-        // }
-        //     // setAlert("The current password is incorrect")}
-        // if (minAt == "" || minAt == null) {
-        //     setMinAt(dataRoom.minAttendees)
-        // }
-        //     // setAlert("The current password is incorrect")}
-        // if (newMinD.value == "" || newMinD.value == null) {
-        //     setNewMinD(dataRoom.minDuaration)
-        // }
-        // if (newMaxD.value == "" || newMaxD.value == null) {
-        //     setNewMaxD(dataRoom.maxDuration)
-        // }
-
-        // if (newDataStartTime == "" || newDataStartTime == null) {
-        //     setNewDataStartTime(dataStartTime)
-        // }
-        // if (newDataEndTime == "" || newDataEndTime == null) {
-        //     setNewMaxD(dataEndTime)
-        // }
         if (baseImage.length == 0 ) {
             setBaseImage(oldImg)
         } 
 
         try {
-        // console.log("minD", minD);
-        // console.log("new minD", newMinD);
-        console.log("new maxD", newMaxD);
-        console.log("maxD", maxD);
-        console.log("new start", newDataStartTime);
-        console.log("start", dataStartTime);
-        console.log("new end", newDataEndTime);
-        console.log("end", dataEndTime);
+
          await axios({
             url: "https://arr-dev.azurewebsites.net/api/v1/webs/rooms-modify",
             headers: {
@@ -284,29 +257,7 @@ function ModifyRoom({closeModal,roomId}) {
                             <label className="col-6 secondForm">End Time {dataEndTime}</label>
                             <StartTime required defaultValue={optionsStartTime[0]}  onChange={onChangeInputStartTime} options={optionsStartTime} />
                             <EndTime required defaultValue={optionsEndTime[0]}  onChange={onChangeInputEndTime} options={optionsEndTime} />
-{/* 
-                            <StartTimeSelect className="size zero"
-                            
-                                start = {dataStartTime}
-                            /> */}
-                            {/* <EndTimeSelect className="size secondP" 
-                                end = {dataEndTime}
-                            /> */}
-                            {/* <textarea className="size"></textarea>
-                            <textarea className="size  secondP"></textarea> */}
-
-                            {/* <label className="col-6 firstForm">Min Duration</label>
-                            <label className="col-6 secondForm">Max Duration</label>
-                            <select className="size" value={dataRoom.minDuaration} onChange={setDataRoom}></select>
-                            <select className="size  secondP" value={dataRoom.maxDuration} onChange={setDataRoom}></select>
-
-                            <label className="col-6 firstForm">Start Time</label>
-                            <label className="col-6 secondForm">End Time</label>
-                            <select className="size" value={dataStartTime} onChange={setDataStartTime}></select>
-                            <select className="size  secondP" value={dataEndTime} onChange={setDataEndTime}></select> */}
-
-
-                        </form>
+              </form>
 
                     </div>
                     

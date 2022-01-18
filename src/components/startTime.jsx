@@ -7,7 +7,7 @@ const customStyles = {
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    // left: "21.55rem",
+
     top: "0rem",
     width: "10rem",
     cursor: 'text',
@@ -35,7 +35,7 @@ const customStyles = {
 
   menu: styles => ({
     ...styles,
-    // left: "22.5rem",
+
     top: "1.9rem",
     boxShadow: 'none',
     borderRadius: 5,
@@ -53,7 +53,7 @@ const customStyles = {
 
 function CustomSelect({style,options,onChange,defaultValue}){
     return <div style={style}>
-        {/* <h1>{label}</h1> */}
+    
         <Select styles={customStyles} options={options} onChange={onChange} defaultValue={defaultValue}/>
     </div>
 }

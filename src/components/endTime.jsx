@@ -56,7 +56,6 @@ const customStyles = {
 
 function CustomSelect({style,options,onChange,defaultValue}){
     return <div style={style}>
-        {/* <h1>{label}</h1> */}
         <Select styles={customStyles} options={options} onChange={onChange} defaultValue={defaultValue}/>
     </div>
 }

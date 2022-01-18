@@ -12,9 +12,6 @@ function MoreInfo() {
 
   let history = useHistory();
 
-  // const [dataRow,setDataRow] = useState([])
-  // const [itemRow,setItemRow] = useState([])
-
   const [dataRoom,setDataRoom] = useState({})
   const [dataStartTime,setDataStartTime] = useState('')
   const [dataEndTime,setDataEndTime] = useState('')
@@ -30,14 +27,6 @@ function MoreInfo() {
   const [dataMaxDu,setDataMaxDu] = useState('')
 
   const [newImg,SetNewImg] = useState('')
-
-  
-
-
-
-  // const {description, title, images} = (location.state.item);
-
-
   
   const access_token = sessionStorage.getItem("token")
 
@@ -54,7 +43,7 @@ function MoreInfo() {
       try {
 
        const res = await axios({
-          // url: `https://arr-dev.azurewebsites.net/api/v1/webs/booking-infos/${yourData}`,
+   
           url: `https://arr-dev.azurewebsites.net/api/v1/webs/booking-infos/${BookingId}`,
           headers: {
               'Authorization': 'Bearer ' + access_token
@@ -107,15 +96,15 @@ function MoreInfo() {
           var minutes = (hours - rhours) * 60;
           var rminutes = Math.round(minutes);
           if (rminutes == 0) {
-            // console.log(rhours + " hrs.")
+  
             setDataMinDu(rhours + " hrs.")
           } else {
-            // console.log(rhours + " hrs." + rminutes + " min.") 
+           
             setDataMinDu(rhours + " hrs." + rminutes + " min.") 
           }
           
         } else {
-          // console.log(res.data.data.minDuaration+ " min.")
+         
           setDataMinDu(res.data.data.minDuaration+ " min.")
         }
 
@@ -126,7 +115,7 @@ function MoreInfo() {
           var minutes = (hours - rhours) * 60;
           var rminutes = Math.round(minutes);
           if (rminutes == 0) {
-            // console.log(rhours + " hrs.") 
+     
             setDataMaxDu(rhours + " hrs.") 
           } else {
             setDataMaxDu(rhours + " hrs." + rminutes + " min.") 

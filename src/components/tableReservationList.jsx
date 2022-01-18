@@ -23,7 +23,6 @@ const TableReservationList = (props) =>  {
       try {
        const res = await axios({
           url: "https://arr-dev.azurewebsites.net/api/v1/webs/reserved-list",
-          // url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
           headers: {
               'Authorization': 'Bearer ' + access_token
               },
@@ -54,7 +53,7 @@ const TableReservationList = (props) =>  {
 
   useEffect(() => {
     let dataArray = JSON.parse(JSON.stringify(dataRow))
-    // let dataArray = JSON.stringify(dataRow)
+ 
     var reservationData = []
     dataArray.map((item,index)=>{
       item.date = (
@@ -92,15 +91,9 @@ const TableReservationList = (props) =>  {
        const booking_id = item.bookingId;
        const room_id = item.roomId;
 
-      // item.reservedBy = (
-      //   <div style={{texttransform: "capitalize"}}>
-      //     console.log({item.reservedBy})
-      //   </div>
-      // )
 
       item.info = (
-        // bookingId={item.bookingId}
-        // <Link to={`/moreinfo/${item.bookingId}`}   >
+    
         <Link to={{pathname:`/moreinfo/${booking_id}`,  state:{ booking_id,room_id } } } > 
         <div class="iconReservationList" style={{ display: "flex", justifyContent: "space-between" }}>
           <div
@@ -111,13 +104,7 @@ const TableReservationList = (props) =>  {
               fontSize: "1.1rem",
             }}
             reservationId = {item.bookingId}
-            
-              // onClick={() => deletePost(posts[index].id)}
-              // onClick={() => Post(posts[index].id)}
           > 
-          {/* {item.bookingId} */}
-          {/* <Link to={/singlepost/${_id}} className="link" /> */}
-              {/* Delete */}
           </div>
         </div>
        </Link>
@@ -209,7 +196,7 @@ const TableReservationList = (props) =>  {
       scrollY
       maxHeight="20rem"
       striped
-      // bordered
+
       small
       
       sortable={false}
