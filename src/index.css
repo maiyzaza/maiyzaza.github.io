@@ -649,16 +649,20 @@ td {
 
 .pagination .page-item.active .page-link {
   background-color: #CB002B !important;
-}
-
-.pagination {
   font-family: 'Bariol Regular';
   font-size: 0.8rem;
 }
+
 
 .dataTables_info {
   font-family: 'Bariol Regular';
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  padding: 0 !important;
+  height: 3rem!important;
+}
+
+.myTable .dataTables_info {
+  margin-top: 1.2rem !important;
 }
 
 .table>:not(:last-child)>:last-child>* {
@@ -685,6 +689,7 @@ td {
 
 .myTable .table {
   --bs-table-striped-bg: rgba(0, 0, 0, 0.0) !important;
+  
 }
 
 tbody + thead{
@@ -699,16 +704,40 @@ tbody + thead{
   width: 100%;
 }
 
-.myTableReservationList tr {
+
+.myTableReservationList .dataTables_paginate{
+  padding: 0!important;
+} 
+
+.myTableReservationList .dataTables_paginate  {
+  margin-left: 26.4rem !important;
+  width: 5rem!important;
+  margin-top: -1rem !important;
+  
+}
+
+.myTableReservationList .dataTables_info {
+  font-size: 0.9rem !important;
+}
+
+.myTableReservationList .col-sm-12 .col-md-5 {
+  height: 1rem !important;
+}
+
+.myTableReservationList table {
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.0) !important;
+}
+
+
+.myTableReservationList table thead {
   padding-top: 0rem !important;
   padding-bottom: 0rem !important;
-  background-color: #CB002B;
 }
 
 .myTableReservationList th {
   padding-top: 0rem !important;
   padding-bottom: 0rem !important;
-  color: white;
+  /* color: white; */
 }
 
 .myTableReservationList td {
