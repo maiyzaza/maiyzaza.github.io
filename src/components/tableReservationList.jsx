@@ -180,19 +180,21 @@ const TableReservationList = (props) =>  {
     <div 
     className="myTableReservationList"
     >
-      {/* <MDBDataTable scrollY
+      <MDBDataTable
         striped
         bordered
         small
         
+        
         searching={false}
         sortable={false}
+        entries={5}
         // order={["bookingId", "decs"]}
         displayEntries={false}
         data={data}
-      /> */}
+      />
 
-      <MDBDataTable
+      {/* <MDBDataTable
       scrollY
       maxHeight="20rem"
       striped
@@ -203,7 +205,7 @@ const TableReservationList = (props) =>  {
       paging={false}
       searching={false}
       data={data}
-      />
+      /> */}
     </div>
 
   );

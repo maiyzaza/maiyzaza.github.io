@@ -7,6 +7,11 @@ import MaxDurationSelect from './maxDurationSelect';
 import StartTimeSelect from './startTimeSelect';
 import EndTimeSelect from './endTimeSelect';
 import { useHistory } from 'react-router-dom';
+import FailedModal from './createRoomStatus/failedModal';
+import SuccessModal from './createRoomStatus/successModal';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
+
+
 
 
 
@@ -23,6 +28,9 @@ function CreateRoom({closeModal}) {
     const [data, setData] = useState();
     const [baseImage, setBaseImage] = useState("");
     const access_token = sessionStorage.getItem("token")
+
+    const [openModal, setOpenModal] = useState(false);
+    const [openModal1, setOpenModal1] = useState(false);
 
     const onClick = (event) => {
 
@@ -42,6 +50,8 @@ function CreateRoom({closeModal}) {
         console.log(maxDuration)
         console.log(startTime)
         console.log(endTime)
+
+        setOpenModal(true)
 
         event.preventDefault();
 
@@ -66,11 +76,26 @@ function CreateRoom({closeModal}) {
         }
         })
         .then((res) => {
-            history.push("/roomManagement")
-            window.location.reload()
+            console.log("okay", res.data)
+            if (res.data.message == "Success"){
+                // console.log("okay1")
+                // console.log(setOpenModal1)
+
+                alert("Your room has been created")
+                history.push("/roomManagement")
+                // window.location.reload()
+                // {openModal && <SuccessModal closeModal={setOpenModal} />}
+            }
+            
         })
-        .catch((res) => {
-            // Todo Do Something
+        .catch((err) => {
+            console.log(err.response)
+            
+                alert("Failed to create room")
+            
+            // {openModal1 && <FailedModal closeModal={setOpenModal1} />}
+           
+            
         });
     }
 
@@ -141,6 +166,7 @@ function CreateRoom({closeModal}) {
                     </div>
 
                     <div className="footer">
+                        {/* <button className="btn btn-danger btn-sm" onClick={() => {setOpenModal(true);}} type="button">Create</button> */}
                         <button className="btn btn-danger btn-sm" onClick={onClick} type="button">Create</button>
                         <button className="btn btn-primary btn-sm" type="button" onClick={() => closeModal(false)} id="cancelLogOut">Cancel</button>
                     </div>

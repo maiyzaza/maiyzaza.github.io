@@ -12,7 +12,7 @@ import MaxDuration from '../components/maxDuration'
 function ModifyRoom({closeModal,roomId}) {
     let history = useHistory();
 
-    const [alert, setAlert] = useState("");
+    // const [alert, setAlert] = useState("");
 
     const [dataRoom,setDataRoom] = useState({})
 
@@ -212,12 +212,17 @@ function ModifyRoom({closeModal,roomId}) {
             }
         })
         .then((res) => {
+          console.log("okayy", res.data)
+          if (res.data.message == "Success"){
+            alert("Your room has been modified")
             history.push("/roomManagement")
-            window.location.reload()
+            }
 
          });
         } catch (err) {
-            console.log(err);
+          console.log(err.response)
+            alert("Failed to modify room")
+          
         }
      };
     
