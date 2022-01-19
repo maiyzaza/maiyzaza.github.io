@@ -59,29 +59,24 @@ function ModifyRoom({closeModal,roomId}) {
       ]
 
       function onChangeInput(value){
-        // console.log("value select",value);
         setNewMinD(value)
       }
 
       function onChangeInput1(value){
-        // console.log("value select start",value);
         setNewMaxD(value)
       }
 
       function onChangeInputStartTime(value){
-        // console.log("value select end",value);
         setNewDataStartTime(value)
       }
       
       function onChangeInputEndTime(value){
-        // console.log("value select max",value);
         setNewDataEndTime(value)
       }
 
     const uploadImage = async (e) => {
         const file = e.target.files[0];
         const base64 = await convertBase64(file);
-        // setBaseImage(base64.slice(22));
         setBaseImage(base64);
       };
     
@@ -118,23 +113,14 @@ function ModifyRoom({closeModal,roomId}) {
             }
         })
         .then((res) => {
-            // console.log("data",res.data.data);
             setDataRoom(res.data.data)
             setDataStartTime(res.data.data.startTime.slice(0,5))
             setDataEndTime(res.data.data.endTime.slice(0,5))
-
             setCap(res.data.data.capacity)
             setMinAt(res.data.data.minAttendees)
             setMinD(res.data.data.minDuaration)
             setMaxD(res.data.data.maxDuration)
-            // console.log(res.data.data.minDuaration)
             setOldImg(res.data.data.roomPictureUrl)
-            // console.log("oldimg",res.data.data.roomPictureUrl)
-            
-
-            
-
-            
          });
         } catch (err) {
             console.log(err);

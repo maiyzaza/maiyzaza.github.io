@@ -6,6 +6,9 @@ body  {
   background-color: #EAEAEA !important;
 }
 
+.zIndex1 {
+  z-index: 10000
+}
 
 .css-b62m3t-container {
   height: 1.6rem!important;

@@ -11,7 +11,6 @@ const customStylesFloor = {
     left: "16rem",
     paddingBottom: "0rem",
     top: "-1.6rem",
-    width: "10rem",
     cursor: 'text',
     borderRadius: 5,
     fontSize: "0.8rem",
@@ -40,7 +39,7 @@ const customStylesFloor = {
   menu: styles => ({
     ...styles,
     left: "16rem",
-    top: "-0.4rem",
+    top: "0.3rem",
     boxShadow: 'none',
     borderRadius: 5,
     fontSize: '0.8rem',
@@ -54,32 +53,7 @@ const customStylesFloor = {
   })
 }
 
-let options = [{ value: 30 , label: "30 min." }]
-
-function listing() {
-
-  const minDuration = window.sessionStorage.getItem("minDuration")
-
-  let data = [{ value: 30 , label: "30 min." },
-                { value: 60 , label: "1 hr." },
-                { value: 90 , label: "1 hr. 30 min." },
-                { value: 120 , label: "2 hrs." },
-                { value: 150 , label: "2 hrs. 30 min." },
-                { value: 180 , label: "3 hrs." }]
-
-  data.forEach(e => {
-    if (e.value > minDuration) {
-      console.log(e)
-      options.push(e.value, e.label)
-    }
-  });
-
-  MaxDurationSelect()
-}
-
 function MaxDurationSelect() {
-
-  const minDuration = window.sessionStorage.getItem("minDuration")
 
   let options = [{ value: 30 , label: "30 min." },
                 { value: 60 , label: "1 hr." },
