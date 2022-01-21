@@ -31,9 +31,6 @@ function ReservationListModal({closeModal}) {
                         {/* <Table /> */}
                         <TableReservationList />
                     </div>
-                    {/* <div className="footer">
-                        <button className="btn btn-primary btn-sm" type="button" onClick={() => closeModal(false)} id="cancelLogOut">Cancel</button>
-                    </div> */}
                 </div>
                 
             </div>

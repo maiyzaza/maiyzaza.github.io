@@ -7,6 +7,10 @@ import MaxDurationSelect from './maxDurationSelect';
 import StartTimeSelect from './startTimeSelect';
 import EndTimeSelect from './endTimeSelect';
 import { useHistory } from 'react-router-dom';
+import FailedModal from './createRoomStatus/failedModal';
+import SuccessModal from './createRoomStatus/successModal';
+
+
 
 
 
@@ -22,6 +26,9 @@ function CreateRoom({closeModal}) {
     
 
     let history = useHistory();
+
+    const [openModal, setOpenModal] = useState(false);
+    const [openModal1, setOpenModal1] = useState(false);
 
     const onClick = (event) => {
 
@@ -55,20 +62,22 @@ function CreateRoom({closeModal}) {
         }
         })
         .then((res) => {
-            setData(false)
-            console.log(res.data)
-            window.sessionStorage.setItem("building", null)
-            window.sessionStorage.setItem("floor", null)
-            window.sessionStorage.setItem("minDuration", null)
-            window.sessionStorage.setItem("maxDuration", null)
-            window.sessionStorage.setItem("startTime", null)
-            window.sessionStorage.setItem("endTime", null)
-
-            history.push("/roomManagement")
-            window.location.reload()
+            console.log("okay", res.data)
+            if (res.data.message == "Success") {
+                alert("Your room has been created")
+                window.sessionStorage.setItem("building", null)
+                window.sessionStorage.setItem("floor", null)
+                window.sessionStorage.setItem("minDuration", null)
+                window.sessionStorage.setItem("maxDuration", null)
+                window.sessionStorage.setItem("startTime", null)
+                window.sessionStorage.setItem("endTime", null)
+                history.push("/roomManagement")
+            }
+            
         })
-        .catch((res) => {
-            setData(true)
+        .catch((err) => {
+            console.log(err.response)
+            alert("Failed to create room")
         });
 
     }

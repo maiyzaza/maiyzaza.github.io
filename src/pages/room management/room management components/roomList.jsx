@@ -21,7 +21,7 @@ function Card(props) {
     <div className="col-3">
     <div className="card_room_management_room">
         <i class='card_room_management_room_writeimg bx bx-edit' onClick={() => {setOpenModal1(true);}}></i>
-        {openModal1 && <ModifyRoom zIndex={2000} closeModal={setOpenModal1} roomId = {roomId} />} 
+        {openModal1 && <ModifyRoom closeModal={setOpenModal1} roomId = {roomId} />} 
         <i class='card_room_management_room_clockimg bx bx-time-five'></i>
       <div className="card_room_management_room_roomname">{data.roomName}</div>
       <div className="card_room_management_room_time">{data.openTime.slice(0,5)} - {data.closeTime.slice(0,5)} hrs.</div>
