@@ -77,15 +77,17 @@ function CreateRoom({closeModal}) {
         })
         .then((res) => {
             console.log("okay", res.data)
-            if (res.data.message == "Success"){
+            // if (res.data.message == "Success"){
                 // console.log("okay1")
                 // console.log(setOpenModal1)
 
                 alert("Your room has been created")
-                history.push("/roomManagement")
+                let path = `/roomManagement`
+                history.push(path)
+                window.location.reload()
                 // window.location.reload()
                 // {openModal && <SuccessModal closeModal={setOpenModal} />}
-            }
+            // }
             
         })
         .catch((err) => {

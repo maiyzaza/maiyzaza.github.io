@@ -48,14 +48,43 @@ function ModifyRoom({closeModal,roomId}) {
       ]
 
       const optionsStartTime=[
-        { value: '09:00:00', label: '09:00' },
-        { value: '09:30:00', label: '09:30' },
-        { value: '10:00:00', label: '10:00' }
+        { value: "09:00", label: "09:00" },
+                { value: "09:30", label: "09:30" },
+                { value: "10:00", label: "10:00" },
+                { value: "10:30", label: "10:30" },
+                { value: "11:00", label: "11:00" },
+                { value: "11:30", label: "11:30" },
+                { value: "12:00", label: "12:00" },
+                { value: "12:30", label: "12:30" },
+                { value: "13:00", label: "13:00" },
+                { value: "13:30", label: "13:30" },
+                { value: "14:00", label: "14:00" },
+                { value: "14:30", label: "14:30" },
+                { value: "15:00", label: "15:00" },
+                { value: "15:30", label: "15:30" },
+                { value: "16:00", label: "16:00" },
+                { value: "16:30", label: "16:30" },
+                { value: "17:00", label: "17:00" }
       ]
 
       const optionsEndTime=[
-        { value: '15:30:00', label: '15:30' },
-        { value: '16:00:00', label: '16:00' }
+        { value: "09:00", label: "09:00" },
+                { value: "09:30", label: "09:30" },
+                { value: "10:00", label: "10:00" },
+                { value: "10:30", label: "10:30" },
+                { value: "11:00", label: "11:00" },
+                { value: "11:30", label: "11:30" },
+                { value: "12:00", label: "12:00" },
+                { value: "12:30", label: "12:30" },
+                { value: "13:00", label: "13:00" },
+                { value: "13:30", label: "13:30" },
+                { value: "14:00", label: "14:00" },
+                { value: "14:30", label: "14:30" },
+                { value: "15:00", label: "15:00" },
+                { value: "15:30", label: "15:30" },
+                { value: "16:00", label: "16:00" },
+                { value: "16:30", label: "16:30" },
+                { value: "17:00", label: "17:00" }
       ]
 
       function onChangeInput(value){
@@ -188,8 +217,11 @@ function ModifyRoom({closeModal,roomId}) {
      const postdata1 = async (event) => {
         event.preventDefault();
 
+
         if (baseImage.length == 0 ) {
             setBaseImage(oldImg)
+            setOldImg(oldImg)
+            
         } 
 
         try {
@@ -213,10 +245,13 @@ function ModifyRoom({closeModal,roomId}) {
         })
         .then((res) => {
           console.log("okayy", res.data)
-          if (res.data.message == "Success"){
+          // if (res.data.message == "Success"){
             alert("Your room has been modified")
-            history.push("/roomManagement")
-            }
+            let path = `/roomManagement`
+            history.push(path)
+            window.location.reload()
+
+            // }
 
          });
         } catch (err) {
