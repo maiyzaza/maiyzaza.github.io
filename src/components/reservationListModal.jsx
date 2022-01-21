@@ -24,7 +24,7 @@ function ReservationListModal({closeModal}) {
                     </button> */}
                     <button id='close' 
                     onClick={() => {closeModal(false); goToReservationManagement()}}>close</button>
-                    <div className="title">LASTEST RESERVATION
+                    <div className="title">LATEST RESERVATION
                     </div>
                     
                     <div className="body">

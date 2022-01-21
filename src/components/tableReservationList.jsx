@@ -36,7 +36,7 @@ const TableReservationList = (props) =>  {
           }
       })
       .then((res) => {
-
+          console.log(res.data.data)
           let itemData = res.data.data
           setDataRow(itemData)
           
@@ -120,8 +120,8 @@ const TableReservationList = (props) =>  {
   const data = {
     columns: [
       {
-        label: 'ID',
-        field: 'bookingId',
+        label: 'REFERENCE ID',
+        field: 'referenceId',
         sort: 'asc',
         width: 30
         
@@ -130,25 +130,25 @@ const TableReservationList = (props) =>  {
         label: 'DATE',
         field: 'date',
         sort: 'asc',
-        width: 70
+        width: 60
       },
       {
         label: 'START TIME',
         field: 'startTime',
         sort: 'acs',
-        width: 60
+        width: 45
       },
       {
         label: 'END TIME',
         field: 'endTime',
         sort: 'asc',
-        width: 60
+        width: 45
       },
       {
         label: 'ROOM',
         field: 'room',
         sort: 'asc',
-        width: 80
+        width: 60
       },
       {
         label: 'STATUS',
