@@ -626,7 +626,7 @@ form .new-col-12 {
 
 .myTable {
   margin-left: 22.5rem !important;
-  margin-top: -3rem;
+
   width: 71%;
 }
 
@@ -908,7 +908,34 @@ tbody + thead{
   color: red;
 }
 
+/* Reservation management */
+.card_reservation_management_room {
+  /* height: 6.5rem; */
+  width: 14rem;
+  background-color: white;
+  border-radius: 0.4rem;
+  padding: 0.8rem;
+  box-shadow: 0 1px 5px rgb(218, 218, 218);
+}
+
+.card_reservation_management_room_roomname {
+  font-family: 'Bariol Regular';
+  font-size: 0.8rem;
+  margin-top: -1.4rem;
+}
+
+.card_reservation_management_room_icon{
+  margin-left: 9.5rem;
+  font-size: 1rem !important;
+}
+.card_reservation_management_room_icon1{
+  margin-left: 0.5rem;
+  font-size: 1rem !important;
+}
+
 /* Room management */
+
+
 .room_management {
   font-family: 'Bariol Regular';
 }
@@ -1029,9 +1056,11 @@ div .col-3 {
   text-decoration: underline;
 }
 .card_room_management_floor {
-  margin-bottom: 1.5rem;
-  margin-left: 10rem;
-  margin-left: 22.5rem ;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+ 
+  /* margin-left: 13rem; */
+  margin-left: 23.5rem ;
   padding-right: 0.3rem;
   padding-left: 0.3rem;
   background-color: #F6F6F6 ;
@@ -1105,16 +1134,14 @@ Date Filter Component
 .search_container_date {
   font-size: 0.9rem;
   display: block;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 1.9375rem;
   margin-left: 22.5rem;
 }
 .search_container_status {
   font-size: 0.9rem;
   display: block;
-  inset: 0px;
   margin-top: -1.5rem;
-  margin-left: 34rem;
+  margin-left: 33.5rem;
 }
 
 ::placeholder {
@@ -1201,22 +1228,17 @@ Date Filter Component
 
     /* button */
     .search_button {
-      position: relative;
-      left: 45.5rem;
-      top: -4.8rem;
-      height: 2.4rem;
-      font-size: 1rem;
+      top: 12.5rem;
+      font-size: 0.9rem;
+      margin-left: 44.5rem;
       background-color: #CB002B;
-      color: #FFFFFF;
+      color: #DEE2E6;
       border: none;
       border-radius: 5px;
       text-align: center;
       padding: 5px 20px;
-
-      font-family: 'Bariol Regular';
-      font-size: 0.9rem;
-      bottom: 0;
-      width: 6rem;
+      position: absolute;
+      height: 2.4rem !important;
     }
 
     /* searchbar */

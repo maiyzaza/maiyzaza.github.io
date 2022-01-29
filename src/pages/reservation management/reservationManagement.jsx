@@ -1,13 +1,12 @@
 import '../../App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from 'react-router'
-import ReservationListModal from '../../components/reservationListModal';
-import TableReservationList from '../../components/tableReservationList';
-import Table from '../../components/table'
-
+import React, { useEffect, useState } from "react";
+import SearchReservationManagement from "./reservation management components/searchReservationManagement"
+import cardImg from '../../assets/cardImg.png';
 
  
-function ReservationManagement() {
+function RoomManagement() {
 
   let history = useHistory();
 
@@ -17,16 +16,19 @@ function ReservationManagement() {
     history.push("/")
     window.location.reload("/");
   }
-  
+
   return (
     <body>
-      
-      <h1 class="content">Hello Reservation</h1>
-      
-
-      
+       <div class="card">
+          <img class="card-img-top" src={cardImg}></img>
+            <div class="card-img-overlay">
+              <h4 class="headContent card-title">RESERVATION MANAGEMENT</h4>
+              <p class="content card-text">Suvarnabhumi Campus</p>
+            </div>
+        </div>
+        <SearchReservationManagement />   
     </body>
   );
 }
  
-export default ReservationManagement;
+export default RoomManagement;

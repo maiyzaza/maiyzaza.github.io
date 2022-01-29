@@ -14,6 +14,7 @@ import ChangePassword from './pages/change password/changePassword';
 import MoreInfo from './pages/history/moreInfo';
 import Login from './pages/login/login';
 import logOutModal from './components/logOutModal';
+import MoreInfoForReservationList from './components/moreInfoForReservationList';
  
 function App() {
 
@@ -52,6 +53,10 @@ function App() {
           </Route>
           <Route path="/moreInfo">
             <MoreInfo />
+            <Sidebar />
+          </Route>
+          <Route path="/moreInfoForReservationList">
+            <MoreInfoForReservationList />
             <Sidebar />
           </Route>
           <Route path="/">

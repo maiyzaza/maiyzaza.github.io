@@ -9,7 +9,9 @@ import { Redirect } from 'react-router-dom';
 
 
 
-const TableReservationList = (props) =>  {
+const TableReservationList = ({closeModal}) =>  {
+
+  console.log("test",closeModal)
 
 
 
@@ -19,6 +21,7 @@ const TableReservationList = (props) =>  {
   const access_token = sessionStorage.getItem("token")
 
 
+  
   const postdata = async () => {
       try {
        const res = await axios({
@@ -36,7 +39,7 @@ const TableReservationList = (props) =>  {
           }
       })
       .then((res) => {
-          console.log(res.data.data)
+          // console.log("ww",res.data.data)
           let itemData = res.data.data
           setDataRow(itemData)
           
@@ -50,6 +53,7 @@ const TableReservationList = (props) =>  {
   useEffect(() => {
     postdata();
   },[]);
+
 
   useEffect(() => {
     let dataArray = JSON.parse(JSON.stringify(dataRow))
@@ -89,12 +93,21 @@ const TableReservationList = (props) =>  {
        )
 
        const booking_id = item.bookingId;
+       
        const room_id = item.roomId;
+       console.log("bookingID", booking_id)
+       
 
+       const goToMoreInfo = () => {
+        localStorage.setItem("BookingID", booking_id)
+        localStorage.setItem("RoomID", room_id)
+        window.location.reload()
+        
+    }
 
       item.info = (
     
-        <Link to={{pathname:`/moreinfo/${booking_id}`,  state:{ booking_id,room_id } } } > 
+        <Link to={{pathname:`/moreInfoForReservationList/${booking_id}`,  state:{ booking_id,room_id } } } > 
         <div class="iconReservationList" style={{ display: "flex", justifyContent: "space-between" }}>
           <div
             className="bx bx-info-circle"
@@ -103,7 +116,9 @@ const TableReservationList = (props) =>  {
               color: "black",
               fontSize: "1.1rem",
             }}
+          
             reservationId = {item.bookingId}
+            onClick={() => goToMoreInfo()}
           > 
           </div>
         </div>
@@ -117,11 +132,13 @@ const TableReservationList = (props) =>  {
       
     },[dataRow]);
 
+ 
+
   const data = {
     columns: [
       {
-        label: 'REFERENCE ID',
-        field: 'referenceId',
+        label: 'INVITATION CODE',
+        field: 'invitationCode',
         sort: 'asc',
         width: 30
         

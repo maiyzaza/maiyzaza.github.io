@@ -1,5 +1,5 @@
-import '../../App.css';
-import cardImg from '../../assets/cardImg.png';
+
+import cardImg from '../assets/cardImg.png';
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useLocation } from 'react-router-dom'
@@ -8,7 +8,7 @@ import { useHistory } from 'react-router'
 
 
 
-function MoreInfo() {
+function MoreInfoForReservationList() {
 
   let history = useHistory();
 
@@ -36,10 +36,13 @@ function MoreInfo() {
   }
   
   const location = useLocation();
-  const BookingId = location.state.booking_id
-  const RoomId = location.state.room_id
-  console.log("39", BookingId)
-  console.log("40", RoomId)
+//   const BookingId = location.state.booking_id
+//   const RoomId = location.state.room_id
+
+  const BookingId = localStorage.getItem("BookingID")
+  const RoomId = localStorage.getItem("RoomID")
+  console.log("b",BookingId)
+  console.log("r",RoomId)
 
   const postdata = async () => {
       try {
@@ -278,4 +281,4 @@ function MoreInfo() {
   );
 }
  
-export default MoreInfo;
+export default MoreInfoForReservationList;
