@@ -113,7 +113,6 @@ const Sidebar = () => {
               </a>
               {openModal2 && <ReservationListModal 
               closeModal={setOpenModal2} 
-
               />}
             </li>
 
