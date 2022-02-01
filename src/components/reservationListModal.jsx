@@ -4,6 +4,8 @@ import TableReservationList from './tableReservationList'
 
 
 function ReservationListModal({closeModal}) {
+    // console.log("test0",{closeModal})
+    
 
     
 
@@ -18,18 +20,16 @@ function ReservationListModal({closeModal}) {
         <div>
             <div className="reservationList-modal" >
                 <div className="reservationList-modalContainer">
-                    {/* <button type="button" class="btn-close">
-                        <span class="icon-cross"></span>
-                        <span class="visually-hidden">Close</span>
-                    </button> */}
                     <button id='close' 
                     onClick={() => {closeModal(false); goToReservationManagement()}}>close</button>
-                    <div className="title">LASTEST RESERVATION
+                    <div className="title">LATEST RESERVATION
                     </div>
                     
                     <div className="body">
-                        {/* <Table /> */}
-                        <TableReservationList />
+                   
+                        <TableReservationList 
+                        // closeModal={closeModal()} 
+                        />
                     </div>
                 </div>
                 

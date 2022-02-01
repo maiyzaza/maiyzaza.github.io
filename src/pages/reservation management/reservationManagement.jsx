@@ -2,7 +2,11 @@ import '../../App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from 'react-router'
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import SearchRoomManagement from "./reservation management components/searchRoomManagement"
+=======
+import SearchReservationManagement from "./reservation management components/searchReservationManagement"
+>>>>>>> develop
 import cardImg from '../../assets/cardImg.png';
 
  
@@ -22,11 +26,19 @@ function RoomManagement() {
        <div class="card">
           <img class="card-img-top" src={cardImg}></img>
             <div class="card-img-overlay">
+<<<<<<< HEAD
               <h4 class="headContent card-title">ROOM MANAGEMENT</h4>
               <p class="content card-text">Suvarnabhumi Campus</p>
             </div>
         </div>
         <SearchRoomManagement />
+=======
+              <h4 class="headContent card-title">RESERVATION MANAGEMENT</h4>
+              <p class="content card-text">Suvarnabhumi Campus</p>
+            </div>
+        </div>
+        <SearchReservationManagement />   
+>>>>>>> develop
     </body>
   );
 }

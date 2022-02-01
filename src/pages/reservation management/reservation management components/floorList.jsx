@@ -1,7 +1,11 @@
 import React from "react";
 import CardRoomList from './roomList';
 
+<<<<<<< HEAD
 function RoomManagementCard(props) {
+=======
+function ReservationManagementCard(props) {
+>>>>>>> develop
     const data = props.data;
 
     let listFloor = null
@@ -25,4 +29,8 @@ function RoomManagementCard(props) {
     )
 }
 
+<<<<<<< HEAD
 export default RoomManagementCard;
+=======
+export default ReservationManagementCard;
+>>>>>>> develop

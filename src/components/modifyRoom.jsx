@@ -33,6 +33,7 @@
 //     const [newDataEndTime,setNewDataEndTime] = useState('')
 
     
+<<<<<<< HEAD
 //     const options=[
 //         { value: 30, label: '30 min.' },
 //         { value: 60, label: '1 hrs.' },
@@ -69,6 +70,76 @@
 //       function onChangeInputStartTime(value){
 //         setNewDataStartTime(value)
 //       }
+=======
+    const options=[
+        { value: 30, label: '30 min.' },
+        { value: 60, label: '1 hrs.' },
+        { value: 90, label: '1 hrs. 30 min.' }
+      ]
+
+    const options1=[
+        { value: 60, label: '1 hrs.' },
+        { value: 90, label: '1 hrs. 30 min.' },
+        { value: 120, label: '2 hrs.' },
+        { value: 150, label: '2 hrs. 30 min.' },
+        { value: 180, label: '3 hrs.' }
+      ]
+
+      const optionsStartTime=[
+        { value: "09:00", label: "09:00" },
+                { value: "09:30", label: "09:30" },
+                { value: "10:00", label: "10:00" },
+                { value: "10:30", label: "10:30" },
+                { value: "11:00", label: "11:00" },
+                { value: "11:30", label: "11:30" },
+                { value: "12:00", label: "12:00" },
+                { value: "12:30", label: "12:30" },
+                { value: "13:00", label: "13:00" },
+                { value: "13:30", label: "13:30" },
+                { value: "14:00", label: "14:00" },
+                { value: "14:30", label: "14:30" },
+                { value: "15:00", label: "15:00" },
+                { value: "15:30", label: "15:30" },
+                { value: "16:00", label: "16:00" },
+                { value: "16:30", label: "16:30" },
+                { value: "17:00", label: "17:00" }
+      ]
+
+      const optionsEndTime=[
+        { value: "09:00", label: "09:00" },
+                { value: "09:30", label: "09:30" },
+                { value: "10:00", label: "10:00" },
+                { value: "10:30", label: "10:30" },
+                { value: "11:00", label: "11:00" },
+                { value: "11:30", label: "11:30" },
+                { value: "12:00", label: "12:00" },
+                { value: "12:30", label: "12:30" },
+                { value: "13:00", label: "13:00" },
+                { value: "13:30", label: "13:30" },
+                { value: "14:00", label: "14:00" },
+                { value: "14:30", label: "14:30" },
+                { value: "15:00", label: "15:00" },
+                { value: "15:30", label: "15:30" },
+                { value: "16:00", label: "16:00" },
+                { value: "16:30", label: "16:30" },
+                { value: "17:00", label: "17:00" }
+      ]
+
+      function onChangeInput(value){
+        // console.log("value select",value);
+        setNewMinD(value)
+      }
+
+      function onChangeInput1(value){
+        // console.log("value select start",value);
+        setNewMaxD(value)
+      }
+
+      function onChangeInputStartTime(value){
+        // console.log("value select end",value);
+        setNewDataStartTime(value)
+      }
+>>>>>>> develop
       
 //       function onChangeInputEndTime(value){
 //         setNewDataEndTime(value)
@@ -283,6 +354,15 @@ import { useHistory } from 'react-router-dom';
 
 
 
+<<<<<<< HEAD
+=======
+
+        if (baseImage.length == 0 ) {
+            setBaseImage(oldImg)
+            setOldImg(oldImg)
+            
+        } 
+>>>>>>> develop
 
 
 
@@ -333,6 +413,7 @@ function CreateRoom({closeModal}) {
         }
         })
         .then((res) => {
+<<<<<<< HEAD
             console.log("okay", res.data)
             if (res.data.message == "Success") {
                 alert("Your room has been created")
@@ -350,6 +431,16 @@ function CreateRoom({closeModal}) {
             console.log(err.response)
             alert("Failed to create room")
         });
+=======
+          console.log("okayy", res.data)
+          // if (res.data.message == "Success"){
+            alert("Your room has been modified")
+            let path = `/roomManagement`
+            history.push(path)
+            window.location.reload()
+
+            // }
+>>>>>>> develop
 
     }
 

@@ -1,4 +1,4 @@
-import '../../App.css';
+
 import Table from '../../components/table'
 import cardImg from '../../assets/cardImg.png';
 import StatusDropDown from '../../components/statusDropDown';
@@ -89,8 +89,17 @@ function History(props) {
         <div class="date-drop-down">
         <DateDropDown />
         </div>
+<<<<<<< HEAD
         <StatusDropDown />
         <button class="search_button" onClick={refresh}>Search</button>
+=======
+          <StatusDropDown />
+        <button class="search_button">Search</button>
+        
+    
+    
+
+>>>>>>> develop
         <Table />
       </body>
     </div>
