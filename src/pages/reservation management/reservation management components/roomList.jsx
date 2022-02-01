@@ -9,11 +9,6 @@ function Card(props) {
   let data = props.data;
   let roomId = data.roomId;
 
-  const style = {
-    position: 'fixed',
-    background: 'yellow',
-    zIndex: '20000'
-  }
   console.log("asa", roomId)
 
   return (
@@ -22,11 +17,8 @@ function Card(props) {
       <div className="card_reservation_management_room">
         <i className="card_reservation_management_room_icon bx bx-calendar-plus"></i>
         <i class='card_reservation_management_room_icon1 bx bx-trash'></i>
-        <div className="card_reservation_management_room_roomname">{data.roomName}
-        {/* <i className="card_reservation_management_room_icon bx bx-calendar-plus"></i> */}
-        
+        <div className="card_reservation_management_room_roomname">{data.roomName}  
         </div>
-        {/* <i className="card_reservation_management_room_icon bx bx-calendar-plus"></i> */}
       </div>
     </div>
   )

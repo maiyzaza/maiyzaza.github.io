@@ -20,7 +20,7 @@ const customStylesStatus = {
     return {
       ...styles,
       cursor: 'pointer',
-      backgroundColor: isFocused ? 'white' : 'white',
+      // backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
     }
@@ -83,8 +83,11 @@ function MyComponent(oldValue) {
   }
 
   let defaultValue = "Not Specified"
-  if (oldValue !== null) {
-    defaultValue = `${oldValue.oldValue}`
+  
+  if (oldValue.oldValue !== null){
+    if (oldValue !== null) {
+      defaultValue = `${oldValue.oldValue}`
+    }
   }
   
   return (

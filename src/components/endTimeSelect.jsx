@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Select from 'react-select'
-
-import axios from 'axios';
 
 const customStylesFloor = {
   control: (base, state) => ({
@@ -22,7 +20,7 @@ const customStylesFloor = {
     return {
       ...styles,
       cursor: 'pointer',
-      backgroundColor: isFocused ? 'white' : 'white',
+      // backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
     }

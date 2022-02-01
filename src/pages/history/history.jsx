@@ -3,7 +3,6 @@ import Table from '../../components/table'
 import cardImg from '../../assets/cardImg.png';
 import StatusDropDown from '../../components/statusDropDown';
 import DateDropDown from '../../components/dateDropDown';
-import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router'
 

@@ -13,12 +13,6 @@ function Card(props) {
   let data = props.data;
   let roomId = data.roomId;
 
-  const style = {
-    position: 'fixed',
-    background: 'yellow',
-    zIndex: '20000'
-  }
-
   return (
     
     <div className="col-3">

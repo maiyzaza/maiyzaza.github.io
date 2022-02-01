@@ -15,20 +15,22 @@ const DateDropDown = (oldValue) => {
       
   let count = 1
 
-  allMonts.map( (e) => {
-    if (e === oldValue.oldValue.toString().slice(4,7)) {
-      if (count < 10) {
-        monts = "0" + count.toString()
-      }
-      else { monts = count.toString()}
-    }
-    count += 1
-  })
-  let date = (monts + "/" + oldValue.oldValue.toString().slice(8,10) + "/" + oldValue.oldValue.toString().slice(11,15))
-
   let defaultValue = "dd/mm/yyyy"
-  if (oldValue !== null) {
-    defaultValue = `${date}`
+  if (oldValue.oldValue !== null) {  
+    allMonts.map( (e) => {
+      if (e === oldValue.oldValue.toString().slice(4,7)) {
+        if (count < 10) {
+          monts = "0" + count.toString()
+        }
+        else { monts = count.toString()}
+      }
+      count += 1
+    })
+    let date = (monts + "/" + oldValue.oldValue.toString().slice(8,10) + "/" + oldValue.oldValue.toString().slice(11,15))
+
+    if (oldValue !== null) {
+      defaultValue = `${date}`
+    }
   }
 
   return (

@@ -47,7 +47,7 @@ function Login() {
             required
             id="username"
             name="Username"
-            placeholder="Username"
+            placeholder="         Username"
           />
           <input
             required
@@ -56,7 +56,7 @@ function Login() {
             type="password"
             id="password"
             name="Password"
-            placeholder="Password"
+            placeholder="        Password"
           />
           <button>Sign In</button>
           <div class="login_wrong">
