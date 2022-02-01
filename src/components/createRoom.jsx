@@ -7,12 +7,6 @@ import MaxDurationSelect from './maxDurationSelect';
 import StartTimeSelect from './startTimeSelect';
 import EndTimeSelect from './endTimeSelect';
 import { useHistory } from 'react-router-dom';
-import FailedModal from './createRoomStatus/failedModal';
-import SuccessModal from './createRoomStatus/successModal';
-
-
-
-
 
 
 function CreateRoom({closeModal}) {
@@ -20,15 +14,10 @@ function CreateRoom({closeModal}) {
     const [roomTitle, setRoomTitle] = useState('');
     const [roomCapacity, setCapacity] = useState('');
     const [requireMember, setRequireMember] = useState('');
-    const [data, setData] = useState(false);
     const [baseImage, setBaseImage] = useState("");
     const access_token = sessionStorage.getItem("token")
     
-
     let history = useHistory();
-
-    const [openModal, setOpenModal] = useState(false);
-    const [openModal1, setOpenModal1] = useState(false);
 
     const onClick = (event) => {
 
@@ -136,8 +125,6 @@ function CreateRoom({closeModal}) {
     
   };
 
-
-
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -196,10 +183,7 @@ function CreateRoom({closeModal}) {
                         <button className="btn btn-danger btn-sm" onClick={onClick} type="button">Create</button>
                         <button className="btn btn-primary btn-sm" type="button" onClick={() => closeModal(false)} id="cancelLogOut">Cancel</button>
                     </div>
-                    {data && <p className='text_alert_create'> Please fill evry things.</p>}
-                    
                 </div>
-                
             </div>
         </div>
     )

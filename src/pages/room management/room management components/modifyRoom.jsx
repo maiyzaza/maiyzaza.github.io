@@ -26,9 +26,6 @@ function ModifyRoom( { closeModal,roomId } ) {
  
     let history = useHistory();
 
-    // const [openModal, setOpenModal] = useState(false);
-    // const [openModal1, setOpenModal1] = useState(false);
-
     const postdata = async () => {
       try {
         console.log("room id",roomId)
@@ -83,16 +80,17 @@ function ModifyRoom( { closeModal,roomId } ) {
   const onClick = async (event) => {
     event.preventDefault();
 
+    let picUrl = baseImage
     if (baseImage.length == 0 ) {
-        setBaseImage(oldImg)
+      picUrl = oldImg
     }
 
     let building1 = (sessionStorage.getItem("building"))
-    if (building1 === null)
+    if (building1 === null || building1 === "Not Specified")
       building1 = building
     
     let floor1 = (sessionStorage.getItem("floor"))
-    if (floor1 === null)
+    if (floor1 === null || floor1 === "Not Specified")
       floor1 = floor
     
     let minD1 = (sessionStorage.getItem("minDuration"))
@@ -111,8 +109,19 @@ function ModifyRoom( { closeModal,roomId } ) {
     if (endTime1 === null)
       endTime1 = dataEndTime
 
-    try {
+    console.log(roomId)
+    console.log(roomTitle)
+    console.log(building1)
+    console.log(floor1)
+    console.log(cap)
+    console.log(picUrl)
+    console.log(minAt) 
+    console.log(minD1)
+    console.log(maxD1)
+    console.log(startTime1)
+    console.log(endTime1)
 
+    try {
      await axios({
         url: "https://arr-dev.azurewebsites.net/api/v1/webs/rooms-modify",
         headers: {
@@ -125,7 +134,7 @@ function ModifyRoom( { closeModal,roomId } ) {
             Building: building1,
             Floor: floor1,
             RoomCapacity: cap,
-            RoomPictureUrl: baseImage,
+            RoomPictureUrl: picUrl,
             MinAttendee: minAt,
             MinDuration: minD1,
             MaxDuration: maxD1,
@@ -136,6 +145,7 @@ function ModifyRoom( { closeModal,roomId } ) {
     .then((res) => {
       alert("Your room has been modified")
       history.push("/roomManagement")
+      window.location.reload("/roomManagement");
      });
     } catch (err) {
       setData(true)

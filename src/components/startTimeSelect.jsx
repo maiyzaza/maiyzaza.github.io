@@ -75,7 +75,21 @@ function StartTimeSelect(oldValue) {
                 { value: "15:30", label: "15:30" },
                 { value: "16:00", label: "16:00" },
                 { value: "16:30", label: "16:30" },
-                { value: "17:00", label: "17:00" }]
+                { value: "17:00", label: "17:00" },
+                { value: "17:30", label: "17:30" },
+                { value: "18:00", label: "18:00" },
+                { value: "18:30", label: "18:30" },
+                { value: "19:00", label: "19:00" },
+                { value: "19:30", label: "19:30" },
+                { value: "20:00", label: "20:00" },
+                { value: "20:30", label: "20:30" },
+                { value: "21:00", label: "21:00" },
+                { value: "21:30", label: "21:30" },
+                { value: "22:00", label: "22:00" },
+                { value: "22:30", label: "22:30" },
+                { value: "23:00", label: "23:00" },
+                { value: "23:30", label: "23:30" },
+                { value: "24:00", label: "24:00" }]
 
   const onChange = (e) => {
     window.sessionStorage.setItem("startTime", e.value)

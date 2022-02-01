@@ -40,8 +40,6 @@ function SearchRoomManagement(props) {
             
             if (res.data.data.length !== 0) {
                 setNonData(false)
-                window.sessionStorage.setItem("building", "Not Specified")
-                window.sessionStorage.setItem("floor", "Not Specified")
             }
             else {
                 setNonData(true)

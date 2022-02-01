@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SearchSelectBuilding from "../../room management/room management components/searchSelectBuilding";
 import SearchSelectFloor from "../../room management/room management components/searchSelectFloor";
-
+import DefaultDateDropDown from '../../../components/defaultDateDropDown';
 import FloorList from './floorList';
 import axios from 'axios';
 
@@ -70,9 +70,13 @@ function SearchReservationManagement(props) {
         <div class="room_management">
             <h1 class="search_container_building">Building</h1>
             <h1 class="search_container_floor">Floor</h1>
+            <h1 class="search_container_date1"> Date </h1>
             <SearchSelectBuilding />
             <SearchSelectFloor />
-            <button class="search_button_room" onClick={onClick}> Search </button>
+            <div class="date-drop-down third-select">
+                <DefaultDateDropDown />
+            </div>
+            <button class="search_button_room1" onClick={onClick}> Search </button>
             {nonData && <div class="room_management_not_find">
                 No Reservation Management
             </div>}
