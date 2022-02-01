@@ -11,21 +11,19 @@ import { Redirect } from 'react-router-dom';
 const TablePage = (props) =>  {
   // let history = useHistory();
 
-
   const [dataRow,setDataRow] = useState([])
   const [itemRow,setItemRow] = useState([])
   
-  // const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiI2MjEzNjM5IiwiZXhwIjoxNjQwODYwODY3LCJpc3MiOiJUb2tlbkF1dGhEZW1vIiwiYXVkIjoiVG9rZW5BdXRoRGVtbyJ9.NPjUTgmVrz3NGiwPmx3vvvGMrN2boOVOARpQqQbJiVE"
   const access_token = sessionStorage.getItem("token")
-  // console.log("access_token",access_token)
-  // if(!access_token){
-  //   history.push("/")
-  //   window.location.reload("/");
-  // }
-
 
   const postdata = async () => {
       try {
+        let status = window.sessionStorage.getItem("status")
+        let date = window.sessionStorage.getItem("date")
+
+        if (status == "Not Specified") { status = null  }
+        if (date == "Not Specified") { date = null }
+
        const res = await axios({
           url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
           headers: {
@@ -35,8 +33,8 @@ const TablePage = (props) =>  {
           data: {
               BookingId : null,
               RoomName : null,
-              Status : null,
-              Date : null,
+              Status : status,
+              Date : date,
               Page : 1
           }
       })

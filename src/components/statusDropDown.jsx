@@ -51,6 +51,11 @@ import React, { useEffect, useState } from "react";
       color: 'rgba(0, 0, 0)',
     }),
   }
+
+  const onChange = (e) => {
+    window.sessionStorage.setItem("status", e.value)
+    console.log(e.value)
+  }
   
   const StatusDropDown = () => (
     <Select
@@ -58,6 +63,7 @@ import React, { useEffect, useState } from "react";
       options={options}
       placeholder="Not Specified"
       styles={customStylesStatus}
+      onChane={onChange}
     />
     
   )

@@ -8,8 +8,9 @@ const DateDropDown = () => {
   const [startDate, setStartDate] = useState(null);
 
   const onChange = (e) => {
-    window.sessionStorage.setItem("date", e.value)
+    window.sessionStorage.setItem("dateHistory", e.value)
   }
+
   return (
     <DatePicker
       selected={startDate}

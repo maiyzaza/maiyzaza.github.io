@@ -11,19 +11,48 @@ import { useHistory } from 'react-router'
  
 function History(props) {
 
-  const [items, setItems] = useState([]);
-  const [inputValue, setValue] = useState('');
-  const [selectedValue, setSelectedValue] = useState(null);
+  // const [items, setItems] = useState([]);
+  // const [inputValue, setValue] = useState('');
+  // const [selectedValue, setSelectedValue] = useState(null);
 
-    // handle input change event
-  const handleInputChange = value => {
-    setValue(value);
-  };
+  // const onClick = async (event) => {
+  //   event.preventDefault();
+    
+    const [value, setValue] = useState();
 
-  // handle selection
-  const handleChange = value => {
-    setSelectedValue(value);
+    const refresh = ()=>{
+      // re-renders the component
+      setValue({});
   }
+
+    // let status = window.sessionStorage.getItem("status")
+    // let date = window.sessionStorage.getItem("date")
+
+    // if (status == "Not Specified") { status = null  }
+    // if (date == "Not Specified") { date = null }
+    
+  //   await axios({
+  //     url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
+  //     headers: {
+  //         'Authorization': 'Bearer ' + access_token
+  //         },
+  //     method: "POST",
+  //     data: {
+  //         BookingId : null,
+  //         RoomName : null,
+  //         Status : null,
+  //         Date : null,
+  //         Page : 1
+  //     }
+  // })
+  // .then((res) => {
+  //     let itemData = res.data.data
+  //     // setDataRow(itemData)
+  //  })
+  // .catch((err) => {
+  //     console.log(err);
+  // })
+// }
 
   const [isActive, setActive] = useState(false);
 
@@ -58,16 +87,11 @@ function History(props) {
         <h1 class="search_container_date"> Date </h1>
         <h1 class="search_container_status"> Status </h1>
         <div class="date-drop-down">
-          <DateDropDown />
+        <DateDropDown />
         </div>
         <StatusDropDown />
-        <button class="search_button">Search</button>
-        
-    
-    
-
+        <button class="search_button" onClick={refresh}>Search</button>
         <Table />
-        
       </body>
     </div>
   );

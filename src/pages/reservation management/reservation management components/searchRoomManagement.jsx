@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SearchSelectBuilding from "./searchSelectBuilding";
 import SearchSelectFloor from "./searchSelectFloor";
+import DateDropDown from './dateDropDown';
 
 import FloorList from './floorList';
 import axios from 'axios';
@@ -14,6 +15,7 @@ function SearchRoomManagement(props) {
     const [nonData, setNonData] = useState(true);
     const [data, setData] = useState();
     const [openModal, setOpenModal] = useState(false);
+    const [openModal1, setOpenModal1] = useState(false);
 
     const onClick = async (event) => {
         event.preventDefault();
@@ -65,8 +67,10 @@ function SearchRoomManagement(props) {
         <div class="room_management">
             <h1 class="search_container_building">Building</h1>
             <h1 class="search_container_floor">Floor</h1>
+            <h1 class="search_container_date">Date</h1>
             <SearchSelectBuilding />
             <SearchSelectFloor />
+            <DateDropDown />
             <button class="search_button_room" onClick={onClick}> Search </button>
             {nonData && <div class="room_management_not_find">
                 No Room Management
