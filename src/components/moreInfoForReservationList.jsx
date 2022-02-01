@@ -44,6 +44,8 @@ function MoreInfoForReservationList() {
   console.log("b",BookingId)
   console.log("r",RoomId)
 
+  
+
   const postdata = async () => {
       try {
 
@@ -58,6 +60,18 @@ function MoreInfoForReservationList() {
           }
       })
       .then((res) => {
+    //     if (BookingId!=0){
+    //         for (var i = 0; i < numrows; i++) {
+    //             ObjectRow()
+    //         } 
+    //         window.location.reload()
+    //    }
+
+            if(!window.location.hash) {
+                    window.location = window.location + '#loaded';
+                    window.location.reload();
+                }
+
           console.log(res.data.data);
           setDataReservation(res.data.data)
           setDataStudents(res.data.data.student)
@@ -69,7 +83,8 @@ function MoreInfoForReservationList() {
           } else {
             setDataReason("-")
           }
-
+          
+         
        });
       } catch (err) {
           console.log(err);
