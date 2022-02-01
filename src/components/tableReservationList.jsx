@@ -101,7 +101,8 @@ const TableReservationList = ({closeModal}) =>  {
        const goToMoreInfo = () => {
         localStorage.setItem("BookingID", booking_id)
         localStorage.setItem("RoomID", room_id)
-        window.location.reload()
+        // window.location.reload()
+        
         
     }
 

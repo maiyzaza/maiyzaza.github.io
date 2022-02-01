@@ -207,6 +207,55 @@ body  {
   margin-top: -0.5rem;
 }
 
+/* delete room */
+.delete-modalContainer {
+  width: 23rem;
+  border-radius: 12px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+
+}
+
+.delete-modalContainer .title {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-family: 'Bariol Serif Bold';
+  margin-bottom: 2rem; 
+}
+
+.delete-modalContainer .body {
+  flex: 50%;
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  font-size: 1rem;
+  /* text-align: center; */
+  margin-bottom: 2rem; 
+}
+
+.delete-modalContainer .footer {
+ 
+  align-self: right;
+  margin-left: 4.5rem;
+}
+
+.delete-modalContainer .footer button {
+  border: none;
+  border-radius: 5px;
+  background-color: #CB002B !important;
+}
+
+#cancelLogOut {
+  background-color: #F2F2F2 !important;
+  color: #383738 !important;
+  margin-right: 0rem!important
+}
+
+
+/* logout */
+
 .logout-modal {
   width: 100vw;
   height: 100vh;
@@ -909,6 +958,32 @@ tbody + thead{
 }
 
 /* Reservation management */
+.search_button_room1 {
+  top: 12.5rem;
+  font-size: 1rem;
+  margin-left: 55.5rem;
+  background-color: #CB002B;
+  color: #DEE2E6;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 20px;
+  position: absolute;
+  height: 2.4rem !important;
+}
+
+.third-select{
+  margin-left: 22rem !important;
+  margin-top: -3.24rem;
+}
+
+.search_container_date1{
+  font-size: 0.9rem;
+  display: block;
+  margin-top: -1.5rem;
+  margin-left: 44.5rem;
+}
+
 .card_reservation_management_room {
   /* height: 6.5rem; */
   width: 14rem;
@@ -1032,7 +1107,7 @@ div .col-3 {
 
 
 .card_room_management_room_writeimg {
-  margin-left: 11.4rem;
+  margin-left: 10rem;
   width: 0.9rem;
   height: 0.9rem;
   margin-top: -100rem !important;
@@ -1048,11 +1123,20 @@ div .col-3 {
   font-size: 0.8rem;
   margin-top: 0.3rem;
   margin-left: 1.7rem;
+  margin-bottom: 0.5rem;
 }
+
+.card_room_management_room_delete{
+  margin-left: 0.5rem;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
 .card_room_management_room_link {
   font-size: 0.8rem;
-  margin-left: 8.2rem;
+  margin-left: 8.7rem;
   margin-bottom: 0rem !important;
+  
   text-decoration: underline;
 }
 .card_room_management_floor {
