@@ -7,8 +7,6 @@ import MaxDurationSelect from './maxDurationSelect';
 import StartTimeSelect from './startTimeSelect';
 import EndTimeSelect from './endTimeSelect';
 import { useHistory } from 'react-router-dom';
-import FailedModal from './createRoomStatus/failedModal';
-import SuccessModal from './createRoomStatus/successModal';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 
 
