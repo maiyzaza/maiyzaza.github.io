@@ -7,28 +7,17 @@ import MaxDurationSelect from './maxDurationSelect';
 import StartTimeSelect from './startTimeSelect';
 import EndTimeSelect from './endTimeSelect';
 import { useHistory } from 'react-router-dom';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
-
-
-
-
 
 
 function CreateRoom({closeModal}) {
-    let history = useHistory();
-  
+
     const [roomTitle, setRoomTitle] = useState('');
     const [roomCapacity, setCapacity] = useState('');
     const [requireMember, setRequireMember] = useState('');
-
-    
-
-    const [data, setData] = useState();
     const [baseImage, setBaseImage] = useState("");
     const access_token = sessionStorage.getItem("token")
-
-    const [openModal, setOpenModal] = useState(false);
-    const [openModal1, setOpenModal1] = useState(false);
+    
+    let history = useHistory();
 
     const onClick = (event) => {
 
@@ -38,18 +27,6 @@ function CreateRoom({closeModal}) {
         let maxDuration = window.sessionStorage.getItem("maxDuration")
         let startTime = window.sessionStorage.getItem("startTime")
         let endTime = window.sessionStorage.getItem("endTime")
-
-        console.log(building)
-        console.log(floor)
-        console.log(roomTitle)
-        console.log(roomCapacity)
-        console.log(requireMember)
-        console.log(minDuration)
-        console.log(maxDuration)
-        console.log(startTime)
-        console.log(endTime)
-
-        setOpenModal(true)
 
         event.preventDefault();
 
@@ -65,7 +42,7 @@ function CreateRoom({closeModal}) {
                 Floor : floor,
                 RoomTitle: roomTitle,
                 RoomCapacity: roomCapacity,
-                RoomPictureUrl: "https://cdn.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_1024/https://truelab.info/wp-content/uploads/2020/03/DSC_1945-HDR-1024x683.jpg",
+                RoomPictureUrl: baseImage,
                 MinAttendee: requireMember,
                 MinDuration: minDuration,
                 MaxDuration: maxDuration,
@@ -75,28 +52,70 @@ function CreateRoom({closeModal}) {
         })
         .then((res) => {
             console.log("okay", res.data)
-            // if (res.data.message == "Success"){
-                // console.log("okay1")
-                // console.log(setOpenModal1)
-
+            if (res.data.message == "Success") {
                 alert("Your room has been created")
-                let path = `/roomManagement`
-                history.push(path)
-                window.location.reload()
-                // window.location.reload()
-                // {openModal && <SuccessModal closeModal={setOpenModal} />}
-            // }
+                window.sessionStorage.setItem("building", null)
+                window.sessionStorage.setItem("floor", null)
+                window.sessionStorage.setItem("minDuration", null)
+                window.sessionStorage.setItem("maxDuration", null)
+                window.sessionStorage.setItem("startTime", null)
+                window.sessionStorage.setItem("endTime", null)
+                history.push("/roomManagement")
+            }
+            alert("Your room has been created")
+            let path = `/roomManagement`
+            history.push(path)
+            window.location.reload()
             
         })
         .catch((err) => {
             console.log(err.response)
-            
-                alert("Failed to create room")
-            
-            // {openModal1 && <FailedModal closeModal={setOpenModal1} />}
-           
-            
+            alert("Failed to create room")
         });
+
+        axios({
+            url: "https://arr-dev.azurewebsites.net/api/v1/webs/rooms-create",
+            headers: {
+                'Authorization': "Bearer " + access_token
+                },
+            method: "POST",
+            data: {
+                Campus: null,
+                Building : building,
+                Floor : floor,
+                RoomTitle: roomTitle,
+                RoomCapacity: roomCapacity,
+                RoomPictureUrl: baseImage,
+                MinAttendee: requireMember,
+                MinDuration: minDuration,
+                MaxDuration: maxDuration,
+                CloseTime: endTime,
+                OpenTime: startTime
+        }
+        })
+        .then((res) => {
+            console.log("okay", res.data)
+            if (res.data.message == "Success") {
+                alert("Your room has been created")
+                window.sessionStorage.setItem("building", null)
+                window.sessionStorage.setItem("floor", null)
+                window.sessionStorage.setItem("minDuration", null)
+                window.sessionStorage.setItem("maxDuration", null)
+                window.sessionStorage.setItem("startTime", null)
+                window.sessionStorage.setItem("endTime", null)
+                history.push("/roomManagement")
+            }
+            alert("Your room has been created")
+            let path = `/roomManagement`
+            history.push(path)
+            window.location.reload()
+            
+        })
+        .catch((err) => {
+            console.log(err.response)
+            alert("Failed to create room")
+        });
+
     }
 
   const uploadImage = async (e) => {
@@ -105,9 +124,6 @@ function CreateRoom({closeModal}) {
     setBaseImage(base64);
     
   };
-  console.log("url", baseImage)
-
-
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -136,8 +152,6 @@ function CreateRoom({closeModal}) {
                             <label className="col-6 secondForm">Floor</label>
                             <SearchSelectBuilding className="size zero" required />
                             <SearchSelectFloor className="size secondP" required />
-                            {/* <textarea className="size" required></textarea>
-                            <textarea className="size secondP" required></textarea> */}
                             
                             <label className="col-6 firstForm">Room Title</label>
                             <label className="col-6 secondForm">Room Capacity</label>
@@ -166,12 +180,10 @@ function CreateRoom({closeModal}) {
                     </div>
 
                     <div className="footer">
-                        {/* <button className="btn btn-danger btn-sm" onClick={() => {setOpenModal(true);}} type="button">Create</button> */}
                         <button className="btn btn-danger btn-sm" onClick={onClick} type="button">Create</button>
                         <button className="btn btn-primary btn-sm" type="button" onClick={() => closeModal(false)} id="cancelLogOut">Cancel</button>
                     </div>
                 </div>
-                
             </div>
         </div>
     )

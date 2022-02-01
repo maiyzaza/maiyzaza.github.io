@@ -102,7 +102,7 @@ function MoreInfo() {
             setDataMinDu(rhours + " hrs.")
           } else {
            
-            setDataMinDu(rhours + " hrs." + rminutes + " min.") 
+            setDataMinDu(rhours + " hrs. " + rminutes + " min.") 
           }
           
         } else {
@@ -120,7 +120,7 @@ function MoreInfo() {
      
             setDataMaxDu(rhours + " hrs.") 
           } else {
-            setDataMaxDu(rhours + " hrs." + rminutes + " min.") 
+            setDataMaxDu(rhours + " hrs. " + rminutes + " min.") 
         }
       } else {
         setDataMaxDu(res.data.data.maxDuration+ " min.")
@@ -225,9 +225,11 @@ function MoreInfo() {
               <textarea disabled value={new Date(dataReservation.startDateTime).toLocaleTimeString(undefined, {
                 hour:   '2-digit',
                 minute: '2-digit',
+                hour12: false
               }) + ' - ' + new Date(dataReservation.endDateTime).toLocaleTimeString(undefined, {
                 hour:   '2-digit',
                 minute: '2-digit',
+                hour12: false
               })} onChange={setDataRoom}></textarea>
             </div>
 

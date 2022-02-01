@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
-
+import '../../../App.css';
 import axios from 'axios';
 
-const customStylesStatus = {
+const customStylesBuilding = {
   control: (base, state) => ({
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    left: "32.5rem",
-    top: "-2.4rem",
+    left: "21.55rem",
+    top: "0rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
@@ -20,7 +20,7 @@ const customStylesStatus = {
     return {
       ...styles,
       cursor: 'pointer',
-      // backgroundColor: isFocused ? 'white' : 'white',
+      backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
     }
@@ -34,12 +34,13 @@ const customStylesStatus = {
 
   menu: styles => ({
     ...styles,
-    left: "33.5rem",
-    top: "-0.4rem",
+    left: "22.5rem",
+    top: "1.9rem",
     boxShadow: 'none',
     borderRadius: 5,
     fontSize: "0.8rem",
-    width: "10rem"
+    width: "10rem",
+    
   }),
 
   singleValue: styles => ({
@@ -48,17 +49,17 @@ const customStylesStatus = {
   }),
 }
 
-function MyComponent(oldValue) {
+function MyComponent() {
 
   const [data, setData] = useState([]);
   let options = [{ value: "Not Specified", label: "Not Specified" }]
 
   const postdata = async () => {
-
+    
     const access_token = sessionStorage.getItem("token")
-
+    
     axios({
-      url: "https://arr-dev.azurewebsites.net/api/v1/webs/status",
+      url: "https://arr-dev.azurewebsites.net/api/v1/webs/buildings",
       headers: {
           'Authorization': "Bearer " + access_token
           },
@@ -74,28 +75,20 @@ function MyComponent(oldValue) {
   },[]);
 
   data.forEach(e => {
-    options.push({ value: e.id, label: e.statusName })
+    options.push({ value: e.text, label: e.text })
   });
 
   const onChange = (e) => {
-    console.log(e)
-    window.sessionStorage.setItem("status", e.label)
+    window.sessionStorage.setItem("building", e.value)
   }
 
-  let defaultValue = "Not Specified"
-  
-  if (oldValue.oldValue !== null){
-    if (oldValue !== null) {
-      defaultValue = `${oldValue.oldValue}`
-    }
-  }
-  
+
   return (
     <Select
       className="col-2"
       options={options}
-      placeholder={defaultValue}
-      styles={customStylesStatus}
+      placeholder="Not Specified"
+      styles={customStylesBuilding}
       onChange={onChange}
     />
   );

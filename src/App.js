@@ -22,6 +22,13 @@ function App() {
   // ต้องใช้อันนี้
   const [isActive, setActive] = useState("false");
 
+  sessionStorage.removeItem("startTime")
+  sessionStorage.removeItem("endTime")
+  sessionStorage.removeItem("maxDuration")
+  sessionStorage.removeItem("minDuration")
+  sessionStorage.removeItem("building")
+  sessionStorage.removeItem("floor")
+
   return (
     <Router>
         <Switch >

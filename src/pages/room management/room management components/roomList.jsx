@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ModifyRoom from '../../../components/modifyRoom';
+import ModifyRoom from './modifyRoom';
 import DeleteRoom from '../../../components/deleteRoom';
 
 
@@ -12,7 +12,6 @@ function Card(props) {
 
   let data = props.data;
   let roomId = data.roomId;
-  console.log("asa", roomId)
 
   return (
     
@@ -26,7 +25,6 @@ function Card(props) {
       <div className="card_room_management_room_roomname">{data.roomName}</div>
       <div className="card_room_management_room_time">{data.openTime.slice(0,5)} - {data.closeTime.slice(0,5)} hrs.</div>
       <a href="#" class="card_room_management_room_link">See more {">"}</a>
-
     </div>
     </div>
   )
