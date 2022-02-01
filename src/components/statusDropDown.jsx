@@ -3,7 +3,7 @@ import Select from 'react-select'
 
 import axios from 'axios';
 
-const customStylesFloor = {
+const customStylesStatus = {
   control: (base, state) => ({
     ...base,
     fontFamily: 'Bariol Regular',
@@ -48,7 +48,7 @@ const customStylesFloor = {
   }),
 }
 
-function MyComponent() {
+function MyComponent(oldValue) {
 
   const [data, setData] = useState([]);
   let options = [{ value: "Not Specified", label: "Not Specified" }]
@@ -58,7 +58,7 @@ function MyComponent() {
     const access_token = sessionStorage.getItem("token")
 
     axios({
-      url: "https://arr-dev.azurewebsites.net/api/v1/webs/floors",
+      url: "https://arr-dev.azurewebsites.net/api/v1/webs/status",
       headers: {
           'Authorization': "Bearer " + access_token
           },
@@ -74,34 +74,26 @@ function MyComponent() {
   },[]);
 
   data.forEach(e => {
-    options.push({ value: e.text, label: e.text })
+    options.push({ value: e.id, label: e.statusName })
   });
 
   const onChange = (e) => {
-    window.sessionStorage.setItem("floor", e.value)
+    console.log(e)
+    window.sessionStorage.setItem("status", e.label)
   }
 
-<<<<<<< HEAD
-  const onChange = (e) => {
-    window.sessionStorage.setItem("status", e.value)
-    console.log(e.value)
+  let defaultValue = "Not Specified"
+  if (oldValue !== null) {
+    defaultValue = `${oldValue.oldValue}`
   }
   
-  const StatusDropDown = () => (
-=======
   return (
->>>>>>> develop
     <Select
       className="col-2"
       options={options}
-      placeholder="Not Specified"
-<<<<<<< HEAD
+      placeholder={defaultValue}
       styles={customStylesStatus}
-      onChane={onChange}
-=======
-      styles={customStylesFloor}
       onChange={onChange}
->>>>>>> develop
     />
   );
 }

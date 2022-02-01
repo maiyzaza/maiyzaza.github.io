@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Select from 'react-select'
-
-import axios from 'axios';
 
 const customStylesBuilding = {
   control: (base, state) => ({
@@ -52,7 +50,7 @@ const customStylesBuilding = {
 
 
 
-function MinDurationSelect() {
+function MinDurationSelect(oldValue) {
 
   let options = [{ value: 30 , label: "30 min." },
                 { value: 60 , label: "1 hr." },
@@ -64,11 +62,20 @@ function MinDurationSelect() {
   const onChange = (e) => {
     window.sessionStorage.setItem("minDuration", e.value)
   }
+  
+  let defaultValue = "Not Specified"
+  if (oldValue !== null) {
+    options.map( (e) => {
+      if (e.value === oldValue.oldValue) {
+        defaultValue = e.label
+      }
+    })
+  }
 
   return (
     <Select
       options={options}
-      placeholder="Not Specified"
+      placeholder={defaultValue}
       styles={customStylesBuilding}
       onChange={onChange}
     />

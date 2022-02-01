@@ -52,7 +52,7 @@ const customStylesFloor = {
   })
 }
 
-function MyComponent() {
+function MyComponent(oldValue) {
 
   const [data, setData] = useState([]);
   let options = []
@@ -89,11 +89,16 @@ function MyComponent() {
     window.sessionStorage.setItem("floor", e.value)
   }
 
+  let defaultValue = "Not Specified"
+  if (oldValue !== null) {
+    defaultValue = `${oldValue.oldValue}`
+  }
+
   return (
     <Select
       className="positionFloorSelect"
       options={options}
-      placeholder="Not Specified"
+      placeholder={defaultValue}
       styles={customStylesFloor}
       onChange={onChange}
     />

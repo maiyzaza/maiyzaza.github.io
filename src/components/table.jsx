@@ -4,12 +4,10 @@ import { MDBDataTable } from 'mdbreact';
 import MoreInfo from "../pages/history/moreInfo";
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router-dom';
-// import { useHistory } from 'react-router'
 
 
 
 const TablePage = (props) =>  {
-  // let history = useHistory();
 
   const [dataRow,setDataRow] = useState([])
   const [itemRow,setItemRow] = useState([])
@@ -22,7 +20,23 @@ const TablePage = (props) =>  {
         let date = window.sessionStorage.getItem("date")
 
         if (status == "Not Specified") { status = null  }
-        if (date == "Not Specified") { date = null }
+
+        const allMonts = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let monts = ""
+
+           
+        let count = 1
+
+        allMonts.map( (e) => {
+          if (e === date.toString().slice(4,7)) {
+            if (count < 10) {
+              monts = "0" + count.toString()
+            }
+            else { monts = count.toString()}
+          }
+          count += 1
+        })
+        date = (monts + "/" + date.toString().slice(8,10) + "/" + date.toString().slice(11,15))
 
        const res = await axios({
           url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
@@ -33,18 +47,14 @@ const TablePage = (props) =>  {
           data: {
               BookingId : null,
               RoomName : null,
-              Status : status,
-              Date : date,
+              Status : status.toString(),
+              Date : date.toString(),
               Page : 1
           }
       })
       .then((res) => {
-          // console.log("res", res.data.data)
-          // console.log(res.data.data.items);
           let itemData = res.data.data
           setDataRow(itemData)
-          // console.log("dd")
-          // console.log("itemData", itemData)
        });
       } catch (err) {
           console.log(err);
@@ -57,7 +67,6 @@ const TablePage = (props) =>  {
 
   useEffect(() => {
     let dataArray = JSON.parse(JSON.stringify(dataRow))
-    // let dataArray = JSON.stringify(dataRow)
     var reservationData = []
     dataArray.map((item,index)=>{
       item.date = (
@@ -95,15 +104,7 @@ const TablePage = (props) =>  {
        const booking_id = item.bookingId;
        const room_id = item.roomId;
 
-      // item.reservedBy = (
-      //   <div style={{texttransform: "capitalize"}}>
-      //     console.log({item.reservedBy})
-      //   </div>
-      // )
-
       item.info = (
-        // bookingId={item.bookingId}
-        // <Link to={`/moreinfo/${item.bookingId}`}   >
         <Link to={{pathname:`/moreinfo/${booking_id}`,  state:{ booking_id,room_id } } } > 
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div
@@ -113,12 +114,7 @@ const TablePage = (props) =>  {
               color: "black",
               fontSize: "1.1rem",
             }}
-              // onClick={() => deletePost(posts[index].id)}
-              // onClick={() => Post(posts[index].id)}
           > 
-          {/* {item.bookingId} */}
-          {/* <Link to={/singlepost/${_id}} className="link" /> */}
-              {/* Delete */}
           </div>
         </div>
        </Link>

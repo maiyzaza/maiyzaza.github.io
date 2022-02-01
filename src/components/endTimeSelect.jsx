@@ -57,14 +57,10 @@ const customStylesFloor = {
   })
 }
 
-function EndTimeSelect() {
+function EndTimeSelect(oldValue) {
 
   let options = [{ value: "09:00", label: "09:00" },
-<<<<<<< HEAD
-                { value: "09:00", label: "09:30" },
-=======
                 { value: "09:30", label: "09:30" },
->>>>>>> develop
                 { value: "10:00", label: "10:00" },
                 { value: "10:30", label: "10:30" },
                 { value: "11:00", label: "11:00" },
@@ -85,11 +81,16 @@ function EndTimeSelect() {
     window.sessionStorage.setItem("endTime", e.value)
   }
 
+  let defaultValue = "Not Specified"
+  if (oldValue !== null) {
+    defaultValue = `${oldValue.oldValue}`
+  }
+
   return (
     <Select
       className="positionFloorSelect"
       options={options}
-      placeholder="Not Specified"
+      placeholder={defaultValue}
       styles={customStylesFloor}
       onChange={onChange}
     />

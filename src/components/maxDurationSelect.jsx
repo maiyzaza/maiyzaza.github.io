@@ -53,7 +53,7 @@ const customStylesFloor = {
   })
 }
 
-function MaxDurationSelect() {
+function MaxDurationSelect(oldValue) {
 
   let options = [{ value: 30 , label: "30 min." },
                 { value: 60 , label: "1 hr." },
@@ -66,11 +66,20 @@ function MaxDurationSelect() {
     window.sessionStorage.setItem("maxDuration", e.value)
   }
 
+  let defaultValue = "Not Specified"
+  if (oldValue !== null) {
+    options.map( (e) => {
+      if (e.value === oldValue.oldValue) {
+        defaultValue = e.label
+      }
+    })
+  }
+
   return (
     <Select
       className="positionFloorSelect"
       options={options}
-      placeholder="Not Specified"
+      placeholder={defaultValue}
       styles={customStylesFloor}
       onChange={onChange}
     />

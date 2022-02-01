@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import ModifyRoom from '../../../components/modifyRoom';
-import ModifyRoom from '../../../components/createRoom';
+import ModifyRoom from './modifyRoom';
 
 function Card(props) {
 

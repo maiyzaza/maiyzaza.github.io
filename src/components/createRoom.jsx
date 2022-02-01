@@ -63,7 +63,6 @@ function CreateRoom({closeModal}) {
         })
         .then((res) => {
             console.log("okay", res.data)
-<<<<<<< HEAD
             if (res.data.message == "Success") {
                 alert("Your room has been created")
                 window.sessionStorage.setItem("building", null)
@@ -74,19 +73,53 @@ function CreateRoom({closeModal}) {
                 window.sessionStorage.setItem("endTime", null)
                 history.push("/roomManagement")
             }
-=======
-            // if (res.data.message == "Success"){
-                // console.log("okay1")
-                // console.log(setOpenModal1)
+            alert("Your room has been created")
+            let path = `/roomManagement`
+            history.push(path)
+            window.location.reload()
+            
+        })
+        .catch((err) => {
+            console.log(err.response)
+            alert("Failed to create room")
+        });
 
+        axios({
+            url: "https://arr-dev.azurewebsites.net/api/v1/webs/rooms-create",
+            headers: {
+                'Authorization': "Bearer " + access_token
+                },
+            method: "POST",
+            data: {
+                Campus: null,
+                Building : building,
+                Floor : floor,
+                RoomTitle: roomTitle,
+                RoomCapacity: roomCapacity,
+                RoomPictureUrl: baseImage,
+                MinAttendee: requireMember,
+                MinDuration: minDuration,
+                MaxDuration: maxDuration,
+                CloseTime: endTime,
+                OpenTime: startTime
+        }
+        })
+        .then((res) => {
+            console.log("okay", res.data)
+            if (res.data.message == "Success") {
                 alert("Your room has been created")
-                let path = `/roomManagement`
-                history.push(path)
-                window.location.reload()
-                // window.location.reload()
-                // {openModal && <SuccessModal closeModal={setOpenModal} />}
-            // }
->>>>>>> develop
+                window.sessionStorage.setItem("building", null)
+                window.sessionStorage.setItem("floor", null)
+                window.sessionStorage.setItem("minDuration", null)
+                window.sessionStorage.setItem("maxDuration", null)
+                window.sessionStorage.setItem("startTime", null)
+                window.sessionStorage.setItem("endTime", null)
+                history.push("/roomManagement")
+            }
+            alert("Your room has been created")
+            let path = `/roomManagement`
+            history.push(path)
+            window.location.reload()
             
         })
         .catch((err) => {
