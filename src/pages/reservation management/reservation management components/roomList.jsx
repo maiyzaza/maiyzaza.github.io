@@ -8,6 +8,7 @@ function Card(props) {
 
   let data = props.data;
   let roomId = data.roomId;
+
   console.log("asa", roomId)
 
   return (
@@ -17,11 +18,8 @@ function Card(props) {
         <i className="card_reservation_management_room_icon bx bx-calendar-plus" onClick={() => {setOpenModal1(true);}}></i>
         {openModal1 && <NewReservation closeModal={setOpenModal1} roomId = {roomId} />} 
         <i class='card_reservation_management_room_icon1 bx bx-trash'></i>
-        <div className="card_reservation_management_room_roomname">{data.roomName}
-        {/* <i className="card_reservation_management_room_icon bx bx-calendar-plus"></i> */}
-        
+        <div className="card_reservation_management_room_roomname">{data.roomName}  
         </div>
-        {/* <i className="card_reservation_management_room_icon bx bx-calendar-plus"></i> */}
       </div>
     </div>
   )

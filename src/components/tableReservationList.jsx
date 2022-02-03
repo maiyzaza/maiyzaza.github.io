@@ -13,8 +13,6 @@ const TableReservationList = ({closeModal}) =>  {
 
   console.log("test",closeModal)
 
-
-
   const [dataRow,setDataRow] = useState([])
   const [itemRow,setItemRow] = useState([])
   
@@ -71,6 +69,7 @@ const TableReservationList = ({closeModal}) =>  {
           {new Date(item.startTime).toLocaleTimeString(undefined, {
               hour:   '2-digit',
               minute: '2-digit',
+              hour12: false
           })}
         </div>
       );
@@ -80,6 +79,7 @@ const TableReservationList = ({closeModal}) =>  {
           {new Date(item.endTime).toLocaleTimeString(undefined, {
               hour:   '2-digit',
               minute: '2-digit',
+              hour12: false
           })}
         </div>
       );

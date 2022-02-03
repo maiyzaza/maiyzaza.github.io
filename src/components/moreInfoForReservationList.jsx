@@ -243,9 +243,11 @@ function MoreInfoForReservationList() {
               <textarea disabled value={new Date(dataReservation.startDateTime).toLocaleTimeString(undefined, {
                 hour:   '2-digit',
                 minute: '2-digit',
+                hour12: false
               }) + ' - ' + new Date(dataReservation.endDateTime).toLocaleTimeString(undefined, {
                 hour:   '2-digit',
                 minute: '2-digit',
+                hour12: false
               })} onChange={setDataRoom}></textarea>
             </div>
 

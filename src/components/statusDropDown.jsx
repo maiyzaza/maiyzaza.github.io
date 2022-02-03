@@ -3,7 +3,7 @@ import Select from 'react-select'
 
 import axios from 'axios';
 
-const customStylesFloor = {
+const customStylesStatus = {
   control: (base, state) => ({
     ...base,
     fontFamily: 'Bariol Regular',
@@ -20,7 +20,7 @@ const customStylesFloor = {
     return {
       ...styles,
       cursor: 'pointer',
-      backgroundColor: isFocused ? 'white' : 'white',
+      // backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
     }
@@ -48,45 +48,32 @@ const customStylesFloor = {
   }),
 }
 
-function MyComponent() {
+function MyComponent(oldValue) {
 
-  const [data, setData] = useState([]);
-  let options = [{ value: "Not Specified", label: "Not Specified" }]
-
-  const postdata = async () => {
-
-    const access_token = sessionStorage.getItem("token")
-
-    axios({
-      url: "https://arr-dev.azurewebsites.net/api/v1/webs/floors",
-      headers: {
-          'Authorization': "Bearer " + access_token
-          },
-      method: "GET",
-    })
-    .then((res) => {
-      setData(res.data.data)
-    })
-  };
-
-  useEffect(() => {
-    postdata();
-  },[]);
-
-  data.forEach(e => {
-    options.push({ value: e.text, label: e.text })
-  });
+  // const [data, setData] = useState([]);
+  let options = [{ value: "Not Specified", label: "Not Specified" },
+                 { value: "Failed", label: "Failed" },
+                 { value: "Done", label: "Completed" }]
 
   const onChange = (e) => {
-    window.sessionStorage.setItem("floor", e.value)
+    console.log(e)
+    window.sessionStorage.setItem("status", e.value)
   }
 
+  let defaultValue = "Not Specified"
+  
+  if (oldValue.oldValue !== null){
+    if (oldValue !== null) {
+      defaultValue = `${oldValue.oldValue}`
+    }
+  }
+  
   return (
     <Select
       className="col-2"
       options={options}
-      placeholder="Not Specified"
-      styles={customStylesFloor}
+      placeholder={defaultValue}
+      styles={customStylesStatus}
       onChange={onChange}
     />
   );

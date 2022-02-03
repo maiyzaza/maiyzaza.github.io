@@ -6,13 +6,13 @@ const customStylesFloor = {
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    left: "16rem",
+    left: "15.6rem",
     paddingBottom: "0rem",
     top: "-1.61rem",
     cursor: 'text',
     borderRadius: 5,
     fontSize: "0.8rem",
-    width: "14rem",
+    width: "14.3rem",
     borderColor: "#EAEAEA"
   }),
 
@@ -34,12 +34,12 @@ const customStylesFloor = {
 
   menu: styles => ({
     ...styles,
-    left: "16rem",
-    top: "-0.4rem",
+    left: "15.5rem",
+    top: "-0.2rem",
     boxShadow: 'none',
     borderRadius: 5,
     fontSize: "0.8rem",
-    width: "14rem",
+    width: "14.4rem",
     borderColor: "#EAEAEA"
   }),
 

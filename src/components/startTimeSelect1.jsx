@@ -1,18 +1,17 @@
 import React from 'react'
 import Select from 'react-select'
 
-const customStylesFloor = {
+const customStylesBuilding = {
   control: (base, state) => ({
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    left: "16rem",
-    paddingBottom: "0rem",
-    top: "-1.61rem",
+    // left: "21.55rem",
+    top: "0rem",
     cursor: 'text',
     borderRadius: 5,
     fontSize: "0.8rem",
-    width: "14rem",
+    width: "14.3rem",
     borderColor: "#EAEAEA"
   }),
 
@@ -34,13 +33,14 @@ const customStylesFloor = {
 
   menu: styles => ({
     ...styles,
-    left: "16rem",
-    top: "-0.4rem",
+    // left: "22.5rem",
+    top: "1.4rem",
     boxShadow: 'none',
     borderRadius: 5,
     fontSize: "0.8rem",
-    width: "14rem",
+    width: "14.4rem",
     borderColor: "#EAEAEA"
+    
   }),
 
   menuList: styles => ({
@@ -55,7 +55,8 @@ const customStylesFloor = {
   })
 }
 
-function EndTimeSelect(oldValue) {
+function StartTimeSelect(oldValue) {
+
 
   let options = [{ value: "09:00", label: "09:00" },
                 { value: "09:30", label: "09:30" },
@@ -88,9 +89,9 @@ function EndTimeSelect(oldValue) {
                 { value: "23:00", label: "23:00" },
                 { value: "23:30", label: "23:30" },
                 { value: "24:00", label: "24:00" }]
-        
+
   const onChange = (e) => {
-    window.sessionStorage.setItem("endTime", e.value)
+    window.sessionStorage.setItem("startTime", e.value)
   }
 
   let defaultValue = "Not Specified"
@@ -100,14 +101,13 @@ function EndTimeSelect(oldValue) {
 
   return (
     <Select
-      className="positionFloorSelect"
       options={options}
       placeholder={defaultValue}
-      styles={customStylesFloor}
+      styles={customStylesBuilding}
       onChange={onChange}
     />
   );
 }
 
-export default EndTimeSelect;
+export default StartTimeSelect ;
 

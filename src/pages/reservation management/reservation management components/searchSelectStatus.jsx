@@ -3,19 +3,17 @@ import Select from 'react-select'
 
 import axios from 'axios';
 
-const customStylesBuilding = {
+const customStylesFloor = {
   control: (base, state) => ({
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    // left: "21.55rem",
-    top: "0rem",
+    left: "32.5rem",
+    top: "-1.5965rem",
     width: "10rem",
     cursor: 'text',
     borderRadius: 5,
     fontSize: "0.8rem",
-    width: "14rem",
-    borderColor: "#EAEAEA"
   }),
 
   option: (styles, { isFocused }) => {
@@ -25,7 +23,6 @@ const customStylesBuilding = {
       backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
-      
     }
   },
 
@@ -37,32 +34,31 @@ const customStylesBuilding = {
 
   menu: styles => ({
     ...styles,
-    
-    // left: "22.5rem",
-    top: "1.9rem",
-    width: "14rem",
+    left: "33.5rem",
+    top: "0.27rem",
     boxShadow: 'none',
     borderRadius: 5,
     fontSize: "0.8rem",
+    width: "10rem"
   }),
 
   singleValue: styles => ({
     ...styles,
     color: 'rgba(0, 0, 0)',
-    fontSize: "0.8rem"
   }),
 }
 
-function SearchSelectBuilding(oldValue) {
+function SearchSelectStatus() {
 
   const [data, setData] = useState([]);
-  let options = []
+  let options = [{ value: "Not Specified", label: "Not Specified" }]
 
   const postdata = async () => {
-    const access_token = sessionStorage.getItem("token")
     
+    const access_token = sessionStorage.getItem("token")
+
     axios({
-      url: "https://arr-dev.azurewebsites.net/api/v1/webs/buildings",
+      url: "https://arr-dev.azurewebsites.net/api/v1/webs/floors",
       headers: {
           'Authorization': "Bearer " + access_token
           },
@@ -71,9 +67,6 @@ function SearchSelectBuilding(oldValue) {
     .then((res) => {
       setData(res.data.data)
     })
-    .catch((res) => {
-      // Todo Do Something
-    });
   };
 
   useEffect(() => {
@@ -85,24 +78,19 @@ function SearchSelectBuilding(oldValue) {
   });
 
   const onChange = (e) => {
-    window.sessionStorage.setItem("building", e.value)
-  }
-
-  let defaultValue = "Not Specified"
-  if (oldValue.oldValue !== null) {
-    defaultValue = `${oldValue.oldValue}`
+    window.sessionStorage.setItem("floor", e.value)
   }
 
   return (
     <Select
-      // className="col-2"
+      className="col-2"
       options={options}
-      placeholder={defaultValue}
-      styles={customStylesBuilding}
+      placeholder="Not Specified"
+      styles={customStylesFloor}
       onChange={onChange}
     />
   );
 }
 
-export default SearchSelectBuilding;
+export default SearchSelectStatus;
 

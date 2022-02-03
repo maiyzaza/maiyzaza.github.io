@@ -1,7 +1,6 @@
 import '../../App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from 'react-router'
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SearchRoomManagement from "./room management components/searchRoomManagement"
 import cardImg from '../../assets/cardImg.png';
 

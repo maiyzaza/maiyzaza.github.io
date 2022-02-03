@@ -3,18 +3,18 @@ import Select from 'react-select'
 
 import axios from 'axios';
 
-const customStylesBuilding = {
+const customStylesFloor = {
   control: (base, state) => ({
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    // left: "21.55rem",
-    top: "0rem",
-    width: "10rem",
+    left: "15.6rem",
+    paddingBottom: "0rem",
+    top: "-2.6rem",
     cursor: 'text',
     borderRadius: 5,
     fontSize: "0.8rem",
-    width: "14rem",
+    width: "14.3rem",
     borderColor: "#EAEAEA"
   }),
 
@@ -22,10 +22,9 @@ const customStylesBuilding = {
     return {
       ...styles,
       cursor: 'pointer',
-      backgroundColor: isFocused ? 'white' : 'white',
+      // backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
-      
     }
   },
 
@@ -37,32 +36,38 @@ const customStylesBuilding = {
 
   menu: styles => ({
     ...styles,
-    
-    // left: "22.5rem",
-    top: "1.9rem",
-    width: "14rem",
+    left: "15.5rem",
+    top: "-1.1rem",
     boxShadow: 'none',
     borderRadius: 5,
     fontSize: "0.8rem",
+    width: "14.4rem",
+    borderColor: "#EAEAEA"
+  }),
+
+  menuList: styles => ({
+    ...styles,
+    height: "9rem",
   }),
 
   singleValue: styles => ({
     ...styles,
     color: 'rgba(0, 0, 0)',
     fontSize: "0.8rem"
-  }),
+  })
 }
 
-function SearchSelectBuilding(oldValue) {
+
+function MyComponent(oldValue) {
 
   const [data, setData] = useState([]);
   let options = []
 
   const postdata = async () => {
-    const access_token = sessionStorage.getItem("token")
-    
+  const access_token = sessionStorage.getItem("token")
+
     axios({
-      url: "https://arr-dev.azurewebsites.net/api/v1/webs/buildings",
+      url: "https://arr-dev.azurewebsites.net/api/v1/webs/bookings/purposes",
       headers: {
           'Authorization': "Bearer " + access_token
           },
@@ -70,6 +75,7 @@ function SearchSelectBuilding(oldValue) {
     })
     .then((res) => {
       setData(res.data.data)
+      // console.log(res.data.data)
     })
     .catch((res) => {
       // Todo Do Something
@@ -85,24 +91,24 @@ function SearchSelectBuilding(oldValue) {
   });
 
   const onChange = (e) => {
-    window.sessionStorage.setItem("building", e.value)
+    window.sessionStorage.setItem("purpose", e.value)
   }
 
   let defaultValue = "Not Specified"
-  if (oldValue.oldValue !== null) {
+  if (oldValue !== null) {
     defaultValue = `${oldValue.oldValue}`
   }
 
   return (
     <Select
-      // className="col-2"
+      className="positionFloorSelect"
       options={options}
       placeholder={defaultValue}
-      styles={customStylesBuilding}
+      styles={customStylesFloor}
       onChange={onChange}
     />
   );
 }
 
-export default SearchSelectBuilding;
+export default MyComponent;
 
