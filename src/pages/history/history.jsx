@@ -2,7 +2,8 @@
 import Table from '../../components/table'
 import cardImg from '../../assets/cardImg.png';
 import StatusDropDown from '../../components/statusDropDown';
-import DateDropDown from '../../components/dateDropDown';
+// import DateDropDown from '../reservation management/reservation management components/dateDropDown';
+import DateDropDown from '../../components/defaultDateDropDown';
 import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router'
 
@@ -31,6 +32,8 @@ function History(props) {
     history.push("/")
     window.location.reload("/");
   }
+
+  date = "dd/mm/yyyy"
 
   return (
     <div> 

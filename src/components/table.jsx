@@ -19,7 +19,8 @@ const TablePage = (props) =>  {
         let status = window.sessionStorage.getItem("status")
         let date = window.sessionStorage.getItem("date")
 
-        if (status == "Not Specified") { status = null  }
+        if (status == "Not Specified") { status = null }
+        if (date === "null") { date = null}
 
         const allMonts = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let monts = ""
@@ -27,18 +28,28 @@ const TablePage = (props) =>  {
            
         let count = 1
 
-        allMonts.map( (e) => {
-          if (e === date.toString().slice(4,7)) {
-            if (count < 10) {
-              monts = "0" + count.toString()
+        
+        
+        if (date !== null) {
+          allMonts.map( (e) => {
+            if (e === date.toString().slice(4,7)) {
+              if (count < 10) {
+                monts = "0" + count.toString()
+              }
+              else { monts = count.toString()}
             }
-            else { monts = count.toString()}
-          }
-          count += 1
-        })
-        date = (monts + "/" + date.toString().slice(8,10) + "/" + date.toString().slice(11,15))
+            count += 1
+          })
+          let newDate = (monts + "/" + date.toString().slice(8,10) + "/" + date.toString().slice(11,15))
+          date = newDate .toString() 
+        }
+        if (status !== null) {
+          status = status.toString()
+        }
+        console.log(date)
+        console.log(status)
 
-       const res = await axios({
+        const res = await axios({
           url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
           headers: {
               'Authorization': 'Bearer ' + access_token
@@ -47,8 +58,8 @@ const TablePage = (props) =>  {
           data: {
               BookingId : null,
               RoomName : null,
-              Status : status.toString(),
-              Date : date.toString(),
+              Status : status,
+              Date : date,
               Page : 1
           }
       })
@@ -80,6 +91,7 @@ const TablePage = (props) =>  {
           {new Date(item.startTime).toLocaleTimeString(undefined, {
               hour:   '2-digit',
               minute: '2-digit',
+              hour12: false
           })}
         </div>
       );
@@ -89,6 +101,7 @@ const TablePage = (props) =>  {
           {new Date(item.endTime).toLocaleTimeString(undefined, {
               hour:   '2-digit',
               minute: '2-digit',
+              hour12: false
           })}
         </div>
       );
