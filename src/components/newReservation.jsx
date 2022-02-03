@@ -59,55 +59,55 @@ function NewReservation({closeModal,roomId}) {
 
     const onClick = (event) => {
 
-        let building = window.sessionStorage.getItem("building")
-        let floor = window.sessionStorage.getItem("floor")
-        let minDuration = window.sessionStorage.getItem("minDuration")
-        let maxDuration = window.sessionStorage.getItem("maxDuration")
-        let startTime = window.sessionStorage.getItem("startTime")
-        let endTime = window.sessionStorage.getItem("endTime")
+        // let building = window.sessionStorage.getItem("building")
+        // let floor = window.sessionStorage.getItem("floor")
+        // let minDuration = window.sessionStorage.getItem("minDuration")
+        // let maxDuration = window.sessionStorage.getItem("maxDuration")
+        // let startTime = window.sessionStorage.getItem("startTime")
+        // let endTime = window.sessionStorage.getItem("endTime")
 
-        console.log(building)
-        console.log(floor)
-        console.log(roomTitle)
-        console.log(roomCapacity)
-        console.log(requireMember)
-        console.log(minDuration)
-        console.log(maxDuration)
-        console.log(startTime)
-        console.log(endTime)
+        // console.log(building)
+        // console.log(floor)
+        // console.log(roomTitle)
+        // console.log(roomCapacity)
+        // console.log(requireMember)
+        // console.log(minDuration)
+        // console.log(maxDuration)
+        // console.log(startTime)
+        // console.log(endTime)
 
-        setOpenModal(true)
+        // setOpenModal(true)
 
-        event.preventDefault();
+        // event.preventDefault();
 
-        axios({
-            url: "https://arr-dev.azurewebsites.net/api/v1/mobiles/book",
-            headers: {
-                'Authorization': "Bearer " + access_token
-                },
-            method: "POST",
-            data: {
-                Title : "TestWebsite",
-                RoomId : roomId,
-                ActivityId : 1,
-                ChannelName : "Website",
-                StartDateTime : "2021-01-01T07:00:00",
-                EndDateTime : "2021-01-01T08:00:00",
-                StaffFirstName : "IAM",
-                StaffLastName : "Batman"
-        }
-        })
-        .then((res) => {
-            console.log("okay", res.data)
-                alert("Your room has been created")
-                let path = `/roomManagement`
-                history.push(path)
-                window.location.reload()
-        })
-        .catch((err) => {
-            console.log(err.response)
-            alert("Failed to create room")
-        });
+        // axios({
+        //     url: "https://arr-dev.azurewebsites.net/api/v1/mobiles/book",
+        //     headers: {
+        //         'Authorization': "Bearer " + access_token
+        //         },
+        //     method: "POST",
+        //     data: {
+        //         Title : "TestWebsite",
+        //         RoomId : roomId,
+        //         ActivityId : 1,
+        //         ChannelName : "Website",
+        //         StartDateTime : "2021-01-01T07:00:00",
+        //         EndDateTime : "2021-01-01T08:00:00",
+        //         StaffFirstName : "IAM",
+        //         StaffLastName : "Batman"
+        // }
+        // })
+        // .then((res) => {
+        //     console.log("okay", res.data)
+        //         alert("Your room has been created")
+        //         let path = `/roomManagement`
+        //         history.push(path)
+        //         window.location.reload()
+        // })
+        // .catch((err) => {
+        //     console.log(err.response)
+        //     alert("Failed to create room")
+        // });
     }
 
     return(
