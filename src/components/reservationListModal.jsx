@@ -20,6 +20,8 @@ function ReservationListModal({closeModal}) {
         <div>
             <div className="reservationList-modal" >
                 <div className="reservationList-modalContainer">
+                    <button id='close' 
+                    onClick={() => {closeModal(false); goToReservationManagement()}}>close</button>
                     <div className="title">LATEST RESERVATION
                     </div>
                     
