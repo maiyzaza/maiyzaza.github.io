@@ -50,36 +50,14 @@ const customStylesStatus = {
 
 function MyComponent(oldValue) {
 
-  const [data, setData] = useState([]);
-  let options = [{ value: "Not Specified", label: "Not Specified" }]
-
-  const postdata = async () => {
-
-    const access_token = sessionStorage.getItem("token")
-
-    axios({
-      url: "https://arr-dev.azurewebsites.net/api/v1/webs/status",
-      headers: {
-          'Authorization': "Bearer " + access_token
-          },
-      method: "GET",
-    })
-    .then((res) => {
-      setData(res.data.data)
-    })
-  };
-
-  useEffect(() => {
-    postdata();
-  },[]);
-
-  data.forEach(e => {
-    options.push({ value: e.id, label: e.statusName })
-  });
+  // const [data, setData] = useState([]);
+  let options = [{ value: "Not Specified", label: "Not Specified" },
+                 { value: "Failed", label: "Failed" },
+                 { value: "Done", label: "Completed" }]
 
   const onChange = (e) => {
     console.log(e)
-    window.sessionStorage.setItem("status", e.label)
+    window.sessionStorage.setItem("status", e.value)
   }
 
   let defaultValue = "Not Specified"

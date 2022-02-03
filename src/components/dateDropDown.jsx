@@ -7,6 +7,7 @@ const DateDropDown = (oldValue) => {
 
   const onChange = (e) => {
     window.sessionStorage.setItem("date", e)
+    defaultValue = ""
   }
 
   const allMonts = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -16,7 +17,8 @@ const DateDropDown = (oldValue) => {
   let count = 1
 
   let defaultValue = "dd/mm/yyyy"
-  if (oldValue.oldValue !== null) {  
+  console.log(oldValue.oldValue)
+  if (oldValue.oldValue !== null && oldValue.oldValue !== "dd/mm/yyyy") {  
     allMonts.map( (e) => {
       if (e === oldValue.oldValue.toString().slice(4,7)) {
         if (count < 10) {

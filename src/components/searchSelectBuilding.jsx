@@ -89,7 +89,7 @@ function SearchSelectBuilding(oldValue) {
   }
 
   let defaultValue = "Not Specified"
-  if (oldValue !== null) {
+  if (oldValue.oldValue !== null) {
     defaultValue = `${oldValue.oldValue}`
   }
 

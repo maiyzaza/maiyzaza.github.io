@@ -109,17 +109,17 @@ function ModifyRoom( { closeModal,roomId } ) {
     if (endTime1 === null)
       endTime1 = dataEndTime
 
-    console.log(roomId)
-    console.log(roomTitle)
-    console.log(building1)
-    console.log(floor1)
-    console.log(cap)
-    console.log(picUrl)
-    console.log(minAt) 
-    console.log(minD1)
-    console.log(maxD1)
-    console.log(startTime1)
-    console.log(endTime1)
+    // console.log(roomId)
+    // console.log(roomTitle)
+    // console.log(building1)
+    // console.log(floor1)
+    // console.log(cap)
+    // console.log(picUrl)
+    // console.log(minAt) 
+    // console.log(minD1)
+    // console.log(maxD1)
+    // console.log(startTime1)
+    // console.log(endTime1)
 
     try {
      await axios({
@@ -148,6 +148,8 @@ function ModifyRoom( { closeModal,roomId } ) {
       window.location.reload("/roomManagement");
      });
     } catch (err) {
+      console.log(err.response.data.message)
+      alert(err.response.data.message)
       setData(true)
     }
  };
