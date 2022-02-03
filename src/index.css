@@ -1233,6 +1233,7 @@ Date Filter Component
   margin-left: 2rem;
 }
 
+
 @font-face {
   font-family: 'Bariol Regular';
   font-style: normal;
@@ -1343,6 +1344,33 @@ Date Filter Component
     border-width: 1px;
     height: 2.2rem;
     font-size: 0.8rem;
+  }
+
+  /* new reservation */
+  .AllBig {
+    text-transform: uppercase !important;
+  }
+
+  .address{
+    font-size: 1.3rem !important;
+    margin-left: 0.5rem;
+  }
+
+  .iconAddress{
+    font-size: 1.3rem !important;
+    margin-top: 0.3rem !important;
+  }
+
+  .iconCalendar{
+    margin-left: -8rem;
+    margin-top: 3.2rem !important;
+  }
+
+  .calendar{
+    /* font-size: 1.3rem !important; */
+    font-family: "bariol bold";
+    margin-left: 0.5rem;
+    margin-top: 3rem;
   }
 
  

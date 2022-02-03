@@ -21,6 +21,8 @@ function SearchReservationManagement(props) {
 
         let buildings = window.sessionStorage.getItem("building")
         let floors = window.sessionStorage.getItem("floor")
+        let date = window.sessionStorage.getItem("date")
+
 
         if (buildings == "Not Specified") { buildings = null  }
         if (floors == "Not Specified") { floors = null}
