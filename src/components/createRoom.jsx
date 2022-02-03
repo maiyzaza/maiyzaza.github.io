@@ -161,7 +161,6 @@ function CreateRoom({closeModal}) {
                             <label className="col-6 firstForm">Require Member</label>
                             <label className="col-6 secondForm">Room Image</label>
                             <textarea className="size" onChange={event => setRequireMember(event.target.value)} required></textarea>
-                            
                             <input type="file" className="col-6 size form-control thirdP" id="customFile" onChange={(e) => {uploadImage(e);}}></input>
                             </div>
                             

@@ -17,7 +17,7 @@ const DefaultDateDropDown = () => {
       selected={date}
       onChange={onChange}
       dateFormat="dd/MM/yyyy"
-      placeholderText="This is disabled"
+      placeholderText="dd/mm/yyyy"
     />
   );
 };

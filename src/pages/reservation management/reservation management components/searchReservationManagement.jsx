@@ -21,9 +21,11 @@ function SearchReservationManagement(props) {
 
         let buildings = window.sessionStorage.getItem("building")
         let floors = window.sessionStorage.getItem("floor")
+        let dates = window.sessionStorage.getItem("date")
 
-        if (buildings === "Not Specified") { buildings = null  }
-        if (floors === "Not Specified") { floors = null}
+
+        if (buildings == "Not Specified") { buildings = null  }
+        if (floors == "Not Specified") { floors = null}
         
         await axios({
             url: "https://arr-dev.azurewebsites.net/api/v1/webs/explore-rooms",

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import ModifyRoom from '../../../components/modifyRoom';
+import NewReservation from '../../../components/newReservation';
 
 function Card(props) {
 
@@ -15,7 +15,8 @@ function Card(props) {
     
     <div className="col-3">
       <div className="card_reservation_management_room">
-        <i className="card_reservation_management_room_icon bx bx-calendar-plus"></i>
+        <i className="card_reservation_management_room_icon bx bx-calendar-plus" onClick={() => {setOpenModal1(true);}}></i>
+        {openModal1 && <NewReservation closeModal={setOpenModal1} roomId = {roomId} />} 
         <i class='card_reservation_management_room_icon1 bx bx-trash'></i>
         <div className="card_reservation_management_room_roomname">{data.roomName}  
         </div>

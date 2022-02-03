@@ -1239,6 +1239,7 @@ Date Filter Component
   margin-left: 2rem;
 }
 
+
 @font-face {
   font-family: 'Bariol Regular';
   font-style: normal;
@@ -1351,12 +1352,147 @@ Date Filter Component
     font-size: 0.8rem;
   }
 
+  /* new reservation */
+
+  /* .firstP {
+ 
+  } */
+  .newReservation-modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1;
+    background-color: rgba(10,10,10,0.45);
+  }
+  
+  
+  .newReservation-modalContainer {
+    width: 40rem;
+    height: 70vh;
+    border-radius: 12px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem !important;
+  }
+  
+  .newReservation-modalContainer .title {
+    display: inline-block;
+    font-size: 1.4rem;
+    font-family: 'Bariol Serif Bold';
+    margin-bottom: 1rem;
+  }
+  
+  .newReservation-modalContainer .body {
+    flex: 50%;
+    display: flex;
+    font-size: 1rem;
+    padding-bottom: 0rem !important;
+  }
+  
+  .newReservation-modalContainer .footer {
+    margin-left: 15.8rem;
+  }
+  
+  .newReservation-modalContainer .footer button {
+    border: none;
+    border-radius: 5px;
+    background-color: #CB002B !important;
+  }
+  
+  .firstPP {
+    margin-left: 1rem !important;
+    /* margin-top: ; */
+  }
+
+  .col-12 {
+    padding-left: 0 !important;
+    padding-right: 0! important;
+    width: 100rem !important;
+  }
+
+  .size1 {
+    resize: none;
+    width: 14.3rem !important;
+    font-family: 'Bariol Regular' ;
+    height: 2.2rem;
+    border-radius: 5; 
+    color: rgba(0, 0, 0);
+    padding-left: 0.5rem;
+    padding-top: 0.3rem ;
+    background-color: white;
+    border-color: #EAEAEA;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 0.8rem;
+    margin-bottom: 0rem !important;
+  }
+
+  .firstFormForNewReservation{
+    font-size: 0.8rem;
+    margin-top: 2.5rem;
+    padding-right: 0! important;
+    padding-left: 0! important;
+    /* width: 12rem !important; */
+  }
+  
+  .secondFormForNewReservation{
+    font-size: 0.8rem;
+    /* margin-left: -0.05rem!important; */
+    left: 0.5rem !important;
+    padding-right: 0! important;
+    padding-left: 0! important;
+  }
+
+  .AllBig {
+    text-transform: uppercase !important;
+  }
+
+  .address{
+    font-size: 1.3rem !important;
+    margin-left: 1.7rem;
+    margin-top: -1.6rem;
+  }
+
+  .iconAddress{
+    font-size: 1.3rem !important;
+    margin-top: 0.3rem !important;
+  }
+
+  .iconCalendar{
+    margin-top: 1rem !important;
+  }
+
+  .calendar{
+    font-family: "bariol bold";
+    margin-left: 1.5rem;
+    margin-top: -1.2rem;
+   
+  }
+
   .text_alert_create {
     text-align: center;
     margin-top: 1rem;
     color: red;
   }
 
+  .firstForm1{
+    margin-left: -0.8rem !important;
+    font-size: 0.8rem;
+   
+  }
+  
+  .secondForm1{
+    margin-left: 0.8rem !important;
+    font-size: 0.8rem;
+  }
  
 
 
