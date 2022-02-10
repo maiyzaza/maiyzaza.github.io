@@ -55,7 +55,7 @@ const customStylesFloor = {
   })
 }
 
-function EndTimeSelect({startTime, roomId, onChange}) {
+function EndTimeSelect({startTime, roomId, onChange, oldValue}) {
   // console.log(startTime)
 
   const access_token = sessionStorage.getItem("token")
@@ -182,11 +182,14 @@ useEffect(() => {
     }
   }
 
+  let defaultValue = "Not Specified"
+  if (oldValue !== null) {defaultValue = oldValue}
+
   return (
     <Select
       className="positionFloorSelect"
       options={options}
-      placeholder={null}
+      placeholder={defaultValue}
       styles={customStylesFloor}
       onChange={onChange}
     />

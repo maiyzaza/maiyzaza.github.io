@@ -56,7 +56,7 @@ const customStylesBuilding = {
   })
 }
 
-function StartTimeSelect({roomId, onChange}) {
+function StartTimeSelect({roomId, onChange, oldValue}) {
 
   const access_token = sessionStorage.getItem("token")
   const [dataReservation,setDataReservation] = useState(null)
@@ -145,10 +145,13 @@ useEffect(() => {
     }
   }
 
+  let defaultValue = "Not Specified"
+  if (oldValue !== null) {defaultValue = oldValue}
+
   return (
     <Select
       options={options}
-      placeholder={null}
+      placeholder={defaultValue}
       styles={customStylesBuilding}
       onChange={onChange}
     />

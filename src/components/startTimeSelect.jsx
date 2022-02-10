@@ -54,8 +54,7 @@ const customStylesBuilding = {
   })
 }
 
-function StartTimeSelect(oldValue) {
-
+function StartTimeSelect({onChange, oldValue}) {
 
   let options = [{ value: "09:00", label: "09:00" },
                 { value: "09:30", label: "09:30" },
@@ -79,25 +78,10 @@ function StartTimeSelect(oldValue) {
                 { value: "18:30", label: "18:30" },
                 { value: "19:00", label: "19:00" },
                 { value: "19:30", label: "19:30" },
-                { value: "20:00", label: "20:00" },
-                { value: "20:30", label: "20:30" },
-                { value: "21:00", label: "21:00" },
-                { value: "21:30", label: "21:30" },
-                { value: "22:00", label: "22:00" },
-                { value: "22:30", label: "22:30" },
-                { value: "23:00", label: "23:00" },
-                { value: "23:30", label: "23:30" },
-                { value: "24:00", label: "24:00" }]
-
-  const onChange = (e) => {
-    window.sessionStorage.setItem("startTime", e.value)
-  }
+                { value: "20:00", label: "20:00" }]
 
   let defaultValue = "Not Specified"
-  if (oldValue !== null) {
-    defaultValue = `${oldValue.oldValue}`
-  }
-
+  if (oldValue !== null) {defaultValue = oldValue}
   return (
     <Select
       options={options}

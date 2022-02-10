@@ -207,25 +207,10 @@ const TableReservationList = ({closeModal}) =>  {
         searching={false}
         sortable={false}
         entries={5}
-        // order={["bookingId", "decs"]}
         displayEntries={false}
         data={data}
       />
-
-      {/* <MDBDataTable
-      scrollY
-      maxHeight="20rem"
-      striped
-
-      small
-      
-      sortable={false}
-      paging={false}
-      searching={false}
-      data={data}
-      /> */}
     </div>
-
   );
 }
 

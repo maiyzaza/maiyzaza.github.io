@@ -54,6 +54,7 @@ function NewReservation({closeModal,roomId}) {
         console.log(value)
         setEndTime(value)
     }
+    
     function onChangeInputPurpose(value){
         console.log(value.value)
         setPurpose(value)
@@ -163,11 +164,11 @@ function NewReservation({closeModal,roomId}) {
                             <label className="col-6 firstFormForNewReservation">Meeting Title</label>
                             <label className="col-6 secondFormForNewReservation">Purpose</label>
                             <textarea className="size1 firstP" onChange={event => setMeetingTitle(event.target.value)} placeholder="Meeting Title" required></textarea>
-                            <Purpose onChange={onChangeInputPurpose} className="firstPP" required />
+                            <Purpose onChange={onChangeInputPurpose} className="firstPP" required oldValue={null} />
                             <label className="col-6 firstForm1">Start Time</label>
                             <label className="col-6 secondForm1">End Time</label>
-                            <StartTimeSelect1 roomId={roomId} onChange={onChangeInputStartTime} className="size zero" required />
-                            <EndTimeSelect1 startTime={startTime} roomId={roomId} onChange={onChangeInputEndTime} className="size secondP" required />
+                            <StartTimeSelect1 roomId={roomId} onChange={onChangeInputStartTime} className="size zero" required oldValue={null} />
+                            <EndTimeSelect1 startTime={startTime} roomId={roomId} onChange={onChangeInputEndTime} className="size secondP" required oldValue={null} />
                         </form>
                     </div>
                     <div className="footer">

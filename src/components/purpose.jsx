@@ -58,7 +58,7 @@ const customStylesFloor = {
 }
 
 
-function MyComponent({onChange}) {
+function MyComponent({onChange, oldValue}) {
 
   const [data, setData] = useState([]);
   let options = []
@@ -89,11 +89,14 @@ function MyComponent({onChange}) {
     options.push({ value: e.id, label: e.text })
   });
 
+  let defaultValue = "Not Specified"
+  if (oldValue !== null) {defaultValue = oldValue}
+
   return (
     <Select
       className="positionFloorSelect"
       options={options}
-      placeholder={null}
+      placeholder={defaultValue}
       styles={customStylesFloor}
       onChange={onChange}
     />
