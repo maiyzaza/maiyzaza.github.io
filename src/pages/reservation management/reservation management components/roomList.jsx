@@ -9,7 +9,7 @@ function Card(props) {
   let data = props.data;
   let roomId = data.roomId;
 
-  console.log("asa", roomId)
+  // console.log("asa", roomId)
 
   return (
     

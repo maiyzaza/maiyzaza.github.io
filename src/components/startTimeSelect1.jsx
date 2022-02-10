@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
+import axios from 'axios';
 
 const customStylesBuilding = {
   control: (base, state) => ({
@@ -55,54 +56,99 @@ const customStylesBuilding = {
   })
 }
 
-function StartTimeSelect(oldValue) {
+function StartTimeSelect({roomId, onChange}) {
 
+  const access_token = sessionStorage.getItem("token")
+  const [dataReservation,setDataReservation] = useState(null)
 
-  let options = [{ value: "09:00", label: "09:00" },
-                { value: "09:30", label: "09:30" },
-                { value: "10:00", label: "10:00" },
-                { value: "10:30", label: "10:30" },
-                { value: "11:00", label: "11:00" },
-                { value: "11:30", label: "11:30" },
-                { value: "12:00", label: "12:00" },
-                { value: "12:30", label: "12:30" },
-                { value: "13:00", label: "13:00" },
-                { value: "13:30", label: "13:30" },
-                { value: "14:00", label: "14:00" },
-                { value: "14:30", label: "14:30" },
-                { value: "15:00", label: "15:00" },
-                { value: "15:30", label: "15:30" },
-                { value: "16:00", label: "16:00" },
-                { value: "16:30", label: "16:30" },
-                { value: "17:00", label: "17:00" },
-                { value: "17:30", label: "17:30" },
-                { value: "18:00", label: "18:00" },
-                { value: "18:30", label: "18:30" },
-                { value: "19:00", label: "19:00" },
-                { value: "19:30", label: "19:30" },
-                { value: "20:00", label: "20:00" },
-                { value: "20:30", label: "20:30" },
-                { value: "21:00", label: "21:00" },
-                { value: "21:30", label: "21:30" },
-                { value: "22:00", label: "22:00" },
-                { value: "22:30", label: "22:30" },
-                { value: "23:00", label: "23:00" },
-                { value: "23:30", label: "23:30" },
-                { value: "24:00", label: "24:00" }]
+  // console.log(roomId.roomId)
 
-  const onChange = (e) => {
-    window.sessionStorage.setItem("startTime", e.value)
+  const dateNow = new Date()
+  const dateDay = dateNow.getDate()
+  const dateMonth = dateNow.getMonth() + 1
+  const dateYear = dateNow.getFullYear()
+  const dateNowForAPI = dateYear + "-" + dateMonth + "-" + dateDay
+  // console.log(dateNow)
+  // console.log(dateDay)
+  // console.log(dateMonth)
+  // console.log(dateYear)
+  // console.log(dateNowForAPI)
+  // console.log(roomId.roomId)
+
+ const postdata = async () => {
+  try {
+   const roomInfo = await axios({
+      url: `https://arr-dev.azurewebsites.net/api/v1/mobiles/reserved-timeslots/${roomId}?date=${dateNowForAPI}`,
+      headers: {
+          'Authorization': 'Bearer ' + access_token
+          },
+      method: "GET",
+      data: {
+      }
+  })
+  .then((res) => {
+      setDataReservation(res.data.data)
+   });
+  } catch (err) {
+      console.log(err);
   }
+};
+useEffect(() => {
+  postdata()
+},[]);
+  let options = []
 
-  let defaultValue = "Not Specified"
-  if (oldValue !== null) {
-    defaultValue = `${oldValue.oldValue}`
+  if (dataReservation !== null ) {
+
+    let reservedSlot = []
+    
+    for (var i = 0; i < dataReservation.reservedSlot.length; i += 1) {
+
+      let startTimeForLoopReserved = parseFloat(dataReservation.reservedSlot[i].startDateTime.slice(11, 13))
+      if (dataReservation.openTime.slice(14,16) === "30") { startTimeForLoopReserved += 0.5}
+      let endTimeForLoopReserved = parseFloat(dataReservation.reservedSlot[i].endDateTime.slice(11, 13))
+      if (dataReservation.closedTime.slice(14,16) === "30") { endTimeForLoopReserved += 0.5}
+
+      for (var j = startTimeForLoopReserved; j <= endTimeForLoopReserved; j += 0.5) {
+        if (j.toString() === endTimeForLoopReserved.toString()) { continue }
+        reservedSlot.push(j.toString())
+      }
+    }
+
+    let startTimeForLoop = parseFloat(dataReservation.openTime.slice(11, 13))
+    if (dataReservation.openTime.slice(14,16) === "30") { startTimeForLoop += 0.5}
+    let endTimeForLoop = parseFloat(dataReservation.closedTime.slice(11, 13))
+    if (dataReservation.closedTime.slice(14,16) === "30") { endTimeForLoop += 0.5}
+
+    for (var i = startTimeForLoop; i <= endTimeForLoop; i += 0.5) {
+      let value = ""
+      
+      if (reservedSlot.includes(i.toString())) { continue }
+      if (i / parseInt(i) !== 1) {
+        if (i < 10) {
+          value = "0" + parseInt(i) + ":30:00"
+        }
+        else {
+          value = parseInt(i) + ":30:00"
+        }
+      }
+      else {
+        if (i < 10) {
+          value = "0" + parseInt(i) + ":00:00"
+        }
+        else {
+          value = parseInt(i) + ":00:00"
+        }
+      }
+      let optionValue = { value: value.toString(), label: value.slice(0,5).toString() }
+      options.push(optionValue)
+    }
   }
 
   return (
     <Select
       options={options}
-      placeholder={defaultValue}
+      placeholder={null}
       styles={customStylesBuilding}
       onChange={onChange}
     />

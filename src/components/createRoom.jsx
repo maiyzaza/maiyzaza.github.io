@@ -70,50 +70,6 @@ function CreateRoom({closeModal}) {
             console.log(err.response.data.message)
             alert(err.response.data.message)
         });
-
-        // axios({
-        //     url: "https://arr-dev.azurewebsites.net/api/v1/webs/rooms-create",
-        //     headers: {
-        //         'Authorization': "Bearer " + access_token
-        //         },
-        //     method: "POST",
-        //     data: {
-        //         Campus: null,
-        //         Building : building,
-        //         Floor : floor,
-        //         RoomTitle: roomTitle,
-        //         RoomCapacity: roomCapacity,
-        //         RoomPictureUrl: baseImage,
-        //         MinAttendee: requireMember,
-        //         MinDuration: minDuration,
-        //         MaxDuration: maxDuration,
-        //         CloseTime: endTime,
-        //         OpenTime: startTime
-        // }
-        // })
-        // .then((res) => {
-        //     console.log("okay", res.data)
-        //     if (res.data.message == "Success") {
-        //         alert("Your room has been created")
-        //         window.sessionStorage.setItem("building", null)
-        //         window.sessionStorage.setItem("floor", null)
-        //         window.sessionStorage.setItem("minDuration", null)
-        //         window.sessionStorage.setItem("maxDuration", null)
-        //         window.sessionStorage.setItem("startTime", null)
-        //         window.sessionStorage.setItem("endTime", null)
-        //         history.push("/roomManagement")
-        //     }
-        //     alert("Your room has been created")
-        //     let path = `/roomManagement`
-        //     history.push(path)
-        //     window.location.reload()
-            
-        // })
-        // .catch((err) => {
-        //     console.log(err.response)
-        //     alert("Failed to create room")
-        // });
-
     }
 
   const uploadImage = async (e) => {

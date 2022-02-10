@@ -47,6 +47,7 @@ const Sidebar = () => {
         console.log(res.data.data[0].memberNameEn)
         setFname(res.data.data[0].memberNameEn)
         setPic(res.data.data[0].memberPictureUrl)
+        window.sessionStorage.setItem("name", res.data.data[0].memberNameEn)
         window.sessionStorage.setItem("memberId", res.data.data[0].memberId)
      });
     } catch (err) {
