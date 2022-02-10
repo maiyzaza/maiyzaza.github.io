@@ -16,11 +16,11 @@ function ModifyRoom( { closeModal,roomId } ) {
     const [roomTitle, setRoomTitle] = useState("");
     const [cap, setCap] = useState("");
     const [minAt, setMinAt] = useState("");
-    const [minD, setMinD] = useState("");
-    const [maxD, setMaxD] = useState("");
+    const [minDuration, setMinDuration] = useState("");
+    const [maxDuration, setMaxDuration] = useState("");
     const [oldImg,setOldImg] = useState([]);
-    const [dataStartTime,setDataStartTime] = useState("")
-    const [dataEndTime,setDataEndTime] = useState("")
+    const [startTime,setStartTime] = useState("")
+    const [endTime,setEndTime] = useState("")
     const [building,setBuilding] = useState("")
     const [floor,setFloor] = useState("")
  
@@ -42,12 +42,12 @@ function ModifyRoom( { closeModal,roomId } ) {
           setBuilding(res.data.data.building) 
           setFloor(res.data.data.floor) 
           setRoomTitle(res.data.data.roomName)
-          setDataStartTime(res.data.data.startTime.slice(0,5)) 
-          setDataEndTime(res.data.data.endTime.slice(0,5)) 
+          setStartTime(res.data.data.startTime.slice(0,5)) 
+          setEndTime(res.data.data.endTime.slice(0,5)) 
           setCap(res.data.data.capacity)
           setMinAt(res.data.data.minAttendees)
-          setMinD(res.data.data.minDuaration) 
-          setMaxD(res.data.data.maxDuration) 
+          setMinDuration(res.data.data.minDuaration) 
+          setMaxDuration(res.data.data.maxDuration) 
           setOldImg(res.data.data.roomPictureUrl)
        });
       } catch (err) {
@@ -77,6 +77,22 @@ function ModifyRoom( { closeModal,roomId } ) {
     });
   };
 
+  function onChangeInputStartTime(value){
+    setStartTime(value)
+  }
+
+  function onChangeInputEndTime(value){
+    setEndTime(value)
+  }
+
+  function onChangeInputMinDuration(value){
+      setMinDuration(value)
+  }
+
+  function onChangeInputMaxDuration(value){
+      setMaxDuration(value)
+  }
+
   const onClick = async (event) => {
     event.preventDefault();
 
@@ -93,21 +109,21 @@ function ModifyRoom( { closeModal,roomId } ) {
     if (floor1 === null || floor1 === "Not Specified")
       floor1 = floor
     
-    let minD1 = (sessionStorage.getItem("minDuration"))
-    if (minD1 === null)
-      minD1 = minD
+    let minDurationPostAPI = minDuration
+    // if (minDurationPostAPI === null)
+    //   minDurationPostAPI = minDu
     
-    let maxD1 = (sessionStorage.getItem("maxDuration"))
-    if (maxD1 === null)
-      maxD1 = maxD
+    let maxDurationPostAPI = maxDuration
+    // if (maxDurationPostAPI === null)
+    //   maxDurationPostAPI = maxD
     
-    let startTime1 = (sessionStorage.getItem("startTime"))
-    if (startTime1 === null)
-      startTime1 = dataStartTime
+    let startTimePostAPI = startTime
+    // if (startTimePostAPI === null)
+    //   startTimePostAPI = dataStartTime
     
-    let endTime1 = (sessionStorage.getItem("endTime"))
-    if (endTime1 === null)
-      endTime1 = dataEndTime
+    let endTimePostAPI = endTime
+    // if (endTimePostAPI === null)
+    //   endTimePostAPI = dataEndTime
 
     // console.log(roomId)
     // console.log(roomTitle)
@@ -116,10 +132,10 @@ function ModifyRoom( { closeModal,roomId } ) {
     // console.log(cap)
     // console.log(picUrl)
     // console.log(minAt) 
-    // console.log(minD1)
-    // console.log(maxD1)
-    // console.log(startTime1)
-    // console.log(endTime1)
+    // console.log(minDurationPostAPI)
+    // console.log(maxDurationPostAPI)
+    // console.log(startTimePostAPI)
+    // console.log(endTimePostAPI)
 
     try {
      await axios({
@@ -136,10 +152,10 @@ function ModifyRoom( { closeModal,roomId } ) {
             RoomCapacity: cap,
             RoomPictureUrl: picUrl,
             MinAttendee: minAt,
-            MinDuration: minD1,
-            MaxDuration: maxD1,
-            CloseTime: endTime1,
-            OpenTime: startTime1
+            MinDuration: minDurationPostAPI,
+            MaxDuration: maxDurationPostAPI,
+            CloseTime: endTimePostAPI,
+            OpenTime: startTimePostAPI
         }
     })
     .then((res) => {
@@ -186,13 +202,13 @@ function ModifyRoom( { closeModal,roomId } ) {
                             
                             <label className="col-6 firstForm">Min Duration</label>
                             <label className="col-6 secondForm">Max Duration</label>
-                            <MinDurationSelect className="size zero" oldValue={minD}/>
-                            <MaxDurationSelect className="size secondP" oldValue={maxD}/>
+                            <MinDurationSelect onChange={onChangeInputMinDuration} className="size zero" oldValue={minDuration}/>
+                            <MaxDurationSelect onChange={onChangeInputMaxDuration} minDuration={minDuration} className="size secondP" oldValue={maxDuration}/>
 
                             <label className="col-6 firstForm">Start Time</label>
                             <label className="col-6 secondForm">End Time</label>
-                            <StartTimeSelect className="size zero" oldValue={dataStartTime}/>
-                            <EndTimeSelect className="size secondP" oldValue={dataEndTime}/>
+                            <StartTimeSelect onChange={onChangeInputStartTime} className="size zero" oldValue={startTime}/>
+                            <EndTimeSelect onChange={onChangeInputEndTime} className="size secondP" oldValue={endTime} startTime={startTime}  minDuration={minDuration}/>
                         </form>
                     </div>
 

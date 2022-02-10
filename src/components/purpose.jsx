@@ -58,7 +58,7 @@ const customStylesFloor = {
 }
 
 
-function MyComponent(oldValue) {
+function MyComponent({onChange, oldValue}) {
 
   const [data, setData] = useState([]);
   let options = []
@@ -75,7 +75,6 @@ function MyComponent(oldValue) {
     })
     .then((res) => {
       setData(res.data.data)
-      // console.log(res.data.data)
     })
     .catch((res) => {
       // Todo Do Something
@@ -87,17 +86,11 @@ function MyComponent(oldValue) {
   },[]);
 
   data.forEach(e => {
-    options.push({ value: e.text, label: e.text })
+    options.push({ value: e.id, label: e.text })
   });
 
-  const onChange = (e) => {
-    window.sessionStorage.setItem("purpose", e.value)
-  }
-
   let defaultValue = "Not Specified"
-  if (oldValue !== null) {
-    defaultValue = `${oldValue.oldValue}`
-  }
+  if (oldValue !== null) {defaultValue = oldValue}
 
   return (
     <Select

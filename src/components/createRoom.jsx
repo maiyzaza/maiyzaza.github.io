@@ -15,6 +15,10 @@ function CreateRoom({closeModal}) {
     const [roomCapacity, setCapacity] = useState('');
     const [requireMember, setRequireMember] = useState('');
     const [baseImage, setBaseImage] = useState("");
+    const [startTime, setStartTime] = useState("");
+    const [endTime, setEndTime] = useState("");
+    const [minDuration, setMinDuration] = useState("");
+    const [maxDuration, setMaxDuration] = useState("");
     const access_token = sessionStorage.getItem("token")
     
     let history = useHistory();
@@ -23,12 +27,23 @@ function CreateRoom({closeModal}) {
 
         let building = window.sessionStorage.getItem("building")
         let floor = window.sessionStorage.getItem("floor")
-        let minDuration = window.sessionStorage.getItem("minDuration")
-        let maxDuration = window.sessionStorage.getItem("maxDuration")
-        let startTime = window.sessionStorage.getItem("startTime")
-        let endTime = window.sessionStorage.getItem("endTime")
+        let minDurationPostAPI = minDuration.value
+        let maxDurationPostAPI = maxDuration.value
+        let startTimePostAPI = startTime.value
+        let endTimePostAPI = endTime.value
 
         event.preventDefault();
+
+        // console.log(building)
+        // console.log(floor)
+        // console.log(roomTitle)
+        // console.log(roomCapacity)
+        // console.log(baseImage)
+        // console.log(requireMember)
+        // console.log(minDurationPostAPI)
+        // console.log(maxDurationPostAPI)
+        // console.log(endTimePostAPI)
+        // console.log(startTimePostAPI)
         
         axios({
             url: "https://arr-dev.azurewebsites.net/api/v1/webs/rooms-create",
@@ -44,10 +59,10 @@ function CreateRoom({closeModal}) {
                 RoomCapacity: roomCapacity,
                 RoomPictureUrl: baseImage,
                 MinAttendee: requireMember,
-                MinDuration: minDuration,
-                MaxDuration: maxDuration,
-                CloseTime: endTime,
-                OpenTime: startTime
+                MinDuration: minDurationPostAPI,
+                MaxDuration: maxDurationPostAPI,
+                CloseTime: endTimePostAPI,
+                OpenTime: startTimePostAPI
         }
         })
         .then((res) => {
@@ -55,10 +70,6 @@ function CreateRoom({closeModal}) {
             if (res.data.message == "Success") {
                 window.sessionStorage.setItem("building", null)
                 window.sessionStorage.setItem("floor", null)
-                window.sessionStorage.setItem("minDuration", null)
-                window.sessionStorage.setItem("maxDuration", null)
-                window.sessionStorage.setItem("startTime", null)
-                window.sessionStorage.setItem("endTime", null)
             }
             alert("Your room has been created")
             let path = `/roomManagement`
@@ -70,73 +81,47 @@ function CreateRoom({closeModal}) {
             console.log(err.response.data.message)
             alert(err.response.data.message)
         });
-
-        // axios({
-        //     url: "https://arr-dev.azurewebsites.net/api/v1/webs/rooms-create",
-        //     headers: {
-        //         'Authorization': "Bearer " + access_token
-        //         },
-        //     method: "POST",
-        //     data: {
-        //         Campus: null,
-        //         Building : building,
-        //         Floor : floor,
-        //         RoomTitle: roomTitle,
-        //         RoomCapacity: roomCapacity,
-        //         RoomPictureUrl: baseImage,
-        //         MinAttendee: requireMember,
-        //         MinDuration: minDuration,
-        //         MaxDuration: maxDuration,
-        //         CloseTime: endTime,
-        //         OpenTime: startTime
-        // }
-        // })
-        // .then((res) => {
-        //     console.log("okay", res.data)
-        //     if (res.data.message == "Success") {
-        //         alert("Your room has been created")
-        //         window.sessionStorage.setItem("building", null)
-        //         window.sessionStorage.setItem("floor", null)
-        //         window.sessionStorage.setItem("minDuration", null)
-        //         window.sessionStorage.setItem("maxDuration", null)
-        //         window.sessionStorage.setItem("startTime", null)
-        //         window.sessionStorage.setItem("endTime", null)
-        //         history.push("/roomManagement")
-        //     }
-        //     alert("Your room has been created")
-        //     let path = `/roomManagement`
-        //     history.push(path)
-        //     window.location.reload()
-            
-        // })
-        // .catch((err) => {
-        //     console.log(err.response)
-        //     alert("Failed to create room")
-        // });
-
     }
 
-  const uploadImage = async (e) => {
-    const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-    setBaseImage(base64);
-    
-  };
+    const uploadImage = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertBase64(file);
+        setBaseImage(base64);
+        
+    };
 
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
 
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
 
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
+        fileReader.onerror = (error) => {
+            reject(error);
+        };
+        });
+    };
+
+    function onChangeInputStartTime(value){
+        setStartTime(value)
+    }
+
+    function onChangeInputEndTime(value){
+        setEndTime(value)
+    }
+
+    function onChangeInputMinDuration(value){
+        console.log(value)
+        setMinDuration(value)
+    }
+
+    function onChangeInputMaxDuration(value){
+        console.log(value)
+        setMaxDuration(value)
+    }
 
     return(
         <div>
@@ -148,14 +133,13 @@ function CreateRoom({closeModal}) {
                             
                             <label className="col-6 firstForm">Building</label>
                             <label className="col-6 secondForm">Floor</label>
-                            <SearchSelectBuilding className="size zero" required />
-                            <SearchSelectFloor className="size secondP" required />
+                            <SearchSelectBuilding className="size zero" required oldValue={null} />
+                            <SearchSelectFloor className="size secondP" required oldValue={null} />
                             
                             <label className="col-6 firstForm">Room Title</label>
                             <label className="col-6 secondForm">Room Capacity</label>
                             <textarea className="size" onChange={event => setRoomTitle(event.target.value)} required></textarea>
                             <textarea className="size  secondP" onChange={event => setCapacity(event.target.value)} required></textarea>
-
 
                             <div className='rowWWWW'>
                             <label className="col-6 firstForm">Require Member</label>
@@ -166,13 +150,13 @@ function CreateRoom({closeModal}) {
                             
                             <label className="col-6 firstForm">Min Duration</label>
                             <label className="col-6 secondForm">Max Duration</label>
-                            <MinDurationSelect className="size zero" required />
-                            <MaxDurationSelect className="size secondP" required />
+                            <MinDurationSelect onChange={onChangeInputMinDuration} className="size zero" required />
+                            <MaxDurationSelect minDuration={minDuration} onChange={onChangeInputMaxDuration} className="size secondP" required />
 
                             <label className="col-6 firstForm">Start Time</label>
                             <label className="col-6 secondForm">End Time</label>
-                            <StartTimeSelect className="size zero" required />
-                            <EndTimeSelect className="size secondP" required />
+                            <StartTimeSelect onChange={onChangeInputStartTime} className="size zero" required oldValue={null} />
+                            <EndTimeSelect minDuration={minDuration} startTime={startTime} onChange={onChangeInputEndTime} className="size secondP" required oldValue={null} />
                         </form>
                     </div>
 

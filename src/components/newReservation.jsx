@@ -6,30 +6,20 @@ import { useHistory } from 'react-router-dom';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import Purpose from './purpose';
 
-
-
-
-
-
 function NewReservation({closeModal,roomId}) {
     let history = useHistory();
   
     const [meetingTitle, setMeetingTitle] = useState('');
+    const [startTime, setStartTime] = useState('');
+    const [endTime, setEndTime] = useState('');
     const [purpose, setPurpose] = useState('');
-    // const [requireMember, setRequireMember] = useState('');
-
-    
 
     const [dataRoom,setDataRoom] = useState({})
     const [address,setAddress] = useState("")
     // const [baseImage, setBaseImage] = useState("");
     const access_token = sessionStorage.getItem("token")
-    const date1 = sessionStorage.getItem("date")
-  
-
-    // const [openModal, setOpenModal] = useState(false);
-    // const [openModal1, setOpenModal1] = useState(false);
-
+    let date1 = sessionStorage.getItem("date")
+    if (date1 === null) { date1 = new Date()}
 
     const postdata = async () => {
         try {
@@ -44,70 +34,120 @@ function NewReservation({closeModal,roomId}) {
             }
         })
         .then((res) => {
-            console.log("data",res.data.data.floor); 
+            // console.log("data",res.data.data.floor); 
             setDataRoom(res.data.data)
          });
         } catch (err) {
             console.log(err);
         }
-     };
+    };
+    useEffect(() => {
+        postdata()
+    },[]);
 
-     useEffect(() => {
-        postdata();
-   },[]);
+    function onChangeInputStartTime(value){
+        console.log(value)
+        setStartTime(value)
+    }
+      
+    function onChangeInputEndTime(value){
+        console.log(value)
+        setEndTime(value)
+    }
     
-
+    function onChangeInputPurpose(value){
+        console.log(value.value)
+        setPurpose(value)
+    }
+    // const dateNow = new Date()
+    // const dateDay = dateNow.getDate()
+    // const dateMonth = dateNow.getMonth() + 1
+    // const dateYear = dateNow.getFullYear()
+    // const dateNowForAPI = dateYear + "-" + dateMonth + "-" + dateDay
+    
     const onClick = (event) => {
+        
+        const allMont = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let date = date1.toString()
+        if (date !== null && meetingTitle !== "" && purpose.value !== "undefined"  && startTime !== "undefined" && endTime !== "undefined"){
+            let dateDay = date.slice(8, 10)
+            let dateMonth = ""
+            let dateYear = date.slice(11, 15)
 
-        // let building = window.sessionStorage.getItem("building")
-        // let floor = window.sessionStorage.getItem("floor")
-        // let minDuration = window.sessionStorage.getItem("minDuration")
-        // let maxDuration = window.sessionStorage.getItem("maxDuration")
-        // let startTime = window.sessionStorage.getItem("startTime")
-        // let endTime = window.sessionStorage.getItem("endTime")
+            for (var i = 0; i <= allMont.length; i++) {
+                if (allMont[i] === date.slice(4, 7).toString()) {
+                    if (i < 10) {
+                        dateMonth = "0" + (i + 1).toString()
+                    }
+                    else {
+                        dateMonth = (i + 1).toString()
+                    }
+                }
+            }
+        
+        
 
-        // console.log(building)
-        // console.log(floor)
-        // console.log(roomTitle)
-        // console.log(roomCapacity)
-        // console.log(requireMember)
-        // console.log(minDuration)
-        // console.log(maxDuration)
-        // console.log(startTime)
-        // console.log(endTime)
+            let meetingTitlePostAPI = meetingTitle
+            let purposePostAPI = purpose.value
+            let name = window.sessionStorage.getItem("name").split(" ")
+            let memberId = window.sessionStorage.getItem("memberId")
 
-        // setOpenModal(true)
+            let startTimeMinusSevenHours = parseInt(startTime.value.slice(0,2)) - 7
+            if (startTimeMinusSevenHours < 10) { startTimeMinusSevenHours = "0" + startTimeMinusSevenHours.toString() + startTime.value.slice(2).toString() }
+            else { startTimeMinusSevenHours = startTimeMinusSevenHours.toString() + startTime.value.slice(2).toString() }
 
-        // event.preventDefault();
+            let endTimeMinusSevenHours = parseInt(endTime.value.slice(0,2)) - 7
+            if (endTimeMinusSevenHours < 10) { endTimeMinusSevenHours = "0" + endTimeMinusSevenHours.toString() + endTime.value.slice(2).toString() }
+            else { endTimeMinusSevenHours = endTimeMinusSevenHours.toString() + endTime.value.slice(2).toString() }
 
-        // axios({
-        //     url: "https://arr-dev.azurewebsites.net/api/v1/mobiles/book",
-        //     headers: {
-        //         'Authorization': "Bearer " + access_token
-        //         },
-        //     method: "POST",
-        //     data: {
-        //         Title : "TestWebsite",
-        //         RoomId : roomId,
-        //         ActivityId : 1,
-        //         ChannelName : "Website",
-        //         StartDateTime : "2021-01-01T07:00:00",
-        //         EndDateTime : "2021-01-01T08:00:00",
-        //         StaffFirstName : "IAM",
-        //         StaffLastName : "Batman"
-        // }
-        // })
-        // .then((res) => {
-        //     console.log("okay", res.data)
-        //         alert("Your room has been created")
-        //         let path = `/roomManagement`
-        //         history.push(path)
-        //         window.location.reload()
-        // })
-        // .catch((err) => {
-        //     console.log(err.response)
-        //     alert("Failed to create room")
-        // });
+            let startDateTimePostAPI = dateYear + "-" + dateMonth + "-" + dateDay + "T" + startTimeMinusSevenHours
+            console.log(dateMonth)
+            let endDateTimePostAPI =  dateYear + "-" + dateMonth + "-" + dateDay + "T" + endTimeMinusSevenHours
+
+            console.log(meetingTitlePostAPI)
+            console.log(roomId)
+            console.log(purposePostAPI)
+            console.log(startDateTimePostAPI)
+            console.log(endDateTimePostAPI)
+            console.log(name[0])
+            console.log(name[1])
+            console.log(memberId)
+
+            event.preventDefault();
+
+            axios({
+                url: "https://arr-dev.azurewebsites.net/api/v1/mobiles/book",
+                headers: {
+                    'Authorization': "Bearer " + access_token
+                    },
+                method: "POST",
+                data: {
+                    Title : meetingTitlePostAPI,
+                    RoomId : roomId,
+                    ActivityId : purposePostAPI,
+                    ChannelName : "Website",
+                    StartDateTime : startDateTimePostAPI,
+                    EndDateTime : endDateTimePostAPI,
+                    StaffFirstName : name[0],
+                    StaffLastName : name[1],
+                    Member : []
+            }
+            })
+            .then((res) => {
+                console.log("okay", res.data)
+                    alert("Your reservation has been created")
+                    let path = `/reservationManagement`
+                    history.push(path)
+                    window.location.reload()
+            })
+            .catch((err) => {
+                console.log(err.response.data)
+                alert("Failed to create room")
+            });
+        }
+        else {
+            alert("Please fill everything")
+        }
     }
 
     return(
@@ -124,15 +164,15 @@ function NewReservation({closeModal,roomId}) {
                             <label className="col-6 firstFormForNewReservation">Meeting Title</label>
                             <label className="col-6 secondFormForNewReservation">Purpose</label>
                             <textarea className="size1 firstP" onChange={event => setMeetingTitle(event.target.value)} placeholder="Meeting Title" required></textarea>
-                            <Purpose className="firstPP" required />
+                            <Purpose onChange={onChangeInputPurpose} className="firstPP" required oldValue={null} />
                             <label className="col-6 firstForm1">Start Time</label>
                             <label className="col-6 secondForm1">End Time</label>
-                            <StartTimeSelect1 className="size zero" required />
-                            <EndTimeSelect1 className="size secondP" required />
+                            <StartTimeSelect1 roomId={roomId} onChange={onChangeInputStartTime} className="size zero" required oldValue={null} />
+                            <EndTimeSelect1 startTime={startTime} roomId={roomId} onChange={onChangeInputEndTime} className="size secondP" required oldValue={null} />
                         </form>
                     </div>
                     <div className="footer">
-                        <button className="btn btn-danger btn-sm"  type="button">New</button>
+                        <button className="btn btn-danger btn-sm" onClick={onClick}  type="button">New</button>
                         <button className="btn btn-primary btn-sm" type="button" onClick={() => closeModal(false)} id="cancelLogOut">Cancel</button>
                     </div>
                 </div>

@@ -50,26 +50,22 @@ const customStylesBuilding = {
 
 
 
-function MinDurationSelect(oldValue) {
+function MinDurationSelect({onChange, oldValue}) {
 
   let options = [{ value: 30 , label: "30 min." },
                 { value: 60 , label: "1 hr." },
                 { value: 90 , label: "1 hr. 30 min." },
                 { value: 120 , label: "2 hrs." },
                 { value: 150 , label: "2 hrs. 30 min." },
-                { value: 180 , label: "3 hrs." }]
+                { value: 180 , label: "3 hrs." }]  
 
-  const onChange = (e) => {
-    window.sessionStorage.setItem("minDuration", e.value)
-  }
-  
   let defaultValue = "Not Specified"
   if (oldValue !== null) {
-    options.map( (e) => {
-      if (e.value === oldValue.oldValue) {
-        defaultValue = e.label
+    for (var i = 0; i < options.length; i++) {
+      if (oldValue === options[i].value) {
+        defaultValue = options[i].label
       }
-    })
+    }
   }
 
   return (

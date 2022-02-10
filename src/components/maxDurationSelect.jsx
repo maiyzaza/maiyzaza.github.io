@@ -53,26 +53,40 @@ const customStylesFloor = {
   })
 }
 
-function MaxDurationSelect(oldValue) {
+function MaxDurationSelect({minDuration, onChange, oldValue}) {
 
-  let options = [{ value: 30 , label: "30 min." },
+  let optionsList = [{ value: 30 , label: "30 min." },
                 { value: 60 , label: "1 hr." },
                 { value: 90 , label: "1 hr. 30 min." },
                 { value: 120 , label: "2 hrs." },
                 { value: 150 , label: "2 hrs. 30 min." },
                 { value: 180 , label: "3 hrs." }]
 
-  const onChange = (e) => {
-    window.sessionStorage.setItem("maxDuration", e.value)
+  if (typeof minDuration === "number") {
+    for (var i = 0; i < optionsList.length; i++) {
+      if (optionsList[i].value === minDuration) {
+        minDuration = optionsList[i]
+      }
+    }
   }
+  console.log(minDuration)
 
   let defaultValue = "Not Specified"
-  if (oldValue !== null) {
-    options.map( (e) => {
-      if (e.value === oldValue.oldValue) {
-        defaultValue = e.label
+  let options = []
+  if (minDuration !== "") {
+    for (var i = 0; i < optionsList.length; i++) {
+      if (optionsList[i].value > minDuration.value || (i === optionsList.length - 1 && minDuration.value === 180)) {
+          options.push(optionsList[i])
       }
-    })
+    }
+  }
+
+  if (oldValue !== null) {
+    for (var i = 0; i < optionsList.length; i++) {
+      if (oldValue === optionsList[i].value) {
+        defaultValue = optionsList[i].label
+      }
+    }
   }
 
   return (
