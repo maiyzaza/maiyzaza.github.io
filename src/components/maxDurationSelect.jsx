@@ -69,13 +69,12 @@ function MaxDurationSelect({minDuration, onChange, oldValue}) {
       }
     }
   }
-  console.log(minDuration)
 
   let defaultValue = "Not Specified"
   let options = []
   if (minDuration !== "") {
     for (var i = 0; i < optionsList.length; i++) {
-      if (optionsList[i].value > minDuration.value || (i === optionsList.length - 1 && minDuration.value === 180)) {
+      if (optionsList[i].value >= minDuration.value) {
           options.push(optionsList[i])
       }
     }

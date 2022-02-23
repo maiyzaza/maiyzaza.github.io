@@ -18,7 +18,7 @@ function DeleteRoom({closeModal,roomId}) {
             headers: {
                 'Authorization': 'Bearer ' + access_token
                 },
-            method: "GET",
+            method: "POST",
             data: {
             }
         })
@@ -58,10 +58,10 @@ function DeleteRoom({closeModal,roomId}) {
         })
         .then((res) => {
             console.log("okay", res.data)
-                alert("Your room has been deleted")
-                let path = `/roomManagement`
-                history.push(path)
-                window.location.reload()
+            alert("Your room has been deleted")
+            let path = `/roomManagement`
+            history.push(path)
+            window.location.reload()
         })
         .catch((err) => {
             console.log(err.response)

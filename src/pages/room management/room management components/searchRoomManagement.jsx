@@ -4,7 +4,7 @@ import SearchSelectFloor from "./searchSelectFloor";
 
 import FloorList from './floorList';
 import axios from 'axios';
-import CreateRoom from '../../../components/createRoom';
+import CreateRoom from './createRoom';
 
 
 function SearchRoomManagement(props) {
