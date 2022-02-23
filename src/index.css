@@ -454,12 +454,34 @@ form .new-col-12 {
   flex-direction: column;
   padding: 5rem !important;
 }
+.createRoom-modalContainer-notComplete {
+  width: 25rem;
+  height: 50vh;
+  border-radius: 12px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem !important;
+}
 
 .createRoom-modalContainer .title {
   display: inline-block;
   font-size: 1.4rem;
   font-family: 'Bariol Serif Bold';
   margin-bottom: 1rem;
+}
+
+.createRoom-modalContainer-notComplete .title {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-family: 'Bariol Serif Bold';
+  margin-bottom: 1rem;
+}
+.createRoom-modalContainer-notComplete button {
+  margin-left: 10rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #CB002B !important;
 }
 
 .createRoom-modalContainer .body {
@@ -870,6 +892,11 @@ tbody + thead{
 ::placeholder {
   color: #9E9EA5;
 }
+
+/* ::placeholder { 
+  color: red;
+  opacity: 1; 
+} */
 
 .changePassword_container input {
   font-family: 'Bariol Regular';

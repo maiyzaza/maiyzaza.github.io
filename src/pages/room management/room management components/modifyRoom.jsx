@@ -86,11 +86,17 @@ function ModifyRoom( { closeModal,roomId } ) {
   }
 
   function onChangeInputMinDuration(value){
-      setMinDuration(value)
+    setMinDuration(value)
   }
 
   function onChangeInputMaxDuration(value){
-      setMaxDuration(value)
+    setMaxDuration(value)
+  }
+  function onChangeInputBuilding(value) {
+    setBuilding(value.value.toString())
+  }
+  function onChangeInputFloor(value) {
+    setFloor(value.value.toString())
   }
 
   const onClick = async (event) => {
@@ -101,41 +107,41 @@ function ModifyRoom( { closeModal,roomId } ) {
       picUrl = oldImg
     }
 
-    let building1 = (sessionStorage.getItem("building"))
+    let building1 = building
     if (building1 === null || building1 === "Not Specified")
       building1 = building
     
-    let floor1 = (sessionStorage.getItem("floor"))
+    let floor1 = floor
     if (floor1 === null || floor1 === "Not Specified")
       floor1 = floor
     
-    let minDurationPostAPI = minDuration
+    let minDurationPostAPI = minDuration.value
     // if (minDurationPostAPI === null)
     //   minDurationPostAPI = minDu
     
-    let maxDurationPostAPI = maxDuration
+    let maxDurationPostAPI = maxDuration.value
     // if (maxDurationPostAPI === null)
     //   maxDurationPostAPI = maxD
     
-    let startTimePostAPI = startTime
+    let startTimePostAPI = startTime.value + ":00"
     // if (startTimePostAPI === null)
     //   startTimePostAPI = dataStartTime
     
-    let endTimePostAPI = endTime
+    let endTimePostAPI = endTime.value + ":00"
     // if (endTimePostAPI === null)
     //   endTimePostAPI = dataEndTime
 
-    // console.log(roomId)
-    // console.log(roomTitle)
-    // console.log(building1)
-    // console.log(floor1)
-    // console.log(cap)
-    // console.log(picUrl)
-    // console.log(minAt) 
-    // console.log(minDurationPostAPI)
-    // console.log(maxDurationPostAPI)
-    // console.log(startTimePostAPI)
-    // console.log(endTimePostAPI)
+    console.log(roomId)
+    console.log(roomTitle)
+    console.log(building1)
+    console.log(floor1)
+    console.log(cap)
+    console.log(picUrl)
+    console.log(minAt) 
+    console.log(minDurationPostAPI)
+    console.log(maxDurationPostAPI)
+    console.log(startTimePostAPI)
+    console.log(endTimePostAPI)
 
     try {
      await axios({
@@ -183,8 +189,8 @@ function ModifyRoom( { closeModal,roomId } ) {
                         <form className="new-col-12">
                             <label className="col-6 firstForm">Building</label>
                             <label className="col-6 secondForm">Floor</label>
-                            <SearchSelectBuilding className="size zero" oldValue={building}/>
-                            <SearchSelectFloor className="size secondP" oldValue={floor}/>
+                            <SearchSelectBuilding onChange={onChangeInputBuilding} className="size zero" oldValue={building}/>
+                            <SearchSelectFloor onChange={onChangeInputFloor} className="size secondP" oldValue={floor}/>
                             
                             <label className="col-6 firstForm">Room Title</label>
                             <label className="col-6 secondForm">Room Capacity</label>
@@ -213,7 +219,7 @@ function ModifyRoom( { closeModal,roomId } ) {
                     </div>
 
                     <div className="footer">
-                        <button className="btn btn-danger btn-sm" onClick={onClick} type="button">Modify</button>
+                        <button className="btn btn-danger btn-sm" onClick={onClick} type="button">Save</button>
                         <button className="btn btn-primary btn-sm" type="button" onClick={() => closeModal(false)} id="cancelLogOut">Cancel</button>
                     </div>
                 </div>

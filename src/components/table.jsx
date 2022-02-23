@@ -46,8 +46,8 @@ const TablePage = (props) =>  {
         if (status !== null) {
           status = status.toString()
         }
-        console.log(date)
-        console.log(status)
+        // console.log(date)
+        // console.log(status)
 
         const res = await axios({
           url: "https://arr-dev.azurewebsites.net/api/v1/webs/histories",
@@ -65,6 +65,8 @@ const TablePage = (props) =>  {
       })
       .then((res) => {
           let itemData = res.data.data
+          // itemData.push("reason")
+          console.log(itemData)
           setDataRow(itemData)
        });
       } catch (err) {
@@ -78,6 +80,7 @@ const TablePage = (props) =>  {
 
   useEffect(() => {
     let dataArray = JSON.parse(JSON.stringify(dataRow))
+    console.log(dataRow)
     var reservationData = []
     dataArray.map((item,index)=>{
       item.date = (
@@ -105,7 +108,13 @@ const TablePage = (props) =>  {
           })}
         </div>
       );
-
+      item.location = (
+        <div>
+          { 
+           item.status.split(" - ")[1]
+          }
+        </div>
+       )
       item.status = (
         <div>
           { 
@@ -180,6 +189,12 @@ const TablePage = (props) =>  {
         width: 50
       },
       {
+        label: 'REASON',
+        field: 'location',
+        sort: 'asc',
+        width: 50
+      },
+      {
         label: 'RESERVED BY',
         field: 'reservedBy',
         sort: 'asc',
@@ -208,7 +223,6 @@ const TablePage = (props) =>  {
         
         searching={false}
         sortable={false}
-        // order={["bookingId", "decs"]}
         displayEntries={false}
         data={data}
       />

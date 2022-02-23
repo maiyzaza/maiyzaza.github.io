@@ -53,7 +53,7 @@ const customStylesBuilding = {
   }),
 }
 
-function SearchSelectBuilding(oldValue) {
+function SearchSelectBuilding({onChange, oldValue}) {
 
   const [data, setData] = useState([]);
   let options = []
@@ -84,13 +84,9 @@ function SearchSelectBuilding(oldValue) {
     options.push({ value: e.text, label: e.text })
   });
 
-  const onChange = (e) => {
-    window.sessionStorage.setItem("building", e.value)
-  }
-
   let defaultValue = "Not Specified"
-  if (oldValue.oldValue !== null) {
-    defaultValue = `${oldValue.oldValue}`
+  if (oldValue !== null) {
+    defaultValue = `${oldValue}`
   }
 
   return (

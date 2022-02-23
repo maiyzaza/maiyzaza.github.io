@@ -52,7 +52,7 @@ const customStylesFloor = {
   })
 }
 
-function MyComponent(oldValue) {
+function MyComponent({onChange, oldValue}) {
 
   const [data, setData] = useState([]);
   let options = []
@@ -85,13 +85,9 @@ function MyComponent(oldValue) {
     options.push({ value: e.text, label: e.text })
   });
 
-  const onChange = (e) => {
-    window.sessionStorage.setItem("floor", e.value)
-  }
-
   let defaultValue = "Not Specified"
-  if (oldValue.oldValue !== null) {
-    defaultValue = `${oldValue.oldValue}`
+  if (oldValue !== null) {
+    defaultValue = `${oldValue}`
   }
 
   return (
