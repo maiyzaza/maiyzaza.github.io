@@ -46,17 +46,14 @@ function NewReservation({closeModal,roomId}) {
     },[]);
 
     function onChangeInputStartTime(value){
-        console.log(value)
         setStartTime(value)
     }
       
     function onChangeInputEndTime(value){
-        console.log(value)
         setEndTime(value)
     }
     
     function onChangeInputPurpose(value){
-        console.log(value.value)
         setPurpose(value)
     }
     // const dateNow = new Date()
@@ -96,22 +93,25 @@ function NewReservation({closeModal,roomId}) {
             if (startTimeMinusSevenHours < 10) { startTimeMinusSevenHours = "0" + startTimeMinusSevenHours.toString() + startTime.value.slice(2).toString() }
             else { startTimeMinusSevenHours = startTimeMinusSevenHours.toString() + startTime.value.slice(2).toString() }
 
-            let endTimeMinusSevenHours = parseInt(endTime.value.slice(0,2)) - 7
+            // console.log(endTime.value.toString())
+            // console.log(endTime.value.toString().slice(0,2))
+            let endTimeMinusSevenHours = parseInt(endTime.value.toString().slice(0,2)) - 7
+            // console.log(endTimeMinusSevenHours)
             if (endTimeMinusSevenHours < 10) { endTimeMinusSevenHours = "0" + endTimeMinusSevenHours.toString() + endTime.value.slice(2).toString() }
             else { endTimeMinusSevenHours = endTimeMinusSevenHours.toString() + endTime.value.slice(2).toString() }
 
             let startDateTimePostAPI = dateYear + "-" + dateMonth + "-" + dateDay + "T" + startTimeMinusSevenHours
-            console.log(dateMonth)
+            // console.log(dateMonth)
             let endDateTimePostAPI =  dateYear + "-" + dateMonth + "-" + dateDay + "T" + endTimeMinusSevenHours
 
-            console.log(meetingTitlePostAPI)
-            console.log(roomId)
-            console.log(purposePostAPI)
-            console.log(startDateTimePostAPI)
-            console.log(endDateTimePostAPI)
-            console.log(name[0])
-            console.log(name[1])
-            console.log(memberId)
+            // console.log(meetingTitlePostAPI)
+            // console.log(roomId)
+            // console.log(purposePostAPI)
+            // console.log(startDateTimePostAPI)
+            // console.log(endDateTimePostAPI)
+            // console.log(name[0])
+            // console.log(name[1])
+            // console.log(memberId)
 
             event.preventDefault();
 
@@ -130,7 +130,7 @@ function NewReservation({closeModal,roomId}) {
                     EndDateTime : endDateTimePostAPI,
                     StaffFirstName : name[0],
                     StaffLastName : name[1],
-                    Member : []
+                    Member : [memberId]
             }
             })
             .then((res) => {
@@ -142,7 +142,7 @@ function NewReservation({closeModal,roomId}) {
             })
             .catch((err) => {
                 console.log(err.response.data)
-                alert("Failed to create room")
+                alert(err.response.data.message)
             });
         }
         else {
