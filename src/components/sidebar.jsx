@@ -19,6 +19,7 @@ const Sidebar = () => {
 
   const [openModal, setOpenModal] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
+  const [memberRoleIdForChecking, setMemberRoleIdForChecking] = useState("")
 
   
 
@@ -42,13 +43,14 @@ const Sidebar = () => {
         }
     })
     .then((res) => {
-        console.log(res.data.data);
-        // console.log(res.data.data.memberNameEn.split(" ")[0])
-        console.log(res.data.data[0].memberNameEn)
+        console.log(res.data.data[0]);
         setFname(res.data.data[0].memberNameEn)
         setPic(res.data.data[0].memberPictureUrl)
         window.sessionStorage.setItem("name", res.data.data[0].memberNameEn)
         window.sessionStorage.setItem("memberId", res.data.data[0].memberId)
+        window.sessionStorage.setItem("memberRoleId", res.data.data[0].memberRoleId)
+        window.sessionStorage.setItem("memberRoleName", res.data.data[0].memberRoleName)
+        setMemberRoleIdForChecking(res.data.data[0].memberRoleId.toString())
      });
     } catch (err) {
         console.log(err);
@@ -58,6 +60,20 @@ const Sidebar = () => {
   useEffect(() => {
     infoProfile();
   },[]);
+
+  let list = null
+  let isMasterAdmin = false
+  if (memberRoleIdForChecking.toString() === "6") { isMasterAdmin = true}
+  if (isMasterAdmin) {
+    list = (
+      <li>
+        <Link to="/adminManagement">
+          <i class='bx bx-user'></i>
+          <span class="links_name" >Admin Management</span>
+        </Link>
+      </li>
+    );
+  }
 
 
   return (
@@ -70,7 +86,6 @@ const Sidebar = () => {
           </div>
 
           <div className={isActive ? "menu" : "menu active"}>
-            {/* <i class='bx bx-menu' onClick={ToggleClass} id="btn"></i> */}
           </div>
 
         </div>
@@ -86,7 +101,6 @@ const Sidebar = () => {
               <div class="firstName_lastName col-sm-7">
                 <div class="firstName font-face-bariol-bold">{fname.split(" ")[0]}</div>
                 <div class="lastName font-face-bariol-regular">{fname.split(" ")[1]}</div>
-
               </div>
             </div>
           </div>
@@ -103,12 +117,7 @@ const Sidebar = () => {
 
             <li>
               <a 
-              onClick={() => {
-                  setOpenModal2(true);
-                }} 
-
-              
-              >
+              onClick={() => {setOpenModal2(true);}} >
                 <i class='bx bx-calendar' ></i>
                 <span class="links_name">Reservation Management</span>
               </a>
@@ -124,12 +133,13 @@ const Sidebar = () => {
               </Link>
             </li>
 
-            <li>
+            {list}
+            {/* <li>
               <Link to="/adminManagement">
                 <i class='bx bx-user'></i>
                 <span class="links_name" >Admin Management</span>
               </Link>
-            </li>
+            </li> */}
 
             <li>
               <a href="/changePassword">

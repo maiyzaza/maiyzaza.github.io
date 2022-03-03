@@ -154,7 +154,7 @@ function NewReservation({closeModal,roomId}) {
         <div>
             <div className="newReservation-modal ">
                 <div className="newReservation-modalContainer">
-                    <div className="title AllBig">new reservation</div>
+                    <div className="title AllBig">new reservation</div> 
                     <i class='iconAddress bx bxs-school'></i>
                         <div class="address ">{dataRoom.roomName} @ {dataRoom.building} {dataRoom.floor} floor</div>
                         <i class='iconCalendar bx bx-calendar'></i>

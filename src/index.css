@@ -6,10 +6,6 @@ body  {
   background-color: #EAEAEA !important;
 }
 
-.zIndex1 {
-  z-index: 10000
-}
-
 .css-b62m3t-container {
   height: 1.6rem!important;
 }
@@ -454,6 +450,7 @@ form .new-col-12 {
   flex-direction: column;
   padding: 5rem !important;
 }
+
 .createRoom-modalContainer-notComplete {
   width: 25rem;
   height: 50vh;
@@ -704,7 +701,6 @@ form .new-col-12 {
 
 .myTable {
   margin-left: 22.5rem !important;
-
   width: 71%;
 }
 
@@ -1239,6 +1235,104 @@ Date Filter Component
 .date-drop-down .react-datepicker {
   left: 22.5rem;
 }
+.disable {
+  margin-left: -22.5rem !important;
+  margin-top: 0rem;
+}
+
+.disable_search_container_date {
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 1.2rem;
+}
+
+.disable-border-cell {
+  margin-top: 1rem;
+  width: 29.875rem;
+  background-color: hsl(0, 0%, 100%);
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow-y: scroll;
+}
+
+.disable-cell {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  /* height: 300px; */
+  
+}
+.max-disable-cell {
+  max-width: 29.875rem !important;
+}
+
+.disable-row {
+  height: 5rem;
+}
+
+.hr-disable{
+  height: 0.03rem;
+  color: #D7D5DB;
+  width: 26.7rem;
+  margin-top: 0.5rem;
+  margin-right: 1.5rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.disable-model {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1;
+  background-color: rgba(10,10,10,0.45);
+}
+
+.disable-modelContainer {
+  width: 40rem;
+  height: 90vh;
+  border-radius: 12px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem !important;
+}
+
+.disable-modelContainer .title {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-family: 'Bariol Serif Bold';
+  margin-bottom: 1rem;
+}
+
+.disable-modelContainer .body {
+  flex: 50%;
+  display: flex;
+  font-size: 1rem;
+  padding-bottom: 0rem !important;
+}
+
+.disable-modelContainer .footer {
+  margin-left: 15.8rem;
+}
+
+.disable-modelContainer button {
+  width: 2rem;
+  height: 2rem;
+  color: #4A4A4A;
+  border: none;
+  border-radius: 50%;
+  background-color: #F2F2F2 !important;
+  margin-top: -3rem;
+  margin-left: 30rem;
+}
 
 .date-drop-down .react-datepicker__triangle {
   left: -13rem !important;
@@ -1260,6 +1354,84 @@ Date Filter Component
   display: block;
   margin-top: -1.5rem;
   margin-left: 33.5rem;
+}
+
+/* Admin Managment */
+.adminTable {
+  margin-top: 7rem;
+  margin-left: 22.5rem !important;
+  width: 71%;
+}
+
+.createAccount-modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 3;
+  background-color: rgba(10,10,10,0.45);
+}
+
+.createAccount-modalContainer {
+  width: 40rem;
+  height: 75vh;
+  border-radius: 12px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem !important;
+}
+
+.createAccount-modalContainer-notComplete {
+  width: 25rem;
+  height: 50vh;
+  border-radius: 12px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem !important;
+}
+
+.createAccount-modalContainer .title {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-family: 'Bariol Serif Bold';
+  margin-bottom: 1rem;
+}
+
+.createAccount-modalContainer-notComplete .title {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-family: 'Bariol Serif Bold';
+  margin-bottom: 1rem;
+}
+.createAccount-modalContainer-notComplete button {
+  margin-left: 10rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #CB002B !important;
+}
+
+.createAccount-modalContainer .body {
+  flex: 50%;
+  display: flex;
+  font-size: 1rem;
+}
+
+.createAccount-modalContainer .footer {
+  margin-top: 1rem;
+  margin-left: 15.8rem;
+}
+
+.createAccount-modalContainer .footer button {
+  border: none;
+  border-radius: 5px;
+  background-color: #CB002B !important;
 }
 
 ::placeholder {

@@ -16,6 +16,7 @@ import Login from './pages/login/login';
 import logOutModal from './components/logOutModal';
 import MoreInfoForReservationList from './components/moreInfoForReservationList';
 import AdminManagement from './pages/admin management/adminManagement'
+import ModifyAccount from './pages/admin management/admin managment components/modifyAccount';
  
 function App() {
 

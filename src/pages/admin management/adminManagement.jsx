@@ -4,6 +4,7 @@ import { useHistory } from 'react-router'
 import React, { useEffect, useState } from "react";
 // import SearchRoomManagement from "./room management components/searchRoomManagement"
 import cardImg from '../../assets/cardImg.png';
+import AdminManagmentComponent from './adminManagmentComponent';
 
  
 function AdminManagement() {
@@ -26,7 +27,7 @@ function AdminManagement() {
               <p class="content card-text">Suvarnabhumi Campus</p>
             </div>
         </div>
-        {/* <SearchRoomManagement />    */}
+        <AdminManagmentComponent />   
     </body>
   );
 }
