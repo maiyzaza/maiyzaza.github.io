@@ -115,19 +115,19 @@ function ModifyRoom( { closeModal,roomId } ) {
     if (floor1 === null || floor1 === "Not Specified")
       floor1 = floor
     
-    let minDurationPostAPI = minDuration.value
+    let minDurationPostAPI = minDuration
     // if (minDurationPostAPI === null)
     //   minDurationPostAPI = minDu
     
-    let maxDurationPostAPI = maxDuration.value
+    let maxDurationPostAPI = maxDuration
     // if (maxDurationPostAPI === null)
     //   maxDurationPostAPI = maxD
     
-    let startTimePostAPI = startTime.value + ":00"
+    let startTimePostAPI = startTime + ":00"
     // if (startTimePostAPI === null)
     //   startTimePostAPI = dataStartTime
     
-    let endTimePostAPI = endTime.value + ":00"
+    let endTimePostAPI = endTime + ":00"
     // if (endTimePostAPI === null)
     //   endTimePostAPI = dataEndTime
 

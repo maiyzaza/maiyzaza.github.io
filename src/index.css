@@ -1388,8 +1388,8 @@ Date Filter Component
 }
 
 .createAccount-modalContainer-notComplete {
-  width: 25rem;
-  height: 50vh;
+  /* width: 25rem; */
+  /* height: 50vh; */
   border-radius: 12px;
   background-color: white;
   display: flex;
