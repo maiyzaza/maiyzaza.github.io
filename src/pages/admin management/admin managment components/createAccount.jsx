@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import StartTimeSelect from '../../../components/startTimeSelect';
 import RoleSelect from './roleSelect';
 import { useHistory } from 'react-router-dom';
 
 function CreateAccount( { closeModal,roomId } ) {
 
-  const [data, setData] = useState(false);
   const [baseImage, setBaseImage] = useState("");
   const access_token = sessionStorage.getItem("token")
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
-  const [profileImg,setProfileImg] = useState([]);
   const [password, setPassword] = useState("");
-  const [confirmPassword,setConfirmPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [role, setRole] = useState("");
+  const [isNotFilleEerything, setIsNotFilleEerything] = useState(true);
+  const [isMatch, setIsMatch] = useState(false);
 
   let history = useHistory();
 
@@ -48,42 +47,57 @@ function CreateAccount( { closeModal,roomId } ) {
   const onClick = async (event) => {
 
     console.log(firstName)
+    if (firstName === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
     console.log(lastName)
+    if (lastName === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
     console.log(userName)
+    if (userName === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
     console.log(password)
+    if (password === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
+    console.log(confirmPassword)
+    if (confirmPassword === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
     console.log(baseImage)
+    if (baseImage === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
 
-    try {
-     await axios({
-        url: "https://arr-dev.azurewebsites.net/api/v1/webs/new-admin",
-        headers: {
-            'Authorization': 'Bearer ' + access_token
-            },
-        method: "POST",
-        data: {
-          FirstNameEn : firstName,
-          LastNameEn : lastName,
-          UserName : userName,
-          Password : password,
-          MemberPivtureUrl : baseImage,
-          RoleId : role.value
-        }
-    })
-    .then((res) => {
-      alert("Your account has been created")
-      history.push("/adminManagement")
-      window.location.reload("/adminManagement");
-     });
-    } catch (err) {
-      console.log(err.response.data.message)
-      alert(err.response.data.message)
-      setData(true)
+    if (password === confirmPassword && password !== "") { setIsMatch(true) }
+    else { setIsMatch(false) }
+
+    if (isMatch && (!isNotFilleEerything)) { 
+      try {
+        await axios({
+            url: "https://arr-dev.azurewebsites.net/api/v1/webs/new-admin",
+            headers: {
+                'Authorization': 'Bearer ' + access_token
+                },
+            method: "POST",
+            data: {
+              FirstNameEn : firstName,
+              LastNameEn : lastName,
+              UserName : userName,
+              Password : password,
+              MemberPivtureUrl : baseImage,
+              RoleId : role.value
+            }
+        })
+        .then((res) => {
+          alert("Your account has been created")
+          history.push("/adminManagement")
+          window.location.reload("/adminManagement");
+        });
+      } catch (err) {
+        // console.log(err.response.data.message)
+        // alert(err.response.data.message)
+      }
     }
- };
-
-  useEffect(() => {
-    // postdata();
-  },[]);
+      
+    
+  };
 
     return(
         <div>
@@ -94,23 +108,23 @@ function CreateAccount( { closeModal,roomId } ) {
                         <form className="new-col-12">            
                             <label className="col-6 firstForm">First Name</label>
                             <label className="col-6 secondForm">Last Name</label>
-                            <textarea className="size" placeholder={"First Name"} onChange={event => setFirstName(event.target.value)} required></textarea>
-                            <textarea className="size  secondP" placeholder={"Last Name"} onChange={event => setLastName(event.target.value)} required></textarea>
+                            <textarea  className="size" placeholder={"First Name"} onChange={event => setFirstName(event.target.value)} ></textarea>
+                            <textarea  className="size  secondP" placeholder={"Last Name"} onChange={event => setLastName(event.target.value)} ></textarea>
 
                             <div className='rowWWWW'>
                             <label className="col-6 firstForm">User Name</label>
                             <label className="col-6 secondForm">Profile Image</label>
-                            <textarea className="size" placeholder={"User Name"} onChange={event => setUserName(event.target.value)} required></textarea>
-                            <input type="file" className="col-6 size form-control thirdP" id="customFile" onChange={(e) => {uploadImage(e);}}></input>
+                            <textarea  className="size" placeholder={"User Name"} onChange={event => setUserName(event.target.value)} ></textarea>
+                            <input  type="file" className="col-6 size form-control thirdP" id="customFile" onChange={(e) => {uploadImage(e);}}></input>
                             </div>
 
                             <label className="col-6 firstForm">Password</label>
                             <label className="col-6 secondForm">Confirm Password</label>
-                            <textarea className="size" placeholder={"Password"} onChange={event => setPassword(event.target.value)} required></textarea>
-                            <textarea className="size  secondP" placeholder={"Confirm Password"} onChange={event => setConfirmPassword(event.target.value)} required></textarea>
+                            <textarea  className="size" type="password" placeholder={"Password"} onChange={event => setPassword(event.target.value)} ></textarea>
+                            <textarea  className="size  secondP" placeholder={"Confirm Password"} onChange={event => setConfirmPassword(event.target.value)} ></textarea>
 
                             <label className="col-6 firstForm">Role</label>
-                            <RoleSelect onChange={onChangeInputRole} className="size zero" oldValue={null}/>
+                            <RoleSelect  onChange={onChangeInputRole} className="size zero" oldValue={null}/>
                         </form>
                     </div>
 
@@ -118,6 +132,8 @@ function CreateAccount( { closeModal,roomId } ) {
                         <button className="btn btn-danger btn-sm" onClick={onClick} type="button">Save</button>
                         <button className="btn btn-primary btn-sm" type="button" onClick={() => closeModal(false)} id="cancelLogOut">Cancel</button>
                     </div>
+                    {isNotFilleEerything && <p>Please fill everything</p>}
+                    {!isMatch && <p>Password is not match with confirm password.</p>}
                 </div>
             </div>
         </div>

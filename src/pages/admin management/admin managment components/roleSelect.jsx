@@ -7,7 +7,6 @@ const customStylesBuilding = {
     ...base,
     fontFamily: 'Bariol Regular',
     boxShadow: 0,
-    // left: "21.55rem",
     top: "0rem",
     cursor: 'text',
     borderRadius: 5,
@@ -20,7 +19,6 @@ const customStylesBuilding = {
     return {
       ...styles,
       cursor: 'pointer',
-      // backgroundColor: isFocused ? 'white' : 'white',
       color: isFocused ? 'rgba(255, 80, 86)' : 'black',
       lineHeight: 2,
     }
@@ -34,7 +32,6 @@ const customStylesBuilding = {
 
   menu: styles => ({
     ...styles,
-    // left: "22.5rem",
     top: "1.9rem",
     boxShadow: 'none',
     borderRadius: 5,
@@ -45,7 +42,7 @@ const customStylesBuilding = {
 
   menuList: styles => ({
     ...styles,
-    height: "9rem",
+    height: "6rem",
   }),
 
   singleValue: styles => ({
@@ -86,7 +83,9 @@ function RoleSelect({onChange, oldValue}) {
     let options = []
     if (data !== null) {
         for (var i = 0; i < data.length; i++) {
+          if (data[i].roleId.toString() == "2" || data[i].roleId.toString() == "6") {
             options.push( { value: data[i].roleId, label: data[i].roleName } )
+          }
         }
     }
 

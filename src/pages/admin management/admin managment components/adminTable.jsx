@@ -83,17 +83,11 @@ const AdminTable = (props) =>  {
       const memberIdFromTable = item.id
       const memberNameFromTable = item.firstName + " " + item.lastName
 
-      item.area = (
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          AREA
-        </div>
-      );
-
-      item.more = (
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          MORE
-        </div>
-      );
+      // item.area = (
+      //   <div style={{ display: "flex", justifyContent: "space-between" }}>
+      //     AREA
+      //   </div>
+      // );
 
       item.modify = (
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -138,35 +132,29 @@ const AdminTable = (props) =>  {
         label: 'USERNAME',
         field: 'userName',
         sort: 'asc',
-        width: 80
+        width: 50
       },
       {
         label: 'FIRST NAME',
         field: 'firstName',
         sort: 'acs',
-        width: 70
+        width: 50
       },
       {
         label: 'LAST NAME',
         field: 'lastName',
         sort: 'asc',
-        width: 70
+        width: 50
       },
       {
         label: 'ROLE',
         field: 'role',
         sort: 'asc',
-        width: 70
+        width: 50
       },
       {
         label: 'AREA',
         field: 'area',
-        sort: 'asc',
-        width: 80
-      },
-      {
-        label: 'MORE',
-        field: 'more',
         sort: 'asc',
         width: 80
       },

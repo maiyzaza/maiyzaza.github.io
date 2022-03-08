@@ -15,6 +15,9 @@ function ModifyAccount( { closeModal, memberId } ) {
   const [password, setPassword] = useState("");
   const [confirmPassword,setConfirmPassword] = useState("")
   const [role, setRole] = useState("");
+  const [roleName, setRoleName] = useState("");
+  const [isNotFilleEerything, setIsNotFilleEerything] = useState(false);
+  const [isMatch, setIsMatch] = useState(false);
 
   let history = useHistory();
 
@@ -35,7 +38,9 @@ function ModifyAccount( { closeModal, memberId } ) {
       setLastName(res.data.data[0].lastName)
       setPassword(res.data.data[0].password)
       setBaseImage(res.data.data[0].profileUrl)
-      setRole(res.data.data[0].role)
+      setRoleName(res.data.data[0].role)
+      setRole(res.data.data[0].roleId)
+      console.log(res.data.data[0])
     });
     } catch (err) {
       console.log(err);
@@ -65,7 +70,7 @@ function ModifyAccount( { closeModal, memberId } ) {
   };
 
   function onChangeInputRole(value){
-    setRole(value)
+    setRole(value.value)
   }
 
   const onClick = async (event) => {
@@ -75,34 +80,57 @@ function ModifyAccount( { closeModal, memberId } ) {
     console.log(userName)
     console.log(password)
     console.log(baseImage)
-    console.log(role.value)
+    console.log(role)
 
-    try {
-     await axios({
-        url: "https://arr-dev.azurewebsites.net/api/v1/webs/modify-admin",
-        headers: {
-            'Authorization': 'Bearer ' + access_token
-            },
-        method: "POST",
-        data: {
-          Id : memberId,
-          FirstNameEn : firstName,
-          LastNameEn : lastName,
-          UserName : userName,
-          Password : password,
-          MemberPivtureUrl : baseImage,
-          RoleId : role.value
-        }
-    })
-    .then((res) => {
-      alert("The account has been modified")
-      history.push("/adminManagement")
-      window.location.reload("/adminManagement");
-     });
-    } catch (err) {
-      console.log(err.response)
-      alert("Failed to midify account")
-      setData(true)
+    console.log(firstName)
+    if (firstName === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
+    console.log(lastName)
+    if (lastName === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
+    console.log(userName)
+    if (userName === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
+    console.log(password)
+    if (password === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
+    console.log(confirmPassword)
+    if (confirmPassword === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
+    console.log(baseImage)
+    if (baseImage === "") { setIsNotFilleEerything(true) }
+    else { setIsNotFilleEerything(false) }
+
+    if (password === confirmPassword && password !== "") { setIsMatch(true) }
+
+    if (isMatch && (!isNotFilleEerything)) { 
+      try {
+      await axios({
+          url: "https://arr-dev.azurewebsites.net/api/v1/webs/modify-admin",
+          headers: {
+              'Authorization': 'Bearer ' + access_token
+              },
+          method: "POST",
+          data: {
+            Id : memberId,
+            FirstNameEn : firstName,
+            LastNameEn : lastName,
+            UserName : userName,
+            Password : password,
+            MemberPivtureUrl : baseImage,
+            RoleId : role
+          }
+      })
+      .then((res) => {
+        alert("The account has been modified")
+        history.push("/adminManagement")
+        window.location.reload("/adminManagement");
+      });
+      } catch (err) {
+        console.log(err.response)
+        alert("Failed to midify account")
+        setData(true)
+      }
     }
  };
 
@@ -131,11 +159,11 @@ function ModifyAccount( { closeModal, memberId } ) {
 
                             <label className="col-6 firstForm">Password</label>
                             <label className="col-6 secondForm">Confirm Password</label>
-                            <textarea className="size" placeholder={password} onChange={event => setPassword(event.target.value)} required></textarea>
+                            <textarea className="size" secureTextEntry={true} placeholder={password} onChange={event => setPassword(event.target.value)} required></textarea>
                             <textarea className="size  secondP" placeholder={"Confirm Password"} onChange={event => setConfirmPassword(event.target.value)} required></textarea>
 
                             <label className="col-6 firstForm">Role</label>
-                            <RoleSelect onChange={onChangeInputRole} className="size zero" oldValue={role}/>
+                            <RoleSelect onChange={onChangeInputRole} className="size zero" oldValue={roleName}/>
                         </form>
                     </div>
 
