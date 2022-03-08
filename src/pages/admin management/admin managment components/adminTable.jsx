@@ -90,18 +90,17 @@ const AdminTable = (props) =>  {
       // );
 
       item.modify = (
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div
-            className="bx bx-info-circle"
+        <div>
+        <i class='card_room_management_room_writeimg bx bx-edit'
             style={{
               marginLeft: "12px", 
               cursor: "pointer",
               color: "black",
-              fontSize: "1.1rem",
+              fontSize: "1rem",
             }}
             onClick={() => onClickModify(memberIdFromTable)}
           > 
-          </div>
+          </i>
         </div>
       );
 

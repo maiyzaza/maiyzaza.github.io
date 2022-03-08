@@ -18,6 +18,7 @@ function ModifyAccount( { closeModal, memberId } ) {
   const [roleName, setRoleName] = useState("");
   const [isNotFilleEerything, setIsNotFilleEerything] = useState(false);
   const [isMatch, setIsMatch] = useState(false);
+  const [isChangePassword, setIsChangePassword] = useState(false);
 
   let history = useHistory();
 
@@ -73,6 +74,12 @@ function ModifyAccount( { closeModal, memberId } ) {
     setRole(value.value)
   }
 
+  function onChangeInputPassword(value){
+    console.log(value.target.value)
+    setPassword(value.target.value)
+    setIsChangePassword(true)
+  }
+
   const onClick = async (event) => {
 
     console.log(firstName)
@@ -101,9 +108,11 @@ function ModifyAccount( { closeModal, memberId } ) {
     if (baseImage === "") { setIsNotFilleEerything(true) }
     else { setIsNotFilleEerything(false) }
 
-    if (password === confirmPassword && password !== "") { setIsMatch(true) }
+    if (password === confirmPassword && password !== "" ) { setIsMatch(true) }
 
-    if (isMatch && (!isNotFilleEerything)) { 
+    console.log(isMatch, !isChangePassword)
+
+    if (isMatch || !isChangePassword) { 
       try {
       await axios({
           url: "https://arr-dev.azurewebsites.net/api/v1/webs/modify-admin",
@@ -159,8 +168,8 @@ function ModifyAccount( { closeModal, memberId } ) {
 
                             <label className="col-6 firstForm">Password</label>
                             <label className="col-6 secondForm">Confirm Password</label>
-                            <textarea className="size" secureTextEntry={true} placeholder={password} onChange={event => setPassword(event.target.value)} required></textarea>
-                            <textarea className="size  secondP" placeholder={"Confirm Password"} onChange={event => setConfirmPassword(event.target.value)} required></textarea>
+                            <input  className="size" type="password" placeholder={"password"} onChange={onChangeInputPassword} required></input>
+                            <input className="size  secondP" type="password" placeholder={"Confirm Password"} onChange={event => setConfirmPassword(event.target.value)} required></input>
 
                             <label className="col-6 firstForm">Role</label>
                             <RoleSelect onChange={onChangeInputRole} className="size zero" oldValue={roleName}/>

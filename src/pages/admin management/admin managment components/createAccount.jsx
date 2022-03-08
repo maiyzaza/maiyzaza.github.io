@@ -120,8 +120,8 @@ function CreateAccount( { closeModal,roomId } ) {
 
                             <label className="col-6 firstForm">Password</label>
                             <label className="col-6 secondForm">Confirm Password</label>
-                            <textarea  className="size" type="password" placeholder={"Password"} onChange={event => setPassword(event.target.value)} ></textarea>
-                            <textarea  className="size  secondP" placeholder={"Confirm Password"} onChange={event => setConfirmPassword(event.target.value)} ></textarea>
+                            <input  className="size" type="password" placeholder={"Password"} onChange={event => setPassword(event.target.value)} ></input>
+                            <input  className="size  secondP" type="password" placeholder={"Confirm Password"} onChange={event => setConfirmPassword(event.target.value)} ></input>
 
                             <label className="col-6 firstForm">Role</label>
                             <RoleSelect  onChange={onChangeInputRole} className="size zero" oldValue={null}/>
