@@ -106,7 +106,7 @@ const Sidebar = () => {
           </div>
         </div>
 
-        <ul class="nav_list" class="font-face-bariol-regular">
+        <ul class="nav_list font-face-bariol-regular">
           
             <li>
               <a href="/roomManagement">

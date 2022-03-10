@@ -1,50 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import RoleSelect from './roleSelect';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import RoleSelect from './roleSelect'
+import { useHistory } from 'react-router-dom'
 
 function CreateAccount( { closeModal,roomId } ) {
 
-  const [baseImage, setBaseImage] = useState("");
+  const [baseImage, setBaseImage] = useState("")
   const access_token = sessionStorage.getItem("token")
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [userName, setUserName] = useState("")
+  const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [role, setRole] = useState("");
-  const [isNotFilleEerything, setIsNotFilleEerything] = useState(true);
-  const [isMatch, setIsMatch] = useState(false);
+  const [role, setRole] = useState("")
+  const [isNotFilleEerything, setIsNotFilleEerything] = useState(true)
+  const [isMatch, setIsMatch] = useState(false)
+  const [isFirst, setIsFirst] = useState(false)
 
-  let history = useHistory();
+  let history = useHistory()
 
   const uploadImage = async (e) => {
-    const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-    setBaseImage(base64);
-  };
+    const file = e.target.files[0]
+    const base64 = await convertBase64(file)
+    setBaseImage(base64)
+  }
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
 
       fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
+        resolve(fileReader.result)
+      }
 
       fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
+        reject(error)
+      }
+    })
+  }
 
   function onChangeInputRole(value){
     setRole(value)
   }
 
   const onClick = async (event) => {
+
+    setIsFirst(true)
 
     console.log(firstName)
     if (firstName === "") { setIsNotFilleEerything(true) }
@@ -88,17 +91,14 @@ function CreateAccount( { closeModal,roomId } ) {
         .then((res) => {
           alert("Your account has been created")
           history.push("/adminManagement")
-          window.location.reload("/adminManagement");
-        });
+          window.location.reload("/adminManagement")
+        })
       } catch (err) {
-        // console.log(err.response.data.message)
-        // alert(err.response.data.message)
+        console.log(err.response.data.message)
+        alert(err.response.data.message)
       }
     }
-      
-    
-  };
-
+  }
     return(
         <div>
             <div className="createAccount-modal">
@@ -115,7 +115,7 @@ function CreateAccount( { closeModal,roomId } ) {
                             <label className="col-6 firstForm">User Name</label>
                             <label className="col-6 secondForm">Profile Image</label>
                             <textarea  className="size" placeholder={"User Name"} onChange={event => setUserName(event.target.value)} ></textarea>
-                            <input  type="file" className="col-6 size form-control thirdP" id="customFile" onChange={(e) => {uploadImage(e);}}></input>
+                            <input  type="file" className="col-6 size form-control thirdP" id="customFile" onChange={(e) => {uploadImage(e)}}></input>
                             </div>
 
                             <label className="col-6 firstForm">Password</label>
@@ -132,12 +132,12 @@ function CreateAccount( { closeModal,roomId } ) {
                         <button className="btn btn-danger btn-sm" onClick={onClick} type="button">Save</button>
                         <button className="btn btn-primary btn-sm" type="button" onClick={() => closeModal(false)} id="cancelLogOut">Cancel</button>
                     </div>
-                    {isNotFilleEerything && <p>Please fill everything</p>}
-                    {!isMatch && <p>Password is not match with confirm password.</p>}
+                    {isFirst && isNotFilleEerything && <p>Please fill everything</p>}
+                    {isFirst && !isMatch && <p>Password is not match with confirm password.</p>}
                 </div>
             </div>
         </div>
     )
 }
 
-export default CreateAccount;
+export default CreateAccount

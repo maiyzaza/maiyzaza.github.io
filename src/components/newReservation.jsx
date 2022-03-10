@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import StartTimeSelect1 from './startTimeSelect1';
+import StartTimeSelect2 from './startTimeSelect2';
 import EndTimeSelect1 from './endTimeSelect1';
 import { useHistory } from 'react-router-dom';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
@@ -125,7 +125,7 @@ function NewReservation({closeModal,roomId}) {
                     Title : meetingTitlePostAPI,
                     RoomId : roomId,
                     ActivityId : purposePostAPI,
-                    ChannelName : "Website",
+                    ChannelName : "Website - Reservation",
                     StartDateTime : startDateTimePostAPI,
                     EndDateTime : endDateTimePostAPI,
                     StaffFirstName : name[0],
@@ -135,10 +135,10 @@ function NewReservation({closeModal,roomId}) {
             })
             .then((res) => {
                 console.log("okay", res.data)
-                    alert("Your reservation has been created")
-                    let path = `/reservationManagement`
-                    history.push(path)
-                    window.location.reload()
+                alert("Your reservation has been created")
+                let path = `/reservationManagement`
+                history.push(path)
+                window.location.reload()
             })
             .catch((err) => {
                 console.log(err.response.data)
@@ -167,7 +167,7 @@ function NewReservation({closeModal,roomId}) {
                             <Purpose onChange={onChangeInputPurpose} className="firstPP" required oldValue={null} />
                             <label className="col-6 firstForm1">Start Time</label>
                             <label className="col-6 secondForm1">End Time</label>
-                            <StartTimeSelect1 roomId={roomId} onChange={onChangeInputStartTime} className="size zero" required oldValue={null} />
+                            <StartTimeSelect2 roomId={roomId} onChange={onChangeInputStartTime} className="size zero" required oldValue={null} />
                             <EndTimeSelect1 startTime={startTime} roomId={roomId} onChange={onChangeInputEndTime} className="size secondP" required oldValue={null} />
                         </form>
                     </div>

@@ -22,6 +22,7 @@ function SearchReservationManagement(props) {
         let buildings = window.sessionStorage.getItem("building")
         let floors = window.sessionStorage.getItem("floor")
         let dates = window.sessionStorage.getItem("date")
+        console.log(dates)
 
 
         if (buildings == "Not Specified") { buildings = null  }
@@ -67,8 +68,6 @@ function SearchReservationManagement(props) {
     }
 
     return (
-
-        
         <div class="room_management">
             <h1 class="search_container_building">Building</h1>
             <h1 class="search_container_floor">Floor</h1>

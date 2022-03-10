@@ -56,12 +56,10 @@ const customStylesBuilding = {
   })
 }
 
-function StartTimeSelect({roomId, onChange, oldValue}) {
+function StartTimeSelect2({roomId, onChange, oldValue}) {
 
   const access_token = sessionStorage.getItem("token")
   const [dataReservation,setDataReservation] = useState(null)
-
-  // console.log(roomId.roomId)
 
   const dateNow = new Date()
   const dateDay = dateNow.getDate()
@@ -91,10 +89,10 @@ function StartTimeSelect({roomId, onChange, oldValue}) {
   } catch (err) {
       console.log(err);
   }
-};
-useEffect(() => {
-  postdata()
-},[]);
+  };
+  useEffect(() => {
+    postdata()
+  },[]);
   let options = []
 
   if (dataReservation !== null ) {
@@ -102,17 +100,17 @@ useEffect(() => {
     let reservedSlot = []
     
     for (var i = 0; i < dataReservation.reservedSlot.length; i += 1) {
-
       let startTimeForLoopReserved = parseFloat(dataReservation.reservedSlot[i].startDateTime.slice(11, 13))
-      if (dataReservation.openTime.slice(14,16) === "30") { startTimeForLoopReserved += 0.5}
+      if (dataReservation.reservedSlot[i].startDateTime.slice(14,16) === "30") { startTimeForLoopReserved += 0.5}
       let endTimeForLoopReserved = parseFloat(dataReservation.reservedSlot[i].endDateTime.slice(11, 13))
-      if (dataReservation.closedTime.slice(14,16) === "30") { endTimeForLoopReserved += 0.5}
+      if (dataReservation.reservedSlot[i].endDateTime.slice(14,16) === "30") { endTimeForLoopReserved += 0.5}
 
       for (var j = startTimeForLoopReserved; j <= endTimeForLoopReserved; j += 0.5) {
         if (j.toString() === endTimeForLoopReserved.toString()) { continue }
         reservedSlot.push(j.toString())
       }
     }
+    console.log(reservedSlot)
 
     let startTimeForLoop = parseFloat(dataReservation.openTime.slice(11, 13))
     if (dataReservation.openTime.slice(14,16) === "30") { startTimeForLoop += 0.5}
@@ -157,5 +155,5 @@ useEffect(() => {
   );
 }
 
-export default StartTimeSelect ;
+export default StartTimeSelect2 ;
 

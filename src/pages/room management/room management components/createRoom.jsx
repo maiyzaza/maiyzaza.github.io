@@ -234,7 +234,7 @@ function CreateRoom({closeModal}) {
 
     return (
         <div>
-            <div className="createRoom-modal ">
+            <div className="createRoom-modal">
                 <div className="createRoom-modalContainer">
                     <div className="title">CREATE ROOM</div>
                     <div className="body">

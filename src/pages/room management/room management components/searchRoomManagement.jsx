@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchSelectBuilding from "./searchSelectBuilding";
 import SearchSelectFloor from "./searchSelectFloor";
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 import FloorList from './floorList';
 import axios from 'axios';
@@ -61,10 +62,12 @@ function SearchRoomManagement(props) {
     return (
         
         <div class="room_management">
+        
             <h1 class="search_container_building">Building</h1>
             <h1 class="search_container_floor">Floor</h1>
             <SearchSelectBuilding />
             <SearchSelectFloor />
+            <BootstrapSwitchButton onlabel='Admin User' offlabel='Regular User' width={20} height={10} checked={false}/>
             <button class="search_button_room" onClick={onClick}> Search </button>
             {nonData && <div class="room_management_not_find">
                 No Room Management
